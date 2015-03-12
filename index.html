@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title>Log In</title>
+        <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <link rel="stylesheet" href="styles/index.css" type="text/css">
+        </head>
+    
+    <body onload="firstRun()">
+        <div class="page-header container text-center">
+            <h1>International Alert Security App</h1>
+        </div>
+        <div class="container text-center">
+            <h3>Log In</h3>
+        </div>
+        <div id="container" class="info">
+            <p>Email Address
+            <input class="textbox" type="email" id="name" placeholder="Enter your email" value="dlucas@international-alert.org">
+            </p>
+            <p>Password
+            <input class="textbox" type="password" id="password" placeholder="Enter your password">
+            </p>
+            <button onClick="forgotPass()" class="forgotpass">Forgot Password</button>
+            <br>
+        </div>
+        <button class="submit" onclick="authMe()">Login</button>
+        
+        <script>
+            function firstRun() {
+                var status = localStorage.getItem("status")
+                
+                if (status === null || status.length === 0)
+                {
+                    window.location="create.html";
+                }
+            }
+        </script>
+    
+        <script>        
+            function authMe() {
+            username = document.getElementById("name").value;
+            if(typeof(Storage) !== "undefined") {
+                        sessionStorage.setItem("email", username);
+            }
+            password = document.getElementById("password").value;
+            if (username === "") {
+               alert("Please enter a username");
+               return;
+            } else {
+            if (password === "") {
+               alert("Please enter a password");
+               return;
+            } else {
+            
+            var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts");
+            ref.authWithPassword({
+             "email": username,
+             "password": password
+            }, authHandler);    
+                
+            }
+            }
+            }
+        </script>
+        
+        <script>
+        // Create a callback to handle the result of the authentication
+            function authHandler(error, authData) {
+            if (error) {
+                alert("Login Failed! " + error);
+            } else {
+                window.location="main.html";
+            }
+        }
+        </script>
+        <script>
+            function forgotPass() {
+                window.location="forgot.html";
+            }
+        </script>
+    </body>
+</html>
