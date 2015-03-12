@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <title>Home</title>
+        <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <link rel="stylesheet" href="styles/main.css" type="text/css">
+        <script language="javascript" type="text/javascript">
+            var myID = "";
+            var uName = "";
+            var email = sessionStorage.getItem("email");
+            function authDataCallback(authData) {
+                if (authData) {
+                myID = authData.uid.substring(12,16);
+                } else {
+                    alert("User is logged out");
+                }
+            }
+                
+            // Register the callback to be fired every time auth state changes
+            var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/");
+            ref.onAuth(authDataCallback);
+              
+            // Get a reference to our posts
+            var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts/");
+            
+            // Attach an asynchronous callback to read the data at our posts reference
+            ref.orderByChild("email").equalTo(email).on("child_added", function(snapshot) {
+                var userid = snapshot.val();
+                var uName = userid.name;
+                var uLastname = userid.lastname;
+                sessionStorage.setItem("name", uName);
+                sessionStorage.setItem("lastname", uLastname);
+                document.getElementById("welcome").innerHTML = "Welcome " + uName;
+            }, function (errorObject) {
+            });
+            
+        </script>
+        <script>
+            function logOut() {
+                if (window.confirm("Are you sure you want to log out?")) {
+                    ref.unauth();
+                    setTimeout(function(){window.location = "index.html";},500);
+                }
+            }
+        </script>
+        <script>
+            function getLocation() {
+                if (navigator.geolocation) //If Supported
+                {
+                    //alert("Geolocation is supported");
+                    navigator.geolocation.getCurrentPosition(getPosition,showError);
+                }
+                else //If not Supported
+                {
+                    alert("Geolocation not supported.");
+                }
+            }
+            function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            x.innerHTML = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            x.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            x.innerHTML = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            x.innerHTML = "An unknown error occurred."
+            break;
+    }
+}
+            function getPosition(position) {
+                latitude = position.coords.latitude;
+                longitude = position.coords.longitude;
+                alert(latitude);
+                alert(longitude);
+                sessionStorage.setItem("lat", latitude);
+                sessionStorage.setItem("lon", longitude);
+                window.location = "sos.html";
+            }
+        </script>
+        <script>
+            function sos() {
+                if (window.confirm("Confirm SOS?")) {
+                    getLocation();
+                }
+            }
+        </script>
+        
+    </head>
+    
+    <body>
+        <img src="icons/logout.png" class="logout" onclick="logOut()">
+        <div class="page-header container text-center">
+            <h1>International Alert Security App</h1>
+        </div>
+        <div class="container text-center">
+            <h3 id="welcome"></h3>
+        </div>
+        <div id="container" class="container">
+            <form action="addtrip.html">
+                <button class="normalbutton">Add Trip Information</button>
+            </form>
+            <form action="currentinfo.html">
+                <button class="normalbutton">View Current Information</button>
+            </form>
+            <button class="sos" onclick="sos()">SOS</button>
+        </div>
+    </body>
+</html>
