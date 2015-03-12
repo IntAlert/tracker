@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>View Current Info</title>
+        <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <link rel="stylesheet" href="styles/currentinfo.css" type="text/css">
+    </head>
+    
+    <body>
+        <div class="page-header container text-center">
+            <h1>International Alert Security App</h1>
+        </div>
+        <div class="container text-center">
+            <h3>Current Trip Info</h3>
+        </div>
+        <div id="container" class="container text-center">
+            <script language="javascript" type="text/javascript">
+            var myID = ""; // THIS IS GLOBAL!!!!!!!!!
+            var uName = "";
+            var email = sessionStorage.getItem("email");
+            function authDataCallback(authData) {
+                if (authData) {
+                myID = authData.uid.substring(12,16);
+                } 
+            }
+                
+            // Register the callback to be fired every time auth state changes
+            var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/");
+            ref.onAuth(authDataCallback);
+            </script>
+            
+            <script>
+                var count = 0;
+                var trip = [];
+                var myText = "";
+                var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
+                ref.orderByChild("email").equalTo(email).on("child_added", function(snapshot) {
+                newTrip = snapshot.val();
+                trip[count] = new Array(4);
+                trip[count][1] = newTrip.destination;
+                trip[count][2] = newTrip.leave;
+                trip[count][3] = newTrip.back;
+                trip[count][4] = snapshot.key();
+                myText += "<button onClick='displayTrip("+count+")' id='trips'><b>Destination: </b>" + trip[count][1] + "<br><b>Departing: </b>" + trip[count][2] + "<br><b>Returning: </b>" + trip[count][3] + "</button>";
+                count = count + 1;
+                document.getElementById("trip").innerHTML = myText;    
+                });
+            </script>
+            
+            <script>
+                function displayTrip(count) {
+                    if(typeof(Storage) !== "undefined") {
+                        sessionStorage.setItem("thistripid", trip[count][4]);
+                        window.location = "mytrip.html";
+                    } else {
+                        alert("Local Storage not supported");
+                    }
+                    //document.write("<link rel='stylesheet' href='styles/currentinfo.css' type='text/css'>");
+                    //document.write("<h1>International Alert Tracker App</h1>");
+                    //document.write("<h3>Details for Trip</h3>");
+                    //document.write("<div class='detail'><form><p>Destination: " + trip[count][1] + "</p>");
+                    //document.write("<p>Date Leaving: " + trip[count][2] + "</p>");
+                    //document.write("<p>Date Returning: " + trip[count][3] + "</p></div>");
+                    //document.write("<form action='currentinfo.html'><input class='back' type='submit' value='Back'></form>");
+                }
+            </script>
+            <div class="container text-center">
+                <p id="trip"></p>
+                <br>
+            </div>
+            <form name="back" action="main.html">
+                <input class="backbutton" type="submit" value="Back">
+            </form>
+        </div>
+    </body>
+</html>

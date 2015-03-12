@@ -1,0 +1,29 @@
+<html>
+     <head>
+           <!-- this page was written by __________ -->
+           <img src="IntAlertMed.jpg" alt="international alert" style="padding-left: 38%"/>
+           <link href="LayoutNewTripInfo.css" type="text/css" rel="stylesheet" />
+           <script type= "text/javascript" src = "countries.js"></script>
+     </head>
+
+     <body>
+           <h1>Add New Trip</h1>
+
+           <div class="startDate">Date Leaving:<br>
+           <input type="date" name="startDate" id="startDate" /></div>
+
+           <div class="returnDate">Date Returning:<br>
+           <input type="date" name="returnDate" id="returnDate" /></div>
+
+           <div class="country">Destination:<br>
+           <select id="country" name ="country"></select></div>
+
+           <div class="state">Select State:<br>
+           <select name ="state" id ="state"></select></div>
+           <script language="javascript">populateCountries("country", "state");</script>
+           <br>
+           <input type="submit" name="confirm" value="Confirm" id="confirm" /><br>
+           <input type="reset" name="reset" value="Reset" id="reset" /><br>
+           <input type="button" action="LayoutMainPage.html" name="cancel" value="Cancel" id="cancel" />
+      </body>
+</html>

@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Log In</title>
+        <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <link rel="stylesheet" href="styles/index.css" type="text/css">
+        </head>
+    
+    <body>
+        <div class="page-header container text-center">
+            <h1>International Alert Security App</h1>
+        </div>
+        <div class="container text-center">
+            <h3>Forgot Password</h3>
+        </div>
+        <div id="container" class="info">
+            <p>Email Address
+            <input class="email" type="email" id="name" placeholder="Enter your email">
+            </p>
+            <button onClick="passReset()" class="forgotpass">Send Password Reset</button>
+            <br>
+        </div>
+        <form name="back" action="index.html">
+            <input class="backbutton" type="submit" value="Back">
+        </form>
+        <script>
+            function passReset() {
+                username = document.getElementById("name").value;
+                var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts");
+                ref.resetPassword({
+                    email : username
+                }, function(error) {
+                if (error === null) {
+                    alert("Password reset email sent");
+                    setTimeout(function(){window.location = "index.html";},500);
+                } else {
+                    alert("Error sending password reset email");
+                }
+                });
+            }
+        </script> 
+    </body>
+</html>
