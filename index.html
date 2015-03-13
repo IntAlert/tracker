@@ -3,8 +3,9 @@
         <title>Log In</title>
         <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/index.css" type="text/css">
-        </head>
+    </head>
     
     <body onload="firstRun()">
         <div class="page-header container text-center">
@@ -27,6 +28,7 @@
         
         <script>
             function firstRun() {
+                
                 var status = localStorage.getItem("status")
                 
                 if (status === null || status.length === 0)
