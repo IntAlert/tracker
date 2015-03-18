@@ -3,6 +3,7 @@
         <title>View Current Info</title>
         <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <!-- ?META TAG IN HERE? -->
         <link rel="stylesheet" href="styles/currentinfo.css" type="text/css">
     </head>
     
@@ -14,7 +15,17 @@
             <h3>Current Trip Info</h3>
         </div>
         <div id="container" class="container text-center">
-            <script language="javascript" type="text/javascript">
+            <div class="container text-center">
+                <p id="trip"></p>
+                <br>
+            </div>
+            <form name="back" action="main.html">
+                <input class="backbutton" type="submit" value="Back">
+            </form>
+        </div>
+        
+<!-- ==================== SCRIPTS ==================== -->             
+        <script>
             var myID = ""; // THIS IS GLOBAL!!!!!!!!!
             var uName = "";
             var email = sessionStorage.getItem("email");
@@ -22,13 +33,11 @@
                 if (authData) {
                 myID = authData.uid.substring(12,16);
                 } 
-            }
-                
+            }  
             // Register the callback to be fired every time auth state changes
             var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/");
             ref.onAuth(authDataCallback);
             </script>
-            
             <script>
                 var count = 0;
                 var trip = [];
@@ -46,7 +55,6 @@
                 document.getElementById("trip").innerHTML = myText;    
                 });
             </script>
-            
             <script>
                 function displayTrip(count) {
                     if(typeof(Storage) !== "undefined") {
@@ -55,22 +63,9 @@
                     } else {
                         alert("Local Storage not supported");
                     }
-                    //document.write("<link rel='stylesheet' href='styles/currentinfo.css' type='text/css'>");
-                    //document.write("<h1>International Alert Tracker App</h1>");
-                    //document.write("<h3>Details for Trip</h3>");
-                    //document.write("<div class='detail'><form><p>Destination: " + trip[count][1] + "</p>");
-                    //document.write("<p>Date Leaving: " + trip[count][2] + "</p>");
-                    //document.write("<p>Date Returning: " + trip[count][3] + "</p></div>");
-                    //document.write("<form action='currentinfo.html'><input class='back' type='submit' value='Back'></form>");
                 }
             </script>
-            <div class="container text-center">
-                <p id="trip"></p>
-                <br>
-            </div>
-            <form name="back" action="main.html">
-                <input class="backbutton" type="submit" value="Back">
-            </form>
-        </div>
+<!-- ================================================= -->
+        
     </body>
 </html>
