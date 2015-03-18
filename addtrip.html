@@ -3,6 +3,7 @@
         <title>Add Trip Info</title>
         <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <!-- ?META TAG IN HERE? -->
         <link rel="stylesheet" href="styles/addtrip.css" type="text/css">
     </head>
     
@@ -234,31 +235,22 @@
             </form>
         </div>
         
-        <script language="javascript" type="text/javascript">
+<!-- ==================== SCRIPTS ==================== -->        
+        <script>
             var myID = ""; // THIS IS GLOBAL!!!!!!!!!
             var uName = "";
             function authDataCallback(authData) {
                 if (authData) {
                 myID = authData.uid.substring(12,16);
-                //alert("User " + myID + " is logged in with " + authData.provider);
                 } 
-            }
-                            
+            }             
             // Register the callback to be fired every time auth state changes
             var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/");
             ref.onAuth(authDataCallback);
         </script>
-        
         <script>
-            //var uemail = "";
-            //var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts");
-            //ref.child(myID).on("value", function(snapshot) {
-                //newDetails = snapshot.val();
-                //uemail = newDetails.email;
-            //});
             var uemail = sessionStorage.getItem("email");
         </script>
-        
         <script>
             function addTrip() {
                 var leave = document.getElementById("leave").value;
@@ -267,7 +259,6 @@
                 var mycontact = document.getElementById("contactdd").value;
                 var name = sessionStorage.getItem("name");
                 var lastname = sessionStorage.getItem("lastname");
-                //alert(leave + back + destination);
                 var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/");
                 var tripsRef = ref.child("trips");
                 var newTripsRef = tripsRef.push({
@@ -289,7 +280,6 @@
                 setTimeout(function(){window.location = "main.html";},1000);
             }
         </script>
-        
         <script>
                 var count = 1;
                 var contact = [];
@@ -310,7 +300,6 @@
                 count = count + 1; 
                 });
         </script>
-        
         <script>
             function validateForm() {
                 if(document.tripdetails.leave.value == "") {
@@ -336,5 +325,7 @@
                 addTrip();
             }        
         </script>
+<!-- ================================================= -->
+        
     </body>
 </html>

@@ -3,6 +3,7 @@
         <title>Log In</title>
         <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <!-- ?META TAG IN HERE? -->
         <link rel="stylesheet" href="styles/index.css" type="text/css">
         </head>
     
@@ -23,6 +24,8 @@
         <form name="back" action="index.html">
             <input class="backbutton" type="submit" value="Back">
         </form>
+        
+<!-- ==================== SCRIPTS ==================== -->
         <script>
             function passReset() {
                 username = document.getElementById("name").value;
@@ -30,14 +33,16 @@
                 ref.resetPassword({
                     email : username
                 }, function(error) {
-                if (error === null) {
-                    alert("Password reset email sent");
-                    setTimeout(function(){window.location = "index.html";},500);
-                } else {
-                    alert("Error sending password reset email");
-                }
+                    if (error === null) {
+                        alert("Password reset email sent");
+                        setTimeout(function(){window.location = "index.html";},500);
+                    } else {
+                        alert("Error sending password reset email");
+                    }
                 });
             }
-        </script> 
+        </script>
+<!-- ================================================= -->
+
     </body>
 </html>
