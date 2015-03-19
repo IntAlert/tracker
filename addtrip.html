@@ -3,6 +3,8 @@
         <title>Add Trip Info</title>
         <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <script src='https://code.jquery.com/ui/1.11.4/jquery-ui.min.js'></script>
+        <link rel="stylesheet" href="styles/jquery-ui.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/addtrip.css" type="text/css">
     </head>
@@ -18,11 +20,11 @@
             <form name="tripdetails">
                 <div class="tripdetails">
                 <p>Date Leaving
-                <input type="date" name="leave" id="leave" class="input" required>
+                <input type="text" name="leave" id="leave" class="input" required>
                 </p>
                 
                 <p>Date Returning
-                <input type="date" name="back" id="back" class="input" required>
+                <input type="text" name="back" id="back" class="input" required>
                 </p>
                 
                 <p>Destination
@@ -319,7 +321,14 @@
                     return false;
                 }
                 addTrip();
-            }        
+            }
+            
+            $(function() {
+                $( "#leave" ).datepicker();
+                $( "#back" ).datepicker();
+            });
+            
+            
         </script>
         <!-- ================================================= -->
     </body>

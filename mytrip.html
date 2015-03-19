@@ -3,6 +3,8 @@
         <title>My Trip</title>
         <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <script src='https://code.jquery.com/ui/1.11.4/jquery-ui.min.js'></script>
+        <link rel="stylesheet" href="styles/jquery-ui.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/currentinfo.css" type="text/css">
     </head>
@@ -17,9 +19,9 @@
         <div id="container" class="detail">
             <form>
                 <p>Date Leaving
-                    <input type="date" id="leave" class="input" disabled></p>
+                    <input type="text" id="leave" class="input" disabled></p>
                 <p>Date Returning
-                    <input type="date" id="back" class="input" disabled></p>
+                    <input type="text" id="back" class="input" disabled></p>
                 <p>Destination
                     <select name="destination" id="destination" class="input" disabled>
                     <option>Select a country</option>
@@ -313,6 +315,11 @@
                     setTimeout(function(){window.location = "main.html";},1000);
                 }
             }
+            
+            $(function() {
+                $( "#leave" ).datepicker();
+                $( "#back" ).datepicker();
+            });
         </script>
         <!-- ================================================= -->      
     </body>
