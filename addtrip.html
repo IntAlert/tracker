@@ -20,11 +20,13 @@
             <form name="tripdetails">
                 <div class="tripdetails">
                 <p>Date Leaving
-                <input type="text" name="leave" id="leave" class="input" required>
+                <input type="hidden" name="leave" id="leave" class="input" required>
+                <a href="#" id="leavepick">Choose Date</a>
                 </p>
                 
                 <p>Date Returning
-                <input type="text" name="back" id="back" class="input" required>
+                <input type="hidden" name="back" id="back" class="input" required>
+                <a href="#" id="backpick">Choose Date</a>
                 </p>
                 
                 <p>Destination
@@ -323,9 +325,25 @@
                 addTrip();
             }
             
+            //Init datepickers
+            $( "#leave" ).datepicker({
+                onSelect: function(dateText){
+                    $( "#leavepick" ).text(dateText);
+                }
+            });
+            $( "#back" ).datepicker({
+                onSelect: function(dateText){
+                    $( "#backpick" ).text(dateText);
+                }
+            });
+            
             $(function() {
-                $( "#leave" ).datepicker();
-                $( "#back" ).datepicker();
+                $( "#leavepick" ).click(function(){
+                    $( "#leave" ).datepicker("show");
+                })
+                $( "#backpick" ).click(function(){
+                    $( "#back" ).datepicker("show");
+                })
             });
             
             
