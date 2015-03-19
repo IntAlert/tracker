@@ -236,26 +236,25 @@
         
         <!-- ==================== SCRIPTS ==================== -->        
         <script>
-                var count = 1;
-                var contact = [];
-                var myText = "";
-                var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts");
-                ref.on("child_added", function(snapshot) {
-                newContact = snapshot.val();
-                contact[count] = new Array(4);
-                contact[count][1] = newContact.name;
-                contact[count][2] = newContact.fullname;
-                contact[count][3] = newContact.email;
-                contact[count][4] = newContact.phone;
-                document.getElementById("contactdd");
-                var optn = document.createElement("OPTION");
-                    optn.text = contact[count][2] + " | " + contact[count][3];
-                    optn.value = snapshot.key();
-                    contactdd.options.add(optn);
-                count = count + 1; 
-                });
-        </script>
-        <script>
+            var count = 1;
+            var contact = [];
+            var myText = "";
+            var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts");
+            ref.on("child_added", function(snapshot) {
+            newContact = snapshot.val();
+            contact[count] = new Array(4);
+            contact[count][1] = newContact.name;
+            contact[count][2] = newContact.fullname;
+            contact[count][3] = newContact.email;
+            contact[count][4] = newContact.phone;
+            document.getElementById("contactdd");
+            var optn = document.createElement("OPTION");
+                optn.text = contact[count][2] + " | " + contact[count][3];
+                optn.value = snapshot.key();
+                contactdd.options.add(optn);
+            count = count + 1; 
+            });
+
             var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
                 mytripid = sessionStorage.getItem("thistripid");
                 ref.child(mytripid).on("value", function(snapshot) {
@@ -265,8 +264,8 @@
                 document.getElementById("destination").value = thisTrip.destination;
                 document.getElementById("contactdd").value = thisTrip.contact;
                 });
-        </script>
-        <script> //HIDING AND UNHIDING BUTTONS/INPUTS
+        
+            //HIDING AND UNHIDING BUTTONS/INPUTS
             document.getElementById("updatebutton").style.visibility="hidden";
             document.getElementById("deletebutton").style.visibility="hidden";
             document.getElementById("editbutton").style.visibility="visible";
@@ -283,8 +282,7 @@
                 document.getElementById("backbutton").style.visibility="hidden";
                 document.getElementById("cancelbutton").style.visibility="visible";
             }
-        </script>
-        <script>
+        
             function updateTrip() {
                 var leave = document.getElementById("leave").value;
                 var back = document.getElementById("back").value;
@@ -305,8 +303,7 @@
                 alert("Trip Updated");
                 setTimeout(function(){window.location = "main.html";},1000);
             }
-        </script>
-        <script>
+        
             function deleteTrip() {
                 if (window.confirm("Are you sure you want to delete this trip?")) {
                     var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");

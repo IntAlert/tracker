@@ -52,16 +52,14 @@
                 document.getElementById("welcome").innerHTML = "Welcome " + uName;
             }, function (errorObject) {
             });    
-        </script>
-        <script>
+        
             function logOut() {
                 if (window.confirm("Are you sure you want to log out?")) {
                     ref.unauth();
                     setTimeout(function(){window.location = "index.html";},500);
                 }
             }
-        </script>
-        <script>
+        
             function getLocation() {
                 if (navigator.geolocation){ //If Supported
                     //alert("Geolocation is supported");
@@ -96,8 +94,7 @@
                 sessionStorage.setItem("lon", longitude);
                 window.location = "sos.html";
             }
-        </script>
-        <script>
+        
             function sos() {
                 if (window.confirm("Confirm SOS?")) {
                     getLocation();
