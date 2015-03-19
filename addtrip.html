@@ -247,11 +247,9 @@
             // Register the callback to be fired every time auth state changes
             var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/");
             ref.onAuth(authDataCallback);
-        </script>
-        <script>
+        
             var uemail = sessionStorage.getItem("email");
-        </script>
-        <script>
+        
             function addTrip() {
                 var leave = document.getElementById("leave").value;
                 var back = document.getElementById("back").value;
@@ -279,8 +277,7 @@
                 alert("Trip Added");
                 setTimeout(function(){window.location = "main.html";},1000);
             }
-        </script>
-        <script>
+        
                 var count = 1;
                 var contact = [];
                 var myText = "";
@@ -299,8 +296,7 @@
                     contactdd.options.add(optn);
                 count = count + 1; 
                 });
-        </script>
-        <script>
+        
             function validateForm() {
                 if(document.tripdetails.leave.value == "") {
                     alert("Please enter a leave date");

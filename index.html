@@ -34,8 +34,7 @@
                     window.location="create.html";
                 }
             }
-        </script>
-        <script>        
+      
             function authMe() {
             username = document.getElementById("name").value;
             if(typeof(Storage) !== "undefined") {
@@ -58,8 +57,7 @@
                     }
                 }
             }
-        </script>
-        <script>
+
         // Create a callback to handle the result of the authentication
             function authHandler(error, authData) {
             if (error) {
@@ -68,8 +66,7 @@
                 window.location="main.html";
             }
         }
-        </script>
-        <script>
+
             function forgotPass() {
                 window.location="forgot.html";
             }
