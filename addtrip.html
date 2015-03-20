@@ -327,11 +327,13 @@
             
             //Init datepickers
             $( "#leave" ).datepicker({
+                dateFormat: "dd/mm/yy",
                 onSelect: function(dateText){
                     $( "#leavepick" ).text(dateText);
                 }
             });
             $( "#back" ).datepicker({
+                dateFormat: "dd/mm/yy",
                 onSelect: function(dateText){
                     $( "#backpick" ).text(dateText);
                 }
