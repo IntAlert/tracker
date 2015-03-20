@@ -96,7 +96,7 @@ div.tripdetails{
 .cancel:hover{
   border: none;
   background: #B22222;
-  baox-shadow: 0px 0px 1px #777;
+  box-shadow: 0px 0px 1px #777;
 }
 
 .input{
@@ -106,4 +106,5 @@ div.tripdetails{
 
 a {
     color: #ffffff;
+    text-align: center;
 }
