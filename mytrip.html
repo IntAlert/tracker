@@ -316,9 +316,27 @@
                 }
             }
             
+            //Init datepickers
+            $( "#leave" ).datepicker({
+                dateFormat: "dd/mm/yy",
+                onSelect: function(dateText){
+                    $( "#leavepick" ).text(dateText);
+                }
+            });
+            $( "#back" ).datepicker({
+                dateFormat: "dd/mm/yy",
+                onSelect: function(dateText){
+                    $( "#backpick" ).text(dateText);
+                }
+            });
+            
             $(function() {
-                $( "#leave" ).datepicker();
-                $( "#back" ).datepicker();
+                $( "#leavepick" ).click(function(){
+                    $( "#leave" ).datepicker("show");
+                })
+                $( "#backpick" ).click(function(){
+                    $( "#back" ).datepicker("show");
+                })
             });
         </script>
         <!-- ================================================= -->      
