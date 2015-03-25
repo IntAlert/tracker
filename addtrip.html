@@ -326,16 +326,24 @@
             }
             
             //Init datepickers
-            $( "#leave" ).datepicker({
-                dateFormat: "dd/mm/yy",
-                onSelect: function(dateText){
-                    $( "#leavepick" ).text(dateText);
-                }
-            });
             $( "#back" ).datepicker({
                 dateFormat: "dd/mm/yy",
+                minDate: 0,
                 onSelect: function(dateText){
                     $( "#backpick" ).text(dateText);
+                }
+            });
+            $( "#leave" ).datepicker({
+                dateFormat: "dd/mm/yy",
+                minDate: 0,
+                onSelect: function(dateText){
+                    $( "#leavepick" ).text(dateText);
+                    var date1 = $("#leave").datepicker("getDate");          
+                    var date = new Date( Date.parse( date1 ) );
+                    date.setDate( date.getDate());       
+                    var newDate = date.toDateString();
+                    newDate = new Date( Date.parse( newDate ) );                     
+                    $("#back").datepicker("option","minDate",newDate);
                 }
             });
             
