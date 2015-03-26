@@ -81,6 +81,66 @@ h3{
     width: 60%;
 }
 
+.editbutton{
+    float:right;
+    background-color: #A9A9A9;
+    border: none;
+    border-radius: 20px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    color: white;
+    display: block;
+    font-family: 'Arial';
+    font-size: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    padding: 6px;
+    text-align: center;
+    text-decoration: bold;
+    width: 20%;
+}
+
+.updatebutton{
+    background-color: #32CD32;
+    border: none;
+    border-radius: 20px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    color: white;
+    display: block;
+    float: left;
+    font-family: 'Arial';
+    font-size: 12px;
+    margin-left: auto;
+    margin-right: 6px;
+    margin-top: 0px;
+    padding: 6px;
+    text-align: center;
+    text-decoration: bold;
+    width: 20%;
+}
+
+.deletebutton{
+    background-color: red;
+    border: none;
+    border-radius: 20px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    color: white;
+    display: block;
+    float: left;
+    font-family: 'Arial';
+    font-size: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    padding: 6px;
+    text-align: center;
+    text-decoration: bold;
+    width: 20%;
+}
+    
 .cancelbutton{
     background-color: red;
     border: none;
@@ -103,8 +163,4 @@ h3{
 .input{
     float: right;
     width: 40%;
-}
-
-.editbutton{
-    float:right;
 }

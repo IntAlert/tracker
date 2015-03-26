@@ -129,6 +129,22 @@ a:active{
 
 .forgotpass{
     float:right;
+    background-color: #A9A9A9;
+    border: none;
+    border-radius: 20px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    color: white;
+    display: block;
+    font-family: 'Arial';
+    font-size: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    padding: 6px;
+    text-align: center;
+    text-decoration: bold;
+    width: 40%;
 }
 
 .backbutton{
