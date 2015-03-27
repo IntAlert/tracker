@@ -19,9 +19,13 @@
         <div id="container" class="detail">
             <form>
                 <p>Date Leaving
-                    <input type="text" id="leave" class="input" disabled></p>
+                    <input type="hidden" id="leave" class="input" disabled>
+                    <a href="#" id="leavepick" class="input" disabled>LOADING</a>
+                </p>
                 <p>Date Returning
-                    <input type="text" id="back" class="input" disabled></p>
+                    <input type="hidden" id="back" class="input" disabled>
+                    <a href="#" id="backpick" class="input" disabled>LOADING</a>
+                </p>
                 <p>Destination
                     <select name="destination" id="destination" class="input" disabled>
                     <option>Select a country</option>
@@ -262,7 +266,9 @@
                 ref.child(mytripid).on("value", function(snapshot) {
                 thisTrip = snapshot.val();
                 document.getElementById("leave").value = thisTrip.leave;
+                $("#leavepick").text(thisTrip.leave);
                 document.getElementById("back").value = thisTrip.back;
+                $("#backpick").text(thisTrip.back);
                 document.getElementById("destination").value = thisTrip.destination;
                 document.getElementById("contactdd").value = thisTrip.contact;
                 });
@@ -276,6 +282,8 @@
             function toggledisabled() {
                 document.getElementById("leave").disabled=false;
                 document.getElementById("back").disabled=false;
+                document.getElementById("leavepick").disabled=false;
+                document.getElementById("backpick").disabled=false;
                 document.getElementById("destination").disabled=false;
                 document.getElementById("contactdd").disabled=false;
                 document.getElementById("updatebutton").style.visibility="visible";
