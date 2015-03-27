@@ -19,14 +19,12 @@
         <div id="container" class="container text-center">
             <form name="tripdetails">
                 <div class="tripdetails">
-                <p>Date Leaving
-                <input type="hidden" name="leave" id="leave" class="input" required>
-                <a href="#" id="leavepick" class="input">Choose Date</a>
+                <p>Date Leaving: <input type="text" name="leave" id="leave" class="input" disabled required>
+                <!--<a href="#" id="leavepick" class="input">Choose Date</a>-->
                 </p>
                 
-                <p>Date Returning
-                <input type="hidden" name="back" id="back" class="input" required>
-                <a href="#" id="backpick" class="input">Choose Date</a>
+                <p>Date Returning: <input type="text" name="back" id="back" class="input" disabled required>
+                <!--<a href="#" id="backpick" class="input">Choose Date</a>-->
                 </p>
                 
                 <p>Destination
@@ -329,6 +327,7 @@
             $( "#back" ).datepicker({
                 dateFormat: "dd/mm/yy",
                 minDate: 0,
+                showOn: "button",
                 onSelect: function(dateText){
                     $( "#backpick" ).text(dateText);
                 }
@@ -336,8 +335,9 @@
             $( "#leave" ).datepicker({
                 dateFormat: "dd/mm/yy",
                 minDate: 0,
+                showOn: "button",
                 onSelect: function(dateText){
-                    $( "#leavepick" ).text(dateText);
+                    $( "#leave" ).text(dateText);
                     var date1 = $("#leave").datepicker("getDate");          
                     var date = new Date( Date.parse( date1 ) );
                     date.setDate( date.getDate());       
@@ -347,14 +347,14 @@
                 }
             });
             
-            $(function() {
-                $( "#leavepick" ).click(function(){
-                    $( "#leave" ).datepicker("show");
-                })
-                $( "#backpick" ).click(function(){
-                    $( "#back" ).datepicker("show");
-                })
-            });
+            //$(function() {
+            //    $( "#leavepick" ).click(function(){
+            //        $( "#leave" ).datepicker("show");
+            //    })
+            //    $( "#backpick" ).click(function(){
+            //        $( "#back" ).datepicker("show");
+            //    })
+            //});
             
             
         </script>
