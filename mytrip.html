@@ -18,13 +18,11 @@
         </div>
         <div id="container" class="detail">
             <form>
-                <p>Date Leaving
-                    <input type="hidden" id="leave" class="input" disabled>
-                    <a href="#" id="leavepick" class="input" disabled>LOADING</a>
+                <p>Date Leaving: <input type="text" id="leave" class="input" disabled>
+                    <!--<a href="#" id="leavepick" class="input" disabled>LOADING</a>-->
                 </p>
-                <p>Date Returning
-                    <input type="hidden" id="back" class="input" disabled>
-                    <a href="#" id="backpick" class="input" disabled>LOADING</a>
+                <p>Date Returning: <input type="text" id="back" class="input" disabled>
+                    <!--<a href="#" id="backpick" class="input" disabled>LOADING</a>-->
                 </p>
                 <p>Destination
                     <select name="destination" id="destination" class="input" disabled>
@@ -266,11 +264,13 @@
                 ref.child(mytripid).on("value", function(snapshot) {
                 thisTrip = snapshot.val();
                 document.getElementById("leave").value = thisTrip.leave;
-                $("#leavepick").text(thisTrip.leave);
+                $("#leave").text(thisTrip.leave);
                 document.getElementById("back").value = thisTrip.back;
-                $("#backpick").text(thisTrip.back);
+                $("#back").text(thisTrip.back);
                 document.getElementById("destination").value = thisTrip.destination;
                 document.getElementById("contactdd").value = thisTrip.contact;
+                $("#leave").datepicker('disable');
+                $("#back").datepicker('disable');
                 });
         
             //HIDING AND UNHIDING BUTTONS/INPUTS
@@ -282,8 +282,6 @@
             function toggledisabled() {
                 document.getElementById("leave").disabled=false;
                 document.getElementById("back").disabled=false;
-                document.getElementById("leavepick").disabled=false;
-                document.getElementById("backpick").disabled=false;
                 document.getElementById("destination").disabled=false;
                 document.getElementById("contactdd").disabled=false;
                 document.getElementById("updatebutton").style.visibility="visible";
@@ -328,15 +326,17 @@
             $( "#back" ).datepicker({
                 dateFormat: "dd/mm/yy",
                 minDate: 0,
+                showOn: "button",
                 onSelect: function(dateText){
-                    $( "#backpick" ).text(dateText);
+                    $( "#back" ).text(dateText);
                 }
             });
             $( "#leave" ).datepicker({
                 dateFormat: "dd/mm/yy",
                 minDate: 0,
+                showOn: "button",
                 onSelect: function(dateText){
-                    $( "#leavepick" ).text(dateText);
+                    $( "#leave" ).text(dateText);
                     var date1 = $("#leave").datepicker("getDate");          
                     var date = new Date( Date.parse( date1 ) );
                     date.setDate( date.getDate());       
@@ -346,14 +346,14 @@
                 }
             });
                         
-            $(function() {
-                $( "#leavepick" ).click(function(){
-                    $( "#leave" ).datepicker("show");
-                })
-                $( "#backpick" ).click(function(){
-                    $( "#back" ).datepicker("show");
-                })
-            });
+            //$(function() {
+            //    $( "#leavepick" ).click(function(){
+            //        $( "#leave" ).datepicker("show");
+            //    })
+            //    $( "#backpick" ).click(function(){
+            //        $( "#back" ).datepicker("show");
+            //    })
+            //});
         </script>
         <!-- ================================================= -->      
     </body>
