@@ -108,3 +108,7 @@ a {
     color: #ffffff;
     text-align: center;
 }
+
+div.datepick {
+    float: right;
+}
