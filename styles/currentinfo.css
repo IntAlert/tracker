@@ -62,6 +62,12 @@ h3{
     width: 80%;
 }
 
+#trips:hover{
+  border: none;
+  background: #7e7e7e;
+  baox-shadow: 0px 0px 1px #777;
+}
+
 .backbutton{
     background-color: #A9A9A9;
     border: none;
@@ -79,6 +85,12 @@ h3{
     text-align: center;
     text-decoration: bold;
     width: 60%;
+}
+
+.backbutton:hover{
+  border: none;
+  background: #7e7e7e;
+  box-shadow: 0px 0px 1px #777;
 }
 
 .editbutton{
@@ -101,6 +113,12 @@ h3{
     width: 20%;
 }
 
+.editbutton:hover{
+  border: none;
+  background: #7e7e7e;
+  box-shadow: 0px 0px 1px #777;
+}
+
 .updatebutton{
     background-color: #32CD32;
     border: none;
@@ -119,6 +137,12 @@ h3{
     text-align: center;
     text-decoration: bold;
     width: 20%;
+}
+
+.updatebutton:hover{
+    background: #008000;
+    border: none;
+    box-shadow: 0px 0px 1px #777;
 }
 
 .deletebutton{
@@ -140,6 +164,12 @@ h3{
     text-decoration: bold;
     width: 20%;
 }
+
+.deletebutton:hover{
+  border: none;
+  background: #B22222;
+  box-shadow: 0px 0px 1px #777;
+}
     
 .cancelbutton{
     background-color: red;
@@ -158,6 +188,12 @@ h3{
     text-align: center;
     text-decoration: bold;
     width: 60%;
+}
+
+.cancelbutton:hover{
+  border: none;
+  background: #B22222;
+  box-shadow: 0px 0px 1px #777;
 }
 
 .input{
