@@ -18,12 +18,8 @@
         </div>
         <div id="container" class="detail">
             <form>
-                <p>Date Leaving: <input type="text" id="leave" class="input" disabled>
-                    <!--<a href="#" id="leavepick" class="input" disabled>LOADING</a>-->
-                </p>
-                <p>Date Returning: <input type="text" id="back" class="input" disabled>
-                    <!--<a href="#" id="backpick" class="input" disabled>LOADING</a>-->
-                </p>
+                <p>Date Leaving: <input type="text" id="leave" class="input" disabled></p>
+                <p>Date Returning: <input type="text" id="back" class="input" disabled></p>
                 <p>Destination
                     <select name="destination" id="destination" class="input" disabled>
                     <option>Select a country</option>
@@ -286,6 +282,8 @@
                 document.getElementById("contactdd").disabled=false;
                 $("#leave").datepicker('enable');
                 $("#back").datepicker('enable');
+                document.getElementById("leave").disabled=true;
+                document.getElementById("back").disabled=true;
                 document.getElementById("updatebutton").style.visibility="visible";
                 document.getElementById("deletebutton").style.visibility="visible";
                 document.getElementById("editbutton").style.visibility="hidden";
