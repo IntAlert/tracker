@@ -244,6 +244,7 @@
             function authDataCallback(authData) {
                 if (authData) {
                 myID = authData.uid.substring(12,16);
+                myID = sessionStorage.setItem("userid");
                 } 
             }             
             // Register the callback to be fired every time auth state changes

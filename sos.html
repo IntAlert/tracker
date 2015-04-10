@@ -21,6 +21,7 @@
                 //var back = document.getElementById("back").value;
                 //var destination = document.getElementById("destination").value;
                 //var mycontact = document.getElementById("contactdd").value;
+                var email = sessionStorage.getItem("email");
                 var name = sessionStorage.getItem("name");
                 var lastname = sessionStorage.getItem("lastname");
                 var lat = sessionStorage.getItem("lat");
@@ -29,9 +30,7 @@
                 var sosRef = ref.child("sos");
                 var newSosRef = sosRef.push({
                     lat: lat,
-                    lon: lon,
-                    name: name,
-                    lastname: lastname
+                    lon: lon
                 });
                 var sosID = newSosRef.key();
                 alert("SOS Added");
