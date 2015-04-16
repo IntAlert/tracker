@@ -43,6 +43,10 @@ h3{
     position: center;
 }
 
+.detail p {
+    position:relative;
+}
+
 #trips{
     background-color: #A9A9A9;
     border: none;
@@ -198,10 +202,31 @@ h3{
 
 .input{
     float: right;
-    width: 40%;
+    width: 42%;
 }
+
+/*Only modify position of input[type=text]*/
+input.input {
+    margin-right: 30px;
+}
+
+select.input {
+    width: 50%
+}
+
 
 a {
     color: #ffffff;
     text-align: center;
+}
+
+div.datepick {
+    float: right;
+}
+
+.ui-datepicker-trigger {
+    width:20px;
+    float: right;
+    position: absolute;
+    right: 0;
 }

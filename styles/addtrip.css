@@ -47,12 +47,6 @@ div.tripdetails p {
     position:relative;
 }
 
-.ui-datepicker-trigger {
-    position:absolute;
-    right:0;
-}
-    
-
 .submit{
     background-color: #32CD32;
     border: none;
@@ -113,6 +107,14 @@ div.tripdetails p {
     float: right;
     width: 42%;
 }
+/*Only modify position of input[type=text]*/
+input.input {
+    margin-right: 30px;
+}
+
+select.input {
+    width: 50%
+}
 
 /*Only modify position of input[type=text]*/
 input.input {
@@ -133,8 +135,9 @@ div.datepick {
     float: right;
 }
 
-
 .ui-datepicker-trigger {
     width:20px;
     float: right;
+    position:absolute;
+    right:0;
 }
