@@ -62,7 +62,6 @@
         
             function getLocation() {
                 if (navigator.geolocation){ //If Supported
-                    //alert("Geolocation is supported");
                     navigator.geolocation.getCurrentPosition(getPosition,showError);
                 }
                 else{ //If not Supported
@@ -120,7 +119,8 @@
                     lastname: lastname,
                     email: email,
                     lat: lat,
-                    lon: lon
+                    lon: lon,
+                    timestamp: new Date().getTime().toString()
                 }, SOS_saved);
             }
             
