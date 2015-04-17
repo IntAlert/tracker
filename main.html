@@ -99,8 +99,34 @@
         
             function sos() {
                 if (window.confirm("Confirm SOS?")) {
-                    getLocation();
+                    addSOS();
                 }
+            }
+            
+            function addSOS() {
+                //var leave = document.getElementById("leave").value;
+                //var back = document.getElementById("back").value;
+                //var destination = document.getElementById("destination").value;
+                //var mycontact = document.getElementById("contactdd").value;
+                var email = sessionStorage.getItem("email");
+                var name = sessionStorage.getItem("name");
+                var lastname = sessionStorage.getItem("lastname");
+                var lat = sessionStorage.getItem("lat");
+                var lon = sessionStorage.getItem("lon");
+                var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/");
+                var sosRef = ref.child("sos");
+                var newSosRef = sosRef.push().set({
+                    name: name,
+                    lastname: lastname,
+                    email: email,
+                    lat: lat,
+                    lon: lon
+                }, SOS_saved);
+            }
+            
+            function SOS_saved(error) {
+//                console.log(error);
+                alert("SOS sent");
             }
         </script>
     <!-- ================================================= -->  
