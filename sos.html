@@ -28,15 +28,24 @@
                 var lon = sessionStorage.getItem("lon");
                 var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/");
                 var sosRef = ref.child("sos");
-                var newSosRef = sosRef.push({
+                var newSosRef = sosRef.push().set({
+                    name: name,
+                    lastname: lastname,
                     lat: lat,
                     lon: lon
-                });
-                var sosID = newSosRef.key();
-                alert("SOS Added");
-                setTimeout(function(){window.location = "main.html";},1000);
+                }, SOS_saved);
+            }
+            
+            function SOS_saved(error) {
+                
+                console.log(error);
+//                var sosID = newSosRef.key();
+//                alert("SOS Added");
+//                window.location = "main.html";
+                
             }
         </script>
+        
     <!-- ================================================= -->  
     </body>
 </html>
