@@ -51,6 +51,9 @@
             trip[count][4] = snapshot.key();
             myText += "<button onClick='displayTrip("+count+")' id='trips'><b>Destination: </b>" + trip[count][1] + "<br><b>Departing: </b>" + trip[count][2] + "<br><b>Returning: </b>" + trip[count][3] + "</button>";
             count = count + 1;
+            if(count>5) {
+                myText = '<form name="back" action="main.html"><input class="backbutton" type="submit" value="Back"></form>' + myText;
+            }
             document.getElementById("trip").innerHTML = myText;    
             });
             
