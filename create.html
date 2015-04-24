@@ -7,6 +7,12 @@
         <link rel="stylesheet" href="styles/jquery-ui.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/index.css" type="text/css">
+        
+        <style>
+		.dlg-no-close .ui-dialog-titlebar-close {
+			display: none;
+		}
+        </style>
     </head>
     
     <body>
@@ -37,6 +43,13 @@
             $(function() {
                 $( "#dialog" ).dialog({
                     autoOpen: true,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
                 });
             });
             
