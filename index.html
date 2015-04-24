@@ -3,11 +3,22 @@
         <title>Log In</title>
         <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <script src='https://code.jquery.com/ui/1.11.4/jquery-ui.min.js'></script>
+        <link rel="stylesheet" href="styles/jquery-ui.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/index.css" type="text/css">
+        
+        <style>
+		.dlg-no-close .ui-dialog-titlebar-close {
+			display: none;
+		}
+        </style>
     </head>
     
     <body onload="firstRun()">
+        <div id="dialogEmail" title="Error">Please enter an email address.</div>
+        <div id="dialogPass" title="Error">Please enter a password.</div>
+        
         <div class="page-header container text-center">
             <h1>International Alert Security App</h1>
         </div>
@@ -28,6 +39,36 @@
         
         <!-- ==================== SCRIPTS ==================== -->
         <script>
+            ////////// DIALOG \\\\\\\\\\
+            $(function() {
+                $( "#dialogEmail" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+            
+            $(function() {
+                $( "#dialogPass" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+            
+            
+            ////////// MAIN SCRIPTS \\\\\\\\\\
+                        
             function firstRun() {
                 var status = localStorage.getItem("status")
                 if (status === null || status.length === 0){
@@ -42,11 +83,13 @@
             }
             password = document.getElementById("password").value;
             if (username === "") {
-               alert("Please enter a username");
+                $( "#dialogEmail" ).dialog( "open" );
+                //alert("Please enter a username");
                return;
             } else {
             if (password === "") {
-               alert("Please enter a password");
+                $( "#dialogPass" ).dialog( "open" );
+                //alert("Please enter a password");
                return;
             } else {
                 var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts");
