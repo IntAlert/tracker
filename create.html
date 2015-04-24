@@ -17,6 +17,13 @@
     
     <body>
         <div id="dialog" title="Welcome">Hello! It appears that this is the first time you have run the Alert Security App. <br>Please enter your email address and desired password to create an account.</div>
+        <div id="dialogEmail" title="Error">Please enter an email.</div>
+        <div id="dialogPassword1" title="Error">Please enter password.</div>
+        <div id="dialogPassword2" title="Error">Please re-enter password.</div>
+        <div id="dialogPassMatchErr" title="Error">Passwords do not match.</div>
+        <div id="dialogAcc" title="Account Created">Your account has been successfully created.</div>
+        <div id="dialogAccErr" title="Error">Error creating account.</div>
+        
         <div class="page-header container text-center">
             <h1>International Alert Security App</h1>
         </div>
@@ -38,8 +45,9 @@
         </div>
         <button class="submit" onclick="validateAcc()">Create Account</button>
         
-        <!-- ==================== SCRIPTS ==================== -->        
+        <!-- ==================== SCRIPTS ==================== -->
         <script>
+            ////////// DIALOG \\\\\\\\\\
             $(function() {
                 $( "#dialog" ).dialog({
                     autoOpen: true,
@@ -53,9 +61,86 @@
                 });
             });
             
-//            function welcome() {
-//                alert("Hello! It appears that this is the first time you have run the Alert Security App.\nPlease enter your email address and desired password to create an account.");
-//            }
+            $(function() {
+                $( "#dialogEmail" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+            
+            $(function() {
+                $( "#dialogPassword1" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+            
+            $(function() {
+                $( "#dialogPassword2" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+            
+            $(function() {
+                $( "#dialogPassMatchErr" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+            
+            $(function() {
+                $( "#dialogAcc" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+            
+            $(function() {
+                $( "#dialogAccErr" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+            
+            
+            ////////// MAIN SCRIPTS \\\\\\\\\\
             
             var password1 = "";
             function validateAcc() {
@@ -63,21 +148,25 @@
                 password1 = document.getElementById("password1").value;
                 password2 = document.getElementById("password2").value;
                 if (email === "") {
-                    alert("Please enter an email");
+                    $( "#dialogEmail" ).dialog( "open" );
+                    //alert("Please enter an email");
                     return;
                 }
                 if (password1 === "") {
-                    alert("Please enter a password");
+                    $( "#dialogPassword1" ).dialog( "open" );
+                    //alert("Please enter a password");
                     return;
                 }
                 if (password2 === "") {
-                    alert("Please re-enter password");
+                    $( "#dialogPassword2" ).dialog( "open" );
+                    //alert("Please re-enter password");
                     return;
                 }
                 if (password1 === password2) {
                     createAcc();
                 } else {
-                    alert("Passwords do not match");
+                    $( "#dialogPassMatchErr" ).dialog( "open" );
+                    //alert("Passwords do not match");
                     return;
                 }
             } 
@@ -89,9 +178,11 @@
                     password : password1
                 }, function(error, userData) {
                     if (error) {
-                        alert("Error creating account");
+                        $( "#dialogAccErr" ).dialog( "open" );
+                        //alert("Error creating account");
                     } else {
-                        alert("Successfully created user account");
+                        $( "#dialogAcc" ).dialog( "open" );
+                        //alert("Successfully created user account");
                         localStorage.setItem("status", "true");
                         window.location="index.html";
                     }
