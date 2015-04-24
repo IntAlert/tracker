@@ -3,11 +3,22 @@
         <title>Log In</title>
         <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <script src='https://code.jquery.com/ui/1.11.4/jquery-ui.min.js'></script>
+        <link rel="stylesheet" href="styles/jquery-ui.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/index.css" type="text/css">
+        
+        <style>
+		.dlg-no-close .ui-dialog-titlebar-close {
+			display: none;
+		}
+        </style>
         </head>
     
     <body>
+        <div id="dialogEmail" title="Reset Successful">Password reset email sent.</div>
+        <div id="dialogEmailErr" title="Error">Error sending password reset email.</div>
+        
         <div class="page-header container text-center">
             <h1>International Alert Security App</h1>
         </div>
@@ -27,6 +38,36 @@
         
         <!-- ==================== SCRIPTS ==================== -->
         <script>
+            ////////// DIALOG \\\\\\\\\\
+            $(function() {
+                $( "#dialogEmail" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+            
+            $(function() {
+                $( "#dialogEmailErr" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+            
+            
+            ////////// MAIN SCRIPTS \\\\\\\\\\
+            
             function passReset() {
                 username = document.getElementById("name").value;
                 var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts");
@@ -34,10 +75,12 @@
                     email : username
                 }, function(error) {
                     if (error === null) {
-                        alert("Password reset email sent");
+                        $( "#dialogEmail" ).dialog( "open" );
+                        //alert("Password reset email sent");
                         setTimeout(function(){window.location = "index.html";},500);
                     } else {
-                        alert("Error sending password reset email");
+                        $( "#dialogEmailErr" ).dialog( "open" );
+                        //alert("Error sending password reset email");
                     }
                 });
             }
