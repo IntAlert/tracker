@@ -3,12 +3,24 @@
         <title>Home</title>
         <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <script src='https://code.jquery.com/ui/1.11.4/jquery-ui.min.js'></script>
+        <link rel="stylesheet" href="styles/jquery-ui.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/main.css" type="text/css">
+        
+        <style>
+		.dlg-no-close .ui-dialog-titlebar-close {
+			display: none;
+		}
+        </style>
     </head>
     
     <body>
-        <img src="icons/logout2.png" class="logout" onclick="logOut()">
+        <div id="dialogLogout" title="Log Out">If you continue, you will be logged out. Are you sure you want to do this?</div>
+        <div id="dialogSOS" title="Confirm SOS">If you continue, an SOS message will be sent and your location will be used. Are you sure you want to do this?</div>
+        <div id="dialogSOSConfirmed" title="Confirm SOS">SOS confirmed.</div>
+        
+        <img src="icons/logout2.png" class="logout" onclick="$( '#dialogLogout' ).dialog('open')">
         <div class="page-header container text-center">
             <h1>International Alert Security App</h1>
         </div>
@@ -22,11 +34,61 @@
             <form action="currentinfo.html">
                 <button class="normalbutton">View Current Information</button>
             </form>
-            <button class="sos" onclick="sos()">SOS</button>
+            <button class="sos" onclick="$( '#dialogSOS' ).dialog('open')">SOS</button>
         </div>
         
         <!-- ==================== SCRIPTS ==================== -->   
         <script>
+            ////////// DIALOG \\\\\\\\\\
+            $(function() {
+                $( "#dialogLogout" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "Confirm": function() {
+                            setTimeout(function(){window.location = "index.html";},500);
+                        },
+                        "Cancel": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });  
+            
+            $(function() {
+                $( "#dialogSOS" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "Confirm": function() {
+                            getLocation();
+                            $( this ).dialog( "close" );
+                        },
+                        "Cancel": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            }); 
+            
+            $(function() {
+                $( "#dialogSOSConfirmed" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+            
+            
+            ////////// MAIN SCRIPTS \\\\\\\\\\
+                
             var myID = "";
             var uName = "";
             var email = sessionStorage.getItem("email");
@@ -54,10 +116,11 @@
             });    
         
             function logOut() {
-                if (window.confirm("Are you sure you want to log out?")) {
-                    ref.unauth();
-                    setTimeout(function(){window.location = "index.html";},500);
-                }
+                $( "#dialogLogout" ).dialog( "open" );
+//                if (window.confirm("Are you sure you want to log out?")) {
+//                    ref.unauth();
+//                    setTimeout(function(){window.location = "index.html";},500);
+//                }
             }
         
             function getLocation() {
@@ -89,18 +152,17 @@
             function getPosition(position) {
                 latitude = position.coords.latitude;
                 longitude = position.coords.longitude;
-                //alert(latitude);
-                //alert(longitude);
                 sessionStorage.setItem("lat", latitude);
                 sessionStorage.setItem("lon", longitude);
-                window.location = "sos.html";
+//                window.location = "sos.html";
+                addSOS();
             }
         
-            function sos() {
-                if (window.confirm("Confirm SOS?")) {
-                    addSOS();
-                }
-            }
+//            function sos() {
+//                if (window.confirm("Confirm SOS?")) {
+//                    addSOS();
+//                }
+//            }
             
             function addSOS() {
                 //var leave = document.getElementById("leave").value;
@@ -126,7 +188,8 @@
             
             function SOS_saved(error) {
 //                console.log(error);
-                alert("SOS sent");
+//                alert("SOS sent");
+                $( '#dialogSOSConfirmed' ).dialog('open');
             }
         </script>
     <!-- ================================================= -->  
