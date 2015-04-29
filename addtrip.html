@@ -7,9 +7,21 @@
         <link rel="stylesheet" href="styles/jquery-ui.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/addtrip.css" type="text/css">
+        
+        <style>
+		.dlg-no-close .ui-dialog-titlebar-close {
+			display: none;
+		}
+        </style>
     </head>
     
     <body>
+        <div id="dialogTripAdded" title="Trip Added">Your trip has been added.</div>
+        <div id="dialogValLeave" title="Error">Please enter a leave date by clicking the calendar and select a date from the datepicker.</div>
+        <div id="dialogValReturn" title="Error">Please enter a return date by clicking the calendar and select a date from the datepicker.</div>
+        <div id="dialogValDest" title="Error">Please select a destination from the destination drop-down.</div>
+        <div id="dialogValContact" title="Error">Please choose a point of contact from the contact drop-down.</div>
+        
         <div class="page-header container text-center">
             <h1>International Alert Security App</h1>
         </div>
@@ -239,6 +251,76 @@
         
         <!-- ==================== SCRIPTS ==================== -->        
         <script>
+            ////////// DIALOG \\\\\\\\\\
+            $(function() {
+                $( "#dialogTripAdded" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                            window.location = "main.html";
+                        }
+                    }
+                });
+            });
+            
+            $(function() {
+                $( "#dialogValLeave" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+            
+            $(function() {
+                $( "#dialogValReturn" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+            
+            $(function() {
+                $( "#dialogValDest" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+            
+            $(function() {
+                $( "#dialogValContact" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+            
+            
+            ////////// MAIN SCRIPTS \\\\\\\\\\
+            
             var myID = ""; // THIS IS GLOBAL!!!!!!!!!
             var uName = "";
             function authDataCallback(authData) {
@@ -277,8 +359,8 @@
                     lastname: lastname
                 });
                 var tripID = newTripsRef.key();
-                alert("Trip Added");
-                setTimeout(function(){window.location = "main.html";},1000);
+//                alert("Trip Added");
+                $( '#dialogTripAdded' ).dialog('open');
             }
         
                 var count = 1;
@@ -302,22 +384,26 @@
         
             function validateForm() {
                 if(document.tripdetails.leave.value == "") {
-                    alert("Please enter a leave date");
+//                    alert("Please enter a leave date");
+                    $( '#dialogValLeave' ).dialog('open');
                     document.tripdetails.leave.focus();
                     return false;
                 }
                 if(document.tripdetails.back.value == "") {
-                    alert("Please enter a return date");
+//                    alert("Please enter a return date");
+                    $( '#dialogValReturn' ).dialog('open');
                     document.tripdetails.back.focus();
                     return false;
                 }
                 if (document.tripdetails.destination.value == "Select a country") {
-                    alert("Please select a destination");
+//                    alert("Please select a destination");
+                    $( '#dialogValDest' ).dialog('open');
                     document.tripdetails.destination.focus();
                     return false;
                 }
                 if (document.tripdetails.contactdd.value == "Select a contact") {
-                    alert("Please select a contact");
+//                    alert("Please select a contact");
+                    $( '#dialogValContact' ).dialog('open');
                     document.tripdetails.contactdd.focus();
                     return false;
                 }
