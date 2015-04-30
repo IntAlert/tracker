@@ -12,6 +12,9 @@
 		.dlg-no-close .ui-dialog-titlebar-close {
 			display: none;
 		}
+        #dialogTripAdded #dialogValLeave #dialogValReturn {
+            diplay: none;   
+        }
         </style>
     </head>
     
@@ -31,11 +34,11 @@
         <div id="container" class="container text-center">
             <form name="tripdetails">
                 <div class="tripdetails">
-                <p>Date Leaving: <input type="text" name="leave" id="leave" class="input" disabled required>
+                <p>Date Leaving <input type="text" name="leave" id="leave" class="input" disabled required>
                 <!--<a href="#" id="leavepick" class="input">Choose Date</a>-->
                 </p>
                 
-                <p>Date Returning: <input type="text" name="back" id="back" class="input" disabled required>
+                <p>Date Returning <input type="text" name="back" id="back" class="input" disabled required>
                 <!--<a href="#" id="backpick" class="input">Choose Date</a>-->
                 </p>
                 

@@ -3,11 +3,24 @@
         <title>View Current Info</title>
         <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <script src='https://code.jquery.com/ui/1.11.4/jquery-ui.min.js'></script>
+        <link rel="stylesheet" href="styles/jquery-ui.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/currentinfo.css" type="text/css">
+        
+        <style>
+		.dlg-no-close .ui-dialog-titlebar-close {
+			display: none;
+		}
+        #dialogError {
+            display: none;   
+        }
+        </style>
     </head>
     
     <body>
+        <div id="dialogError" title="Error">Local Storage not supported.</div>
+        
         <div class="page-header container text-center">
             <h1>International Alert Security App</h1>
         </div>
@@ -26,6 +39,22 @@
         
         <!-- ==================== SCRIPTS ==================== -->             
         <script>
+            ////////// DIALOG \\\\\\\\\\
+            $(function() {
+                $( "#dialogError" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+            
+            
+            ////////// MAIN SCRIPTS \\\\\\\\\\
             var myID = ""; // THIS IS GLOBAL!!!!!!!!!
             var uName = "";
             var email = sessionStorage.getItem("email");
@@ -64,7 +93,8 @@
                     sessionStorage.setItem("thistripid", trip[count][4]);
                     window.location = "mytrip.html";
                 } else {
-                    alert("Local Storage not supported");
+//                    alert("Local Storage not supported");
+                    $( "#dialogError" ).dialog( "open" );
                 }
             }
             </script>
