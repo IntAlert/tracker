@@ -142,9 +142,7 @@
                 });
             });
             
-            
             ////////// MAIN SCRIPTS \\\\\\\\\\
-            
             var password1 = "";
             function validateAcc() {
                 email = document.getElementById("name").value;
@@ -152,24 +150,20 @@
                 password2 = document.getElementById("password2").value;
                 if (email === "") {
                     $( "#dialogEmail" ).dialog( "open" );
-                    //alert("Please enter an email");
                     return;
                 }
                 if (password1 === "") {
                     $( "#dialogPassword1" ).dialog( "open" );
-                    //alert("Please enter a password");
                     return;
                 }
                 if (password2 === "") {
                     $( "#dialogPassword2" ).dialog( "open" );
-                    //alert("Please re-enter password");
                     return;
                 }
                 if (password1 === password2) {
                     createAcc();
                 } else {
-                    $( "#dialogPassMatchErr" ).dialog( "open" );
-                    //alert("Passwords do not match");
+                    $( "#dialogPassMatchErr" ).dialog( "open" );;
                     return;
                 }
             } 
@@ -182,10 +176,8 @@
                 }, function(error, userData) {
                     if (error) {
                         $( "#dialogAccErr" ).dialog( "open" );
-                        //alert("Error creating account");
                     } else {
                         $( "#dialogAcc" ).dialog( "open" );
-                        //alert("Successfully created user account");
                         localStorage.setItem("status", "true");
                         window.location="index.html";
                     }
@@ -197,6 +189,5 @@
                 window.location='index.html';
             }
         </script>
-        <!-- ================================================= -->    
     </body>
 </html>

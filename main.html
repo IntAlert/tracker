@@ -50,7 +50,7 @@
                     dialogClass: "dlg-no-close",
                     buttons: {
                         "Confirm": function() {
-                            setTimeout(function(){window.location = "index.html";},500);
+                            window.location = "index.html";
                         },
                         "Cancel": function() {
                             $( this ).dialog( "close" );
@@ -89,9 +89,7 @@
                 });
             });
             
-            
-            ////////// MAIN SCRIPTS \\\\\\\\\\
-                
+            ////////// MAIN SCRIPTS \\\\\\\\\\ 
             var myID = "";
             var uName = "";
             var email = sessionStorage.getItem("email");
@@ -120,10 +118,6 @@
         
             function logOut() {
                 $( "#dialogLogout" ).dialog( "open" );
-//                if (window.confirm("Are you sure you want to log out?")) {
-//                    ref.unauth();
-//                    setTimeout(function(){window.location = "index.html";},500);
-//                }
             }
         
             function getLocation() {
@@ -157,15 +151,8 @@
                 longitude = position.coords.longitude;
                 sessionStorage.setItem("lat", latitude);
                 sessionStorage.setItem("lon", longitude);
-//                window.location = "sos.html";
                 addSOS();
             }
-        
-//            function sos() {
-//                if (window.confirm("Confirm SOS?")) {
-//                    addSOS();
-//                }
-//            }
             
             function addSOS() {
                 //var leave = document.getElementById("leave").value;
@@ -190,11 +177,8 @@
             }
             
             function SOS_saved(error) {
-//                console.log(error);
-//                alert("SOS sent");
                 $( '#dialogSOSConfirmed' ).dialog('open');
             }
         </script>
-    <!-- ================================================= -->  
     </body>
 </html>

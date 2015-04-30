@@ -321,9 +321,7 @@
                 });
             });
             
-            
             ////////// MAIN SCRIPTS \\\\\\\\\\
-            
             var myID = ""; // THIS IS GLOBAL!!!!!!!!!
             var uName = "";
             function authDataCallback(authData) {
@@ -362,7 +360,6 @@
                     lastname: lastname
                 });
                 var tripID = newTripsRef.key();
-//                alert("Trip Added");
                 $( '#dialogTripAdded' ).dialog('open');
             }
         
@@ -387,25 +384,21 @@
         
             function validateForm() {
                 if(document.tripdetails.leave.value == "") {
-//                    alert("Please enter a leave date");
                     $( '#dialogValLeave' ).dialog('open');
                     document.tripdetails.leave.focus();
                     return false;
                 }
                 if(document.tripdetails.back.value == "") {
-//                    alert("Please enter a return date");
                     $( '#dialogValReturn' ).dialog('open');
                     document.tripdetails.back.focus();
                     return false;
                 }
                 if (document.tripdetails.destination.value == "Select a country") {
-//                    alert("Please select a destination");
                     $( '#dialogValDest' ).dialog('open');
                     document.tripdetails.destination.focus();
                     return false;
                 }
                 if (document.tripdetails.contactdd.value == "Select a contact") {
-//                    alert("Please select a contact");
                     $( '#dialogValContact' ).dialog('open');
                     document.tripdetails.contactdd.focus();
                     return false;
@@ -440,18 +433,6 @@
                     $("#back").datepicker("option","minDate",newDate);
                 }
             });
-            
-            //$(function() {
-            //    $( "#leavepick" ).click(function(){
-            //        $( "#leave" ).datepicker("show");
-            //    })
-            //    $( "#backpick" ).click(function(){
-            //        $( "#back" ).datepicker("show");
-            //    })
-            //});
-            
-            
         </script>
-        <!-- ================================================= -->
     </body>
 </html>
