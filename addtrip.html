@@ -351,27 +351,7 @@
         
             var uemail = sessionStorage.getItem("email");
         
-            function addTrip() {
-                
-                // check if firebase can connect
-                //var isConnected = new Firebase.isConnected();
-                
-//                if(isConnected) {
-//                    // internet is connected
-//                    // when you've saved data, do this 
-//                    successCallback = function(){
-//                        console.log(response);
-//                        console.log('called back');
-//                        $( '#dialogTripAdded' ).dialog('open');
-//                    }
-//                } else {
-//                    // internet is not connected
-//                    // when you've saved data do nothing
-//                    successCallback = function() {
-//                        alert("Delayed save just happened");
-//                    }
-//                }
-                
+            function addTrip() {            
                 if(isConnected == false) {
                     $( '#dialogNoSignal' ).dialog('open');
                     return;
