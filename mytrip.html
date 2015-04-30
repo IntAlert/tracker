@@ -12,7 +12,7 @@
 		.dlg-no-close .ui-dialog-titlebar-close {
 			display: none;
 		}
-        #dialogUpdated #dialogDeleted {
+        #dialogUpdated #dialogDeleted #dialogConfirm{
             display: none;   
         }
         </style>
@@ -21,6 +21,7 @@
     <body>
         <div id="dialogUpdated" title="Trip Updated">Your trip details have been updated.</div>
         <div id="dialogDeleted" title="Trip Deleted">Your trip details have been deleted.</div>
+        <div id="dialogConfirm" title="Delete Trip">Are you sure you want to delete this trip?</div>
         
         <div class="page-header container text-center">
             <h1>International Alert Security App</h1>
@@ -276,6 +277,26 @@
                     }
                 });
             });
+            
+            $(function() {
+                $( "#dialogConfirm" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "Confirm": function() {
+                            var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
+                            var tripsRef = ref.child(mytripid);
+                            tripsRef.remove();
+                            $( this ).dialog( "close" );
+                            $( "#dialogDeleted" ).dialog( "open" );
+                        },
+                        "Cancel": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
         
             ////////// MAIN SCRIPTS \\\\\\\\\\
             var count = 1;
@@ -354,12 +375,13 @@
             }
         
             function deleteTrip() {
-                if (window.confirm("Are you sure you want to delete this trip?")) {
-                    var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
-                    var tripsRef = ref.child(mytripid);
-                    tripsRef.remove();
-                    $( "#dialogDeleted" ).dialog( "open" );
-                }
+                $( "#dialogConfirm" ).dialog( "open");
+//                if (window.confirm("Are you sure you want to delete this trip?")) {
+//                    var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
+//                    var tripsRef = ref.child(mytripid);
+//                    tripsRef.remove();
+//                    $( "#dialogDeleted" ).dialog( "open" );
+//                }
             }
             
             //Init datepickers
