@@ -1,3 +1,6 @@
 *.xdk
 *.xdke
 *.xml
+
+.vagrant
+secapp.mobileprovision
