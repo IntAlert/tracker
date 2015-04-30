@@ -7,12 +7,13 @@
         <link rel="stylesheet" href="styles/jquery-ui.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/addtrip.css" type="text/css">
+        <script src='js/global.js'></script>
         
         <style>
 		.dlg-no-close .ui-dialog-titlebar-close {
 			display: none;
 		}
-        #dialogTripAdded #dialogValLeave #dialogValReturn {
+        #dialogTripAdded, #dialogValLeave, #dialogValReturn, #dialogValDest, #dialogValContact, #dialogNoSignal {
             diplay: none;   
         }
         </style>
@@ -24,6 +25,7 @@
         <div id="dialogValReturn" title="Error">Please enter a return date by clicking the calendar and select a date from the datepicker.</div>
         <div id="dialogValDest" title="Error">Please select a destination from the destination drop-down.</div>
         <div id="dialogValContact" title="Error">Please choose a point of contact from the contact drop-down.</div>
+        <div id="dialogNoSignal" title="Error">There is no connection available right now. Please check your connection.</div>
         
         <div class="page-header container text-center">
             <h1>International Alert Security App</h1>
@@ -321,6 +323,19 @@
                 });
             });
             
+            $(function() {
+                $( "#dialogNoSignal" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+            
             ////////// MAIN SCRIPTS \\\\\\\\\\
             var myID = ""; // THIS IS GLOBAL!!!!!!!!!
             var uName = "";
@@ -337,6 +352,31 @@
             var uemail = sessionStorage.getItem("email");
         
             function addTrip() {
+                
+                // check if firebase can connect
+                //var isConnected = new Firebase.isConnected();
+                
+//                if(isConnected) {
+//                    // internet is connected
+//                    // when you've saved data, do this 
+//                    successCallback = function(){
+//                        console.log(response);
+//                        console.log('called back');
+//                        $( '#dialogTripAdded' ).dialog('open');
+//                    }
+//                } else {
+//                    // internet is not connected
+//                    // when you've saved data do nothing
+//                    successCallback = function() {
+//                        alert("Delayed save just happened");
+//                    }
+//                }
+                
+                if(isConnected == false) {
+                    $( '#dialogNoSignal' ).dialog('open');
+                    return;
+                }
+                
                 var leave = document.getElementById("leave").value;
                 var back = document.getElementById("back").value;
                 var destination = document.getElementById("destination").value;
@@ -358,9 +398,11 @@
                     contactphone: contact[mycontact][4],
                     name: name,
                     lastname: lastname
-                });
+                }, function(){
+                        $( '#dialogTripAdded' ).dialog('open');
+                    });
                 var tripID = newTripsRef.key();
-                $( '#dialogTripAdded' ).dialog('open');
+                
             }
         
                 var count = 1;
