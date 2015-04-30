@@ -70,8 +70,7 @@
             });
             
             
-            ////////// MAIN SCRIPTS \\\\\\\\\\
-                        
+            ////////// MAIN SCRIPTS \\\\\\\\\\          
             function firstRun() {
                 var status = localStorage.getItem("status")
                 if (status === null || status.length === 0){
@@ -87,12 +86,10 @@
             password = document.getElementById("password").value;
             if (username === "") {
                 $( "#dialogEmail" ).dialog( "open" );
-                //alert("Please enter a username");
                return;
             } else {
             if (password === "") {
                 $( "#dialogPass" ).dialog( "open" );
-                //alert("Please enter a password");
                return;
             } else {
                 var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts");
@@ -117,6 +114,5 @@
                 window.location="forgot.html";
             }
         </script>
-        <!-- ================================================= -->        
     </body>
 </html>

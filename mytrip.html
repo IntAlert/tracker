@@ -277,9 +277,7 @@
                 });
             });
         
-            
             ////////// MAIN SCRIPTS \\\\\\\\\\
-            
             var count = 1;
             var contact = [];
             var myText = "";
@@ -352,7 +350,6 @@
                     "contactemail": contact[mycontact][3],
                     "contactphone": contact[mycontact][4]
                 });
-//                alert("Trip Updated");
                 $( "#dialogUpdated" ).dialog( "open" );
             }
         
@@ -361,7 +358,6 @@
                     var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
                     var tripsRef = ref.child(mytripid);
                     tripsRef.remove();
-//                    alert("Trip Deleted");
                     $( "#dialogDeleted" ).dialog( "open" );
                 }
             }
@@ -393,16 +389,6 @@
                     $("#back").datepicker("option","minDate",newDate);
                 }
             });
-                        
-            //$(function() {
-            //    $( "#leavepick" ).click(function(){
-            //        $( "#leave" ).datepicker("show");
-            //    })
-            //    $( "#backpick" ).click(function(){
-            //        $( "#back" ).datepicker("show");
-            //    })
-            //});
-        </script>
-        <!-- ================================================= -->      
+        </script>   
     </body>
 </html>
