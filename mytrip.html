@@ -7,9 +7,21 @@
         <link rel="stylesheet" href="styles/jquery-ui.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/currentinfo.css" type="text/css">
+        
+        <style>
+		.dlg-no-close .ui-dialog-titlebar-close {
+			display: none;
+		}
+        #dialogUpdated #dialogDeleted {
+            display: none;   
+        }
+        </style>
     </head>
     
     <body>
+        <div id="dialogUpdated" title="Trip Updated">Your trip details have been updated.</div>
+        <div id="dialogDeleted" title="Trip Deleted">Your trip details have been deleted.</div>
+        
         <div class="page-header container text-center">
             <h1>International Alert Security App</h1>
         </div>
@@ -18,8 +30,8 @@
         </div>
         <div id="container" class="detail">
             <form>
-                <p>Date Leaving: <input type="text" id="leave" class="input" disabled></p>
-                <p>Date Returning: <input type="text" id="back" class="input" disabled></p>
+                <p>Date Leaving <input type="text" id="leave" class="input" disabled></p>
+                <p>Date Returning <input type="text" id="back" class="input" disabled></p>
                 <p>Destination
                     <select name="destination" id="destination" class="input" disabled>
                     <option>Select a country</option>
@@ -236,6 +248,38 @@
         
         <!-- ==================== SCRIPTS ==================== -->        
         <script>
+            ////////// DIALOG \\\\\\\\\\
+            $(function() {
+                $( "#dialogUpdated" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                            window.location = "main.html";
+                        }
+                    }
+                });
+            });
+            
+            $(function() {
+                $( "#dialogDeleted" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                            window.location = "main.html";
+                        }
+                    }
+                });
+            });
+        
+            
+            ////////// MAIN SCRIPTS \\\\\\\\\\
+            
             var count = 1;
             var contact = [];
             var myText = "";
@@ -257,8 +301,10 @@
 
             var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
                 mytripid = sessionStorage.getItem("thistripid");
+                console.log(mytripid);
                 ref.child(mytripid).on("value", function(snapshot) {
                 thisTrip = snapshot.val();
+                console.log(thisTrip);
                 document.getElementById("leave").value = thisTrip.leave;
                 $("#leave").text(thisTrip.leave);
                 document.getElementById("back").value = thisTrip.back;
@@ -306,8 +352,8 @@
                     "contactemail": contact[mycontact][3],
                     "contactphone": contact[mycontact][4]
                 });
-                alert("Trip Updated");
-                setTimeout(function(){window.location = "main.html";},1000);
+//                alert("Trip Updated");
+                $( "#dialogUpdated" ).dialog( "open" );
             }
         
             function deleteTrip() {
@@ -315,8 +361,8 @@
                     var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
                     var tripsRef = ref.child(mytripid);
                     tripsRef.remove();
-                    alert("Trip Deleted");
-                    setTimeout(function(){window.location = "main.html";},1000);
+//                    alert("Trip Deleted");
+                    $( "#dialogDeleted" ).dialog( "open" );
                 }
             }
             
