@@ -7,3 +7,5 @@ firebaseRef.child('.info/connected').on('value', function(connectedSnap) {
     isConnected = false;
   }
 });
+
+var isSMSWaiting = false;
