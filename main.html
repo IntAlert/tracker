@@ -127,7 +127,7 @@
                 }
                 else{ //If not Supported
                     alert("Geolocation not supported.");
-                    // SEND SMS
+                    sendSMS();
                 }
             }
             
@@ -167,15 +167,9 @@
                 var lastname = sessionStorage.getItem("lastname");
                 var lat = sessionStorage.getItem("lat");
                 var lon = sessionStorage.getItem("lon");
-                
-                //SEND SMS FUNCTION CALLED HERE
-                var intent = ""; //auto sms send
-                var message = "SOS Test";
-                var number = "07947476240";
-                var success = function () { alert('Message sent successfully'); };
-                var error = function (e) { alert('Message Failed:' + e); };
-                sms.send(number, message, intent, success, error);
-                
+
+                sendSMS();
+                                
                 var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/");
                 var sosRef = ref.child("sos");
                 var newSosRef = sosRef.push().set({
@@ -193,7 +187,12 @@
             }
             
             function sendSMS() {
-                   
+                var intent = ""; //auto sms send
+                var message = "SOS Test";
+                var number = "07947476240";
+                var success = function () { alert('Message sent successfully'); };
+                var error = function (e) { alert('Message Failed:' + e); };
+                sms.send(number, message, intent, success, error);
             }
         </script>
     </body>
