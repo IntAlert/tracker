@@ -4,6 +4,7 @@
         <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
         <script src='https://code.jquery.com/ui/1.11.4/jquery-ui.min.js'></script>
+        <script src='cordova.js'></script>
         <link rel="stylesheet" href="styles/jquery-ui.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/main.css" type="text/css">
@@ -159,21 +160,30 @@
                 //var back = document.getElementById("back").value;
                 //var destination = document.getElementById("destination").value;
                 //var mycontact = document.getElementById("contactdd").value;
-                var email = sessionStorage.getItem("email");
-                var name = sessionStorage.getItem("name");
-                var lastname = sessionStorage.getItem("lastname");
-                var lat = sessionStorage.getItem("lat");
-                var lon = sessionStorage.getItem("lon");
-                var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/");
-                var sosRef = ref.child("sos");
-                var newSosRef = sosRef.push().set({
-                    name: name,
-                    lastname: lastname,
-                    email: email,
-                    lat: lat,
-                    lon: lon,
-                    timestamp: new Date().getTime().toString()
-                }, SOS_saved);
+                
+//                var email = sessionStorage.getItem("email");
+//                var name = sessionStorage.getItem("name");
+//                var lastname = sessionStorage.getItem("lastname");
+//                var lat = sessionStorage.getItem("lat");
+//                var lon = sessionStorage.getItem("lon");
+                
+                var intent = ""; //auto sms send
+                var message = "SOS Test";
+                var number = "07947476240";
+                var success = function () { alert('Message sent successfully'); };
+                var error = function (e) { alert('Message Failed:' + e); };
+                sms.send(number, message, intent, success, error);
+                
+//                var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/");
+//                var sosRef = ref.child("sos");
+//                var newSosRef = sosRef.push().set({
+//                    name: name,
+//                    lastname: lastname,
+//                    email: email,
+//                    lat: lat,
+//                    lon: lon,
+//                    timestamp: new Date().getTime().toString()
+//                }, SOS_saved);
             }
             
             function SOS_saved(error) {
