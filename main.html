@@ -5,6 +5,7 @@
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
         <script src='https://code.jquery.com/ui/1.11.4/jquery-ui.min.js'></script>
         <script src='cordova.js'></script>
+        <script src='js/global.js'></script>
         <link rel="stylesheet" href="styles/jquery-ui.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/main.css" type="text/css">
@@ -23,6 +24,7 @@
         <div id="dialogLogout" title="Log Out">If you continue, you will be logged out. Are you sure you want to do this?</div>
         <div id="dialogSOS" title="Confirm SOS">If you continue, an SOS message will be sent and your location will be used. Are you sure you want to do this?</div>
         <div id="dialogSOSConfirmed" title="Confirm SOS">SOS confirmed.</div>
+        <div id="dialogSMSError" title="Error"><div class="ErrorMessage"></div></div>
         
         <img src="icons2/logout2.png" class="logout" onclick="$( '#dialogLogout' ).dialog('open')">
         <div class="page-header container text-center">
@@ -79,6 +81,19 @@
             
             $(function() {
                 $( "#dialogSOSConfirmed" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+            
+            $(function() {
+                $( "#dialogSMSError" ).dialog({
                     autoOpen: false,
                     modal: true,
                     dialogClass: "dlg-no-close",
@@ -179,10 +194,11 @@
                     lat: lat,
                     lon: lon,
                     timestamp: new Date().getTime().toString()
-                }, SOS_saved);
+                });
             }
             
             function SOS_saved(error) {
+                isSMSWaiting = false;
                 $( '#dialogSOSConfirmed' ).dialog('open');
             }
             
@@ -190,9 +206,20 @@
                 var intent = ""; //auto sms send
                 var message = "SOS Test";
                 var number = "07947476240";
-                var success = function () { alert('Message sent successfully'); };
-                var error = function (e) { alert('Message Failed:' + e); };
-                sms.send(number, message, intent, success, error);
+//                var success = function () { alert('Message sent successfully'); };
+                var error = function(e) {
+                    $( '#dialogSMSError .ErrorMessage' ).text(e);
+                    $( '#dialogSMSError' ).dialog('open');
+//                    alert('Message Failed:' + e);
+                };
+                isSMSWaiting = true;
+                sms.send(number, message, intent, SOS_saved, error);
+                setTimeout(function(){
+                    if (isSMSWaiting == true) {
+                        $( '#dialogSMSError .ErrorMessage' ).text("Your SMS has not been sent due to lack of signal, but we are still trying.");
+                        $( '#dialogSMSError' ).dialog('open');
+                    }
+                },10000)
             }
         </script>
     </body>
