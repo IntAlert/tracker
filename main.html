@@ -127,6 +127,7 @@
                 }
                 else{ //If not Supported
                     alert("Geolocation not supported.");
+                    // SEND SMS
                 }
             }
             
@@ -161,12 +162,13 @@
                 //var destination = document.getElementById("destination").value;
                 //var mycontact = document.getElementById("contactdd").value;
                 
-//                var email = sessionStorage.getItem("email");
-//                var name = sessionStorage.getItem("name");
-//                var lastname = sessionStorage.getItem("lastname");
-//                var lat = sessionStorage.getItem("lat");
-//                var lon = sessionStorage.getItem("lon");
+                var email = sessionStorage.getItem("email");
+                var name = sessionStorage.getItem("name");
+                var lastname = sessionStorage.getItem("lastname");
+                var lat = sessionStorage.getItem("lat");
+                var lon = sessionStorage.getItem("lon");
                 
+                //SEND SMS FUNCTION CALLED HERE
                 var intent = ""; //auto sms send
                 var message = "SOS Test";
                 var number = "07947476240";
@@ -174,20 +176,24 @@
                 var error = function (e) { alert('Message Failed:' + e); };
                 sms.send(number, message, intent, success, error);
                 
-//                var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/");
-//                var sosRef = ref.child("sos");
-//                var newSosRef = sosRef.push().set({
-//                    name: name,
-//                    lastname: lastname,
-//                    email: email,
-//                    lat: lat,
-//                    lon: lon,
-//                    timestamp: new Date().getTime().toString()
-//                }, SOS_saved);
+                var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/");
+                var sosRef = ref.child("sos");
+                var newSosRef = sosRef.push().set({
+                    name: name,
+                    lastname: lastname,
+                    email: email,
+                    lat: lat,
+                    lon: lon,
+                    timestamp: new Date().getTime().toString()
+                }, SOS_saved);
             }
             
             function SOS_saved(error) {
                 $( '#dialogSOSConfirmed' ).dialog('open');
+            }
+            
+            function sendSMS() {
+                   
             }
         </script>
     </body>
