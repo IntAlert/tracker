@@ -25,6 +25,7 @@
         <div id="dialogSOS" title="Confirm SOS">If you continue, an SOS message will be sent and your location will be used. Are you sure you want to do this?</div>
         <div id="dialogSOSConfirmed" title="Confirm SOS">SOS confirmed.</div>
         <div id="dialogSMSError" title="Error"><div class="ErrorMessage"></div></div>
+        <div id="dialogLoggedOut" title="Logged Out">User is logged out.</div>
         
         <img src="icons2/logout2.png" class="logout" onclick="$( '#dialogLogout' ).dialog('open')">
         <div class="page-header container text-center">
@@ -105,6 +106,19 @@
                 });
             });
             
+            $(function() {
+                $( "#dialogLoggedOut" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+            
             ////////// MAIN SCRIPTS \\\\\\\\\\ 
             var myID = "";
             var uName = "";
@@ -113,7 +127,8 @@
                 if (authData) {
                 myID = authData.uid.substring(12,16);
                 } else {
-                    alert("User is logged out");
+                    $( '#dialogLoggedOut' ).dialog('open');
+//                    alert("User is logged out");
                 }
             }
             // Register the callback to be fired every time auth state changes
