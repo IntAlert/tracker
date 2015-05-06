@@ -26,6 +26,7 @@
         <div id="dialogSOSConfirmed" title="Confirm SOS">SOS confirmed.</div>
         <div id="dialogSMSError" title="Error"><div class="ErrorMessage"></div></div>
         <div id="dialogLoggedOut" title="Logged Out">User is logged out.</div>
+        <div id="dialogNoGeo" title="Error">Geolocation not supported.</div>
         
         <img src="icons2/logout2.png" class="logout" onclick="$( '#dialogLogout' ).dialog('open')">
         <div class="page-header container text-center">
@@ -119,6 +120,19 @@
                 });
             });
             
+            $(function() {
+                $( "#dialogNoGeo" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dlg-no-close",
+                    buttons: {
+                        "OK": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+            
             ////////// MAIN SCRIPTS \\\\\\\\\\ 
             var myID = "";
             var uName = "";
@@ -156,7 +170,8 @@
                     navigator.geolocation.getCurrentPosition(getPosition,showError);
                 }
                 else{ //If not Supported
-                    alert("Geolocation not supported.");
+                    $( '#dialogNoGeo' ).dialog('open');
+//                    alert("Geolocation not supported.");
                     sendSMS();
                 }
             }
