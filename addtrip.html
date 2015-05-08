@@ -384,7 +384,7 @@
                     lastname: lastname
                 }, function(){
                         // CALENDAR ADDED (createCalendar(leaveCalendar, backCalendar)
-                        createCalendar(leaveCalendar, backCalendar, destination);
+                        createCalendar(leaveCalendar, backCalendar, destination, contact[mycontact][1], contact[mycontact][2]);
                         $( '#dialogTripAdded' ).dialog('open');
                     });
                 var tripID = newTripsRef.key();
