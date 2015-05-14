@@ -248,18 +248,13 @@
                 };
                 isSMSWaiting = true;
                 console.log("SMS Waiting true");
-                document.addEventListener("intel.xdk.device.ready",function(){
-                    //this function displays a indicator. Must be executed inside a event handler.
-                    intel.xdk.notification.showBusyIndicator(); 
-                },false);
                 sms.send(number, message, intent, SOS_saved, error);
                 setTimeout(function(){
                     if (isSMSWaiting == true) {
                         $( '#dialogSMSError .ErrorMessage' ).text("Your SMS has not been sent due to lack of signal, but we are still trying.");
                         $( '#dialogSMSError' ).dialog('open');
                     }
-                },5000);
-                intel.xdk.notification.hideBusyIndicator();
+                },5000)
             }
         </script>
     </body>
