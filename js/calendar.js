@@ -80,11 +80,16 @@ function createCalendar(startDate, endDate, destination, contactname) {
 }
 
 function deleteCalendar(startDate, endDate, destination) {
-    var eventLocation = destination;
+    var title = "International Alert Trip: " + destination;
     var success = function(message) { alert("Success: " + JSON.stringify(message)); };
     var error = function(message) { alert("Error: " + message); };
+    console.log(title);
+    console.log(startDate);
+    console.log(endDate);
+    console.log(destination);
+    console.log(eventLocation);
 //    // delete an event (you can pass nulls for irrelevant parameters, note that on Android `notes` is ignored). The dates are mandatory and represent a date range to delete events in.
 //    // note that on iOS there is a bug where the timespan must not be larger than 4 years, see issue 102 for details.. call this method multiple times if need be
 //    // since 4.3.0 you can match events starting with a prefix title, so if your event title is 'My app - cool event' then 'My app -' will match.
-    window.plugins.calendar.deleteEvent("Title",eventLocation,null,startDate,endDate,success,error);
+    window.plugins.calendar.deleteEvent(title,destination,null,startDate,endDate,success,error);
 }
