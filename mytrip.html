@@ -292,6 +292,7 @@
                             var tripsRef = ref.child(mytripid);
                             var leaveCalendar = ($( "#leave" ).datepicker( "getDate" ));
                             var backCalendar = ($( "#back" ).datepicker( "getDate" ));
+                            var destination = document.getElementById("destination").value;
                             console.log(leaveCalendar);
                             console.log(backCalendar);
                             deleteCalendar(leaveCalendar, backCalendar, destination);

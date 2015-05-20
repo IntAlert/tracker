@@ -24,7 +24,7 @@
         <div id="dialogLogout" title="Log Out">If you continue, you will be logged out. Are you sure you want to do this?</div>
         <div id="dialogSOS" title="Confirm SOS">If you continue, an SOS message will be sent and your location will be used. Are you sure you want to do this?</div>
         <div id="dialogSOSConfirmed" title="Confirm SOS">SOS confirmed.</div>
-        <div id="dialogSMSError" title="Error"><div class="ErrorMessage"></div></div>
+        <div id="dialogSMSError" title="Error"><div class="ErrorMessage"></div><img src="icons2/loading.gif"></div>
         <div id="dialogLoggedOut" title="Logged Out">User is logged out.</div>
         <div id="dialogNoGeo" title="Error">Geolocation not supported.</div>
         
@@ -167,9 +167,11 @@
         
             function getLocation() {
                 if (navigator.geolocation){ //If Supported
+                    console.log("Geo supported");
                     navigator.geolocation.getCurrentPosition(getPosition,showError);
                 }
                 else{ //If not Supported
+                    console.log("Geo NOT supported");
                     $( '#dialogNoGeo' ).dialog('open');
 //                    alert("Geolocation not supported.");
                     sendSMS();
@@ -193,12 +195,13 @@
                 }
             }
             
-            function getPosition(position) {
+            function getPosition(position) { //NO SIGNAL MEANS IT HANGS HERE UNTIL SIGNAL REGAINED?
                 console.log("GetPosition");
                 latitude = position.coords.latitude;
                 longitude = position.coords.longitude;
                 sessionStorage.setItem("lat", latitude);
                 sessionStorage.setItem("lon", longitude);
+                console.log("adding SOS");
                 addSOS();
             }
             
@@ -213,7 +216,7 @@
                 var lastname = sessionStorage.getItem("lastname");
                 var lat = sessionStorage.getItem("lat");
                 var lon = sessionStorage.getItem("lon");
-                console.log("AboutoSendSMS");
+                console.log("AboutToSendSMS");
                 sendSMS();
                                 
                 var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/");
@@ -239,7 +242,7 @@
                 console.log("StartingSMSSend");
                 var intent = ""; //auto sms send
                 var message = "SOS Test";
-                var number = "07947476240";
+                var number = 07947476240;
 //                var success = function () { alert('Message sent successfully'); };
                 var error = function(e) {
                     $( '#dialogSMSError .ErrorMessage' ).text(e);
@@ -252,9 +255,10 @@
                 setTimeout(function(){
                     if (isSMSWaiting == true) {
                         $( '#dialogSMSError .ErrorMessage' ).text("Your SMS has not been sent due to lack of signal, but we are still trying.");
+                        
                         $( '#dialogSMSError' ).dialog('open');
                     }
-                },5000)
+                },2000)
             }
         </script>
     </body>
