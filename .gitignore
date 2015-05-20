@@ -4,3 +4,5 @@
 
 .vagrant
 secapp.mobileprovision
+
+plugins/cordova-sms-plugin/
