@@ -1,4 +1,4 @@
-function createCalendar(startDate, endDate, destination, contactname) {
+function createEvent(startDate, endDate, destination, contactname) {
     // prep some variables
 //  var startDate = new Date(2015,2,15,18,30,0,0,0); // beware: month 0 = january, 11 = december
 //  var endDate = new Date(2015,2,15,19,30,0,0,0);
@@ -79,7 +79,7 @@ function createCalendar(startDate, endDate, destination, contactname) {
 //  window.plugins.calendar.openCalendar(d, success, error); // callbacks are optional
 }
 
-function deleteCalendar(startDate, endDate, destination) {
+function deleteEvent(startDate, endDate, destination) {
     var title = "International Alert Trip: " + destination;
     var success = function(message) { alert("Success: " + JSON.stringify(message)); };
     var error = function(message) { alert("Error: " + message); };

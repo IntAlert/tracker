@@ -383,7 +383,7 @@
                     name: name,
                     lastname: lastname
                 }, function(){
-                        createCalendar(startDate, endDate, destination, contact[mycontact][2]);
+                        createEvent(startDate, endDate, destination, contact[mycontact][2]);
                         $( '#dialogTripAdded' ).dialog('open');
                     });
                 var tripID = newTripsRef.key();

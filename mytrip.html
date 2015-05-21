@@ -295,7 +295,7 @@
                             var destination = document.getElementById("destination").value;
                             console.log(startDate);
                             console.log(endDate);
-                            deleteCalendar(startDate, endDate, destination);
+                            deleteEvent(startDate, endDate, destination);
                             tripsRef.remove();
                             $( this ).dialog( "close" );
                             $( "#dialogDeleted" ).dialog( "open" );
