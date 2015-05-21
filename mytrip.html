@@ -290,12 +290,12 @@
                         "Confirm": function() {
                             var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
                             var tripsRef = ref.child(mytripid);
-                            var leaveCalendar = ($( "#leave" ).datepicker( "getDate" ));
-                            var backCalendar = ($( "#back" ).datepicker( "getDate" ));
+                            var startDate = ($( "#leave" ).datepicker( "getDate" ));
+                            var endDate = ($( "#back" ).datepicker( "getDate" ));
                             var destination = document.getElementById("destination").value;
-                            console.log(leaveCalendar);
-                            console.log(backCalendar);
-                            deleteCalendar(leaveCalendar, backCalendar, destination);
+                            console.log(startDate);
+                            console.log(endDate);
+                            deleteCalendar(startDate, endDate, destination);
                             tripsRef.remove();
                             $( this ).dialog( "close" );
                             $( "#dialogDeleted" ).dialog( "open" );
@@ -392,6 +392,8 @@
 //                    $( "#dialogDeleted" ).dialog( "open" );
 //                }
             }
+            
+            //UPDATE CALENDARS
             
             //Init datepickers
             $( "#back" ).datepicker({
