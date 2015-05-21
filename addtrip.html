@@ -360,9 +360,9 @@
                 }
                 
                 var leave = document.getElementById("leave").value;
-                var leaveCalendar = ($( "#leave" ).datepicker( "getDate" ));
+                var startDate = ($( "#leave" ).datepicker( "getDate" ));
                 var back = document.getElementById("back").value;
-                var backCalendar = ($( "#back" ).datepicker( "getDate" ));
+                var endDate = ($( "#back" ).datepicker( "getDate" ));
                 var destination = document.getElementById("destination").value;
                 var mycontact = document.getElementById("contactdd").value;
                 var name = sessionStorage.getItem("name");
@@ -383,7 +383,7 @@
                     name: name,
                     lastname: lastname
                 }, function(){
-                        createCalendar(leaveCalendar, backCalendar, destination, contact[mycontact][2]);
+                        createCalendar(startDate, endDate, destination, contact[mycontact][2]);
                         $( '#dialogTripAdded' ).dialog('open');
                     });
                 var tripID = newTripsRef.key();
