@@ -329,10 +329,10 @@
 
             var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
                 mytripid = sessionStorage.getItem("thistripid");
-                console.log(mytripid);
+//                console.log(mytripid);
                 ref.child(mytripid).on("value", function(snapshot) {
                 thisTrip = snapshot.val();
-                console.log(thisTrip);
+//                console.log(thisTrip);
                 document.getElementById("leave").value = thisTrip.leave;
                 $("#leave").text(thisTrip.leave);
                 document.getElementById("back").value = thisTrip.back;
@@ -361,11 +361,22 @@
                 document.getElementById("editbutton").style.visibility="hidden";
                 document.getElementById("backbutton").style.visibility="hidden";
                 document.getElementById("cancelbutton").style.visibility="visible";
+                storeOldEvent();
+            }
+            
+            function storeOldEvent() {
+                 //store values into session for updating event
+                var oldStartDate = ($( "#leave" ).datepicker( "getDate" ));
+                sessionStorage.setItem("oldStartDate", oldStartDate); //date object rather than just date
+                sessionStorage.setItem("oldEndDate", ($( "#back" ).datepicker( "getDate" ))); //date object rather than just date
+                sessionStorage.setItem("oldDestination", thisTrip.destination);
             }
         
             function updateTrip() {
                 var leave = document.getElementById("leave").value;
+                var startDate = ($( "#leave" ).datepicker( "getDate" )); //get date for event
                 var back = document.getElementById("back").value;
+                var endDate = ($( "#back" ).datepicker( "getDate" )); //get date for event
                 var destination = document.getElementById("destination").value;
                 var mycontact = document.getElementById("contactdd").value;
                 var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
@@ -380,6 +391,26 @@
                     "contactemail": contact[mycontact][3],
                     "contactphone": contact[mycontact][4]
                 });
+                //Pull stored info
+                oldStartDate = sessionStorage.getItem("oldStartDate");
+                oldEndDate = sessionStorage.getItem("oldEndDate");
+                oldDestination = sessionStorage.getItem("oldDestination");
+//                console.log(oldStartDate);
+//                console.log(oldEndDate);
+//                console.log(oldDestination);
+                //Create new event
+                console.log(startDate);
+                console.log(endDate);
+                console.log(destination);
+                console.log("Adding new event");
+                createEvent(startDate, endDate, destination, "NEW CONTACT");
+//                console.log(oldStartDate);
+//                console.log(oldEndDate);
+//                console.log(oldDestination);
+//                console.log("New event added. Deleting old event");
+//                window.setTimeout(function(){deleteOldEvent(oldStartDate, oldEndDate, oldDestination)}, 3000);
+////                deleteOldEvent(oldStartDate, oldEndDate, oldDestination);
+//                console.log("Old event deleted");
                 $( "#dialogUpdated" ).dialog( "open" );
             }
         
@@ -392,8 +423,6 @@
 //                    $( "#dialogDeleted" ).dialog( "open" );
 //                }
             }
-            
-            //UPDATE CALENDARS
             
             //Init datepickers
             $( "#back" ).datepicker({
