@@ -4,6 +4,7 @@
         <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
         <script src='https://code.jquery.com/ui/1.11.4/jquery-ui.min.js'></script>
+        <script src='js/forgot.js'></script>
         <link rel="stylesheet" href="styles/jquery-ui.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/index.css" type="text/css">
@@ -38,51 +39,5 @@
         <form name="back" action="index.html">
             <input class="backbutton" type="submit" value="Back">
         </form>
-        
-        <!-- ==================== SCRIPTS ==================== -->
-        <script>
-            ////////// DIALOG \\\\\\\\\\
-            $(function() {
-                $( "#dialogEmail" ).dialog({
-                    autoOpen: false,
-                    modal: true,
-                    dialogClass: "dlg-no-close",
-                    buttons: {
-                        "OK": function() {
-                            $( this ).dialog( "close" );
-                            window.location = "index.html";
-                        }
-                    }
-                });
-            });
-            
-            $(function() {
-                $( "#dialogEmailErr" ).dialog({
-                    autoOpen: false,
-                    modal: true,
-                    dialogClass: "dlg-no-close",
-                    buttons: {
-                        "OK": function() {
-                            $( this ).dialog( "close" );
-                        }
-                    }
-                });
-            });
-            
-            ////////// MAIN SCRIPTS \\\\\\\\\\
-            function passReset() {
-                username = document.getElementById("name").value;
-                var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts");
-                ref.resetPassword({
-                    email : username
-                }, function(error) {
-                    if (error === null) {
-                        $( "#dialogEmail" ).dialog( "open" );
-                    } else {
-                        $( "#dialogEmailErr" ).dialog( "open" );
-                    }
-                });
-            }
-        </script>
     </body>
 </html>
