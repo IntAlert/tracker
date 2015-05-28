@@ -243,9 +243,8 @@
             
             function sendSMS() {
                 console.log("StartingSMSSend");
-                var intent = ""; //auto sms send
                 var message = "SOS Test";
-                var number = 07947476240;
+                var number = "07947476240";
 //                var success = function () { alert('Message sent successfully'); };
                 var error = function(e) {
                     $( '#dialogSMSError .ErrorMessage' ).text("SMS SEND ERROR:" + e);
@@ -254,7 +253,7 @@
                 };
                 isSMSWaiting = true;
                 console.log("SMS Waiting true");
-                sms.send(number, message, intent, SOS_saved, error);
+                sms.send(number, message, {android: {intent:""}}, SOS_saved, error);
                 setTimeout(function(){
                     if (isSMSWaiting == true) {
                         $( '#dialogSMSError .ErrorMessage' ).text("Your SMS has not been sent due to lack of signal, but we are still trying.");
