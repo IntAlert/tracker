@@ -24,7 +24,7 @@
         <div id="dialogLogout" title="Log Out">If you continue, you will be logged out. Are you sure you want to do this?</div>
         <div id="dialogSOS" title="Confirm SOS">If you continue, an SOS message will be sent and your location will be used. Are you sure you want to do this?</div>
         <div id="dialogSOSConfirmed" title="Confirm SOS">SOS confirmed.</div>
-        <div id="dialogSMSError" title="Error"><div class="ErrorMessage"></div><img src="icons2/loading.gif"></div>
+        <div id="dialogSMSError" title="Error"><div class="ErrorMessage"></div><img width="40%" src="icons2/loading.gif"></div>
         <div id="dialogLoggedOut" title="Logged Out">User is logged out.</div>
         <div id="dialogNoGeo" title="Error">Geolocation not supported.</div>
         
@@ -71,6 +71,7 @@
                     dialogClass: "dlg-no-close",
                     buttons: {
                         "Confirm": function() {
+                            addSOS();
                             getLocation();
                             $( this ).dialog( "close" );
                         },
@@ -179,20 +180,22 @@
             }
             
             function showError(error) {
+                var msg = "";
                 switch(error.code) {
                 case error.PERMISSION_DENIED:
-                    x.innerHTML = "User denied the request for Geolocation."
+                    msg = "User denied the request for Geolocation."
                     break;
                 case error.POSITION_UNAVAILABLE:
-                    x.innerHTML = "Location information is unavailable."
+                    msg = "Location information is unavailable."
                     break;
                 case error.TIMEOUT:
-                    x.innerHTML = "The request to get user location timed out."
+                    msg = "The request to get user location timed out."
                     break;
                 case error.UNKNOWN_ERROR:
-                    x.innerHTML = "An unknown error occurred."
+                    msg = "An unknown error occurred."
                     break;
                 }
+                console.log(msg);
             }
             
             function getPosition(position) { //NO SIGNAL MEANS IT HANGS HERE UNTIL SIGNAL REGAINED?
@@ -245,7 +248,7 @@
                 var number = 07947476240;
 //                var success = function () { alert('Message sent successfully'); };
                 var error = function(e) {
-                    $( '#dialogSMSError .ErrorMessage' ).text(e);
+                    $( '#dialogSMSError .ErrorMessage' ).text("SMS SEND ERROR:" + e);
                     $( '#dialogSMSError' ).dialog('open');
 //                    alert('Message Failed:' + e);
                 };
@@ -258,7 +261,7 @@
                         
                         $( '#dialogSMSError' ).dialog('open');
                     }
-                },2000)
+                },5000)
             }
         </script>
     </body>
