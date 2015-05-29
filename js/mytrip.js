@@ -1,3 +1,40 @@
+$(function() {
+    //HIDING AND UNHIDING BUTTONS/INPUTS
+    document.getElementById("updatebutton").style.visibility="hidden";
+    document.getElementById("deletebutton").style.visibility="hidden";
+    document.getElementById("editbutton").style.visibility="visible";
+    document.getElementById("backbutton").style.visibility="visible";
+    document.getElementById("cancelbutton").style.visibility="hidden";
+    
+    //Init datepickers
+    $( "#back" ).datepicker({
+        dateFormat: "dd/mm/yy",
+        minDate: 0,
+        showOn: "button",
+        buttonImage: "icons2/datepicker.png",
+        buttonImageOnly: true,
+        onSelect: function(dateText){
+            $( "#back" ).text(dateText);
+        }
+    });
+    $( "#leave" ).datepicker({
+        dateFormat: "dd/mm/yy",
+        minDate: 0,
+        showOn: "button",
+        buttonImage: "icons2/datepicker.png",
+        buttonImageOnly: true,
+        onSelect: function(dateText){
+            $( "#leave" ).text(dateText);
+            var date1 = $("#leave").datepicker("getDate");          
+            var date = new Date( Date.parse( date1 ) );
+            date.setDate( date.getDate());       
+            var newDate = date.toDateString();
+            newDate = new Date( Date.parse( newDate ) );                     
+            $("#back").datepicker("option","minDate",newDate);
+        }
+    });
+});
+
 ////////// DIALOG \\\\\\\\\\
 $(function() {
     $( "#dialogUpdated" ).dialog({
@@ -89,33 +126,27 @@ var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
     $("#back").datepicker('disable');
     });
 
-//HIDING AND UNHIDING BUTTONS/INPUTS
-document.getElementById("updatebutton").style.visibility="hidden";
-document.getElementById("deletebutton").style.visibility="hidden";
-document.getElementById("editbutton").style.visibility="visible";
-document.getElementById("backbutton").style.visibility="visible";
-document.getElementById("cancelbutton").style.visibility="hidden";
-function toggledisabled() {
-    document.getElementById("destination").disabled=false;
-    document.getElementById("contactdd").disabled=false;
-    $("#leave").datepicker('enable');
-    $("#back").datepicker('enable');
-    document.getElementById("leave").disabled=true;
-    document.getElementById("back").disabled=true;
-    document.getElementById("updatebutton").style.visibility="visible";
-    document.getElementById("deletebutton").style.visibility="visible";
-    document.getElementById("editbutton").style.visibility="hidden";
-    document.getElementById("backbutton").style.visibility="hidden";
-    document.getElementById("cancelbutton").style.visibility="visible";
-    storeOldEvent();
+function storeOldEvent() {
+         //store values into session for updating event
+        var oldStartDate = ($( "#leave" ).datepicker( "getDate" ));
+        sessionStorage.setItem("oldStartDate", oldStartDate); //date object rather than just date
+        sessionStorage.setItem("oldEndDate", ($( "#back" ).datepicker( "getDate" ))); //date object rather than just date
+        sessionStorage.setItem("oldDestination", thisTrip.destination);
 }
 
-function storeOldEvent() {
-     //store values into session for updating event
-    var oldStartDate = ($( "#leave" ).datepicker( "getDate" ));
-    sessionStorage.setItem("oldStartDate", oldStartDate); //date object rather than just date
-    sessionStorage.setItem("oldEndDate", ($( "#back" ).datepicker( "getDate" ))); //date object rather than just date
-    sessionStorage.setItem("oldDestination", thisTrip.destination);
+function toggledisabled() {
+        document.getElementById("destination").disabled=false;
+        document.getElementById("contactdd").disabled=false;
+        $("#leave").datepicker('enable');
+        $("#back").datepicker('enable');
+        document.getElementById("leave").disabled=true;
+        document.getElementById("back").disabled=true;
+        document.getElementById("updatebutton").style.visibility="visible";
+        document.getElementById("deletebutton").style.visibility="visible";
+        document.getElementById("editbutton").style.visibility="hidden";
+        document.getElementById("backbutton").style.visibility="hidden";
+        document.getElementById("cancelbutton").style.visibility="visible";
+        storeOldEvent();
 }
 
 function updateTrip() {
@@ -162,38 +193,4 @@ function updateTrip() {
 
 function deleteTrip() {
     $( "#dialogConfirm" ).dialog( "open");
-//                if (window.confirm("Are you sure you want to delete this trip?")) {
-//                    var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
-//                    var tripsRef = ref.child(mytripid);
-//                    tripsRef.remove();
-//                    $( "#dialogDeleted" ).dialog( "open" );
-//                }
 }
-
-//Init datepickers
-$( "#back" ).datepicker({
-    dateFormat: "dd/mm/yy",
-    minDate: 0,
-    showOn: "button",
-    buttonImage: "icons2/datepicker.png",
-    buttonImageOnly: true,
-    onSelect: function(dateText){
-        $( "#back" ).text(dateText);
-    }
-});
-$( "#leave" ).datepicker({
-    dateFormat: "dd/mm/yy",
-    minDate: 0,
-    showOn: "button",
-    buttonImage: "icons2/datepicker.png",
-    buttonImageOnly: true,
-    onSelect: function(dateText){
-        $( "#leave" ).text(dateText);
-        var date1 = $("#leave").datepicker("getDate");          
-        var date = new Date( Date.parse( date1 ) );
-        date.setDate( date.getDate());       
-        var newDate = date.toDateString();
-        newDate = new Date( Date.parse( newDate ) );                     
-        $("#back").datepicker("option","minDate",newDate);
-    }
-});
