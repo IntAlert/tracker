@@ -1,3 +1,34 @@
+$(function() {
+    //Init datepickers
+    $( "#back" ).datepicker({
+        dateFormat: "dd/mm/yy",
+        minDate: 0,
+        showOn: "button",
+        buttonImage: "icons2/datepicker.png",
+        buttonImageOnly: true,
+        onSelect: function(dateText){
+            $( "#back" ).text(dateText);
+        }
+    });
+    $( "#leave" ).datepicker({
+        dateFormat: "dd/mm/yy",
+        minDate: 0,
+        showOn: "button",
+        buttonImage: "icons2/datepicker.png",
+        buttonImageOnly: true,
+        onSelect: function(dateText){
+            $( "#leave" ).text(dateText);
+            var date1 = $("#leave").datepicker("getDate");          
+            var date = new Date( Date.parse( date1 ) );
+            date.setDate( date.getDate());       
+            var newDate = date.toDateString();
+            newDate = new Date( Date.parse( newDate ) );                     
+            $("#back").datepicker("option","minDate",newDate);
+        }
+    });
+});
+
+
 ////////// DIALOG \\\\\\\\\\
 $(function() {
     $( "#dialogTripAdded" ).dialog({
@@ -172,31 +203,3 @@ function validateForm() {
     }
     addTrip();
 }
-
-//Init datepickers
-$( "#back" ).datepicker({
-    dateFormat: "dd/mm/yy",
-    minDate: 0,
-    showOn: "button",
-    buttonImage: "icons2/datepicker.png",
-    buttonImageOnly: true,
-    onSelect: function(dateText){
-        $( "#back" ).text(dateText);
-    }
-});
-$( "#leave" ).datepicker({
-    dateFormat: "dd/mm/yy",
-    minDate: 0,
-    showOn: "button",
-    buttonImage: "icons2/datepicker.png",
-    buttonImageOnly: true,
-    onSelect: function(dateText){
-        $( "#leave" ).text(dateText);
-        var date1 = $("#leave").datepicker("getDate");          
-        var date = new Date( Date.parse( date1 ) );
-        date.setDate( date.getDate());       
-        var newDate = date.toDateString();
-        newDate = new Date( Date.parse( newDate ) );                     
-        $("#back").datepicker("option","minDate",newDate);
-    }
-});
