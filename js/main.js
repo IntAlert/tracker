@@ -88,6 +88,7 @@ $(function() {
 ////////// MAIN SCRIPTS \\\\\\\\\\ 
 var myID = "";
 var uName = "";
+var uLastname = "";
 var email = sessionStorage.getItem("email");
 function authDataCallback(authData) {
     if (authData) {
@@ -105,8 +106,8 @@ var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts/");
 // Attach an asynchronous callback to read the data at our posts reference
 ref.orderByChild("email").equalTo(email).on("child_added", function(snapshot) {
     var userid = snapshot.val();
-    var uName = userid.name;
-    var uLastname = userid.lastname;
+    uName = userid.name;
+    uLastname = userid.lastname;
     sessionStorage.setItem("name", uName);
     sessionStorage.setItem("lastname", uLastname);
     document.getElementById("welcome").innerHTML = "Welcome " + uName;
@@ -194,7 +195,7 @@ function SOS_saved(error) {
 
 function sendSMS() {
     console.log("StartingSMSSend");
-    var message = "SOS raised by " + uName;
+    var message = "SOS raised by " + uName + " " + uLastname + ".";
     var number = "07947476240";
 //                var success = function () { alert('Message sent successfully'); };
     var error = function(e) {
