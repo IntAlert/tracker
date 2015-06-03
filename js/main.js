@@ -22,7 +22,7 @@ $(function() {
         dialogClass: "dlg-no-close",
         buttons: {
             "Confirm": function() {
-                addSOS();
+                sendSMS();
                 getLocation();
                 $( this ).dialog( "close" );
             },
@@ -126,7 +126,7 @@ function getLocation() {
         console.log("Geo NOT supported");
         $( '#dialogNoGeo' ).dialog('open');
 //                    alert("Geolocation not supported.");
-        sendSMS();
+//        sendSMS();
     }
 }
 
@@ -170,8 +170,8 @@ function addSOS() {
     var lastname = sessionStorage.getItem("lastname");
     var lat = sessionStorage.getItem("lat");
     var lon = sessionStorage.getItem("lon");
-    console.log("AboutToSendSMS");
-    sendSMS();
+//    console.log("AboutToSendSMS");
+//    sendSMS();
 
     var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/");
     var sosRef = ref.child("sos");
@@ -194,7 +194,7 @@ function SOS_saved(error) {
 
 function sendSMS() {
     console.log("StartingSMSSend");
-    var message = "SOS Test";
+    var message = "SOS raised by " + uName;
     var number = "07947476240";
 //                var success = function () { alert('Message sent successfully'); };
     var error = function(e) {
