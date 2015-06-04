@@ -161,24 +161,24 @@ function addTrip() {
 
 }
 
-    var count = 1;
-    var contact = [];
-    var myText = "";
-    var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts");
-    ref.on("child_added", function(snapshot) {
-    newContact = snapshot.val();
-    contact[count] = new Array(4);
-    contact[count][1] = newContact.name;
-    contact[count][2] = newContact.fullname;
-    contact[count][3] = newContact.email;
-    contact[count][4] = newContact.phone;
-    document.getElementById("contactdd");
-    var optn = document.createElement("OPTION");
-        optn.text = contact[count][2] + " | " + contact[count][3];
-        optn.value = snapshot.key();
-        contactdd.options.add(optn);
-    count = count + 1; 
-    });
+var count = 1;
+var contact = [];
+var myText = "";
+var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts");
+ref.on("child_added", function(snapshot) {
+newContact = snapshot.val();
+contact[count] = new Array(4);
+contact[count][1] = newContact.name;
+contact[count][2] = newContact.fullname;
+contact[count][3] = newContact.email;
+contact[count][4] = newContact.phone;
+document.getElementById("contactdd");
+var optn = document.createElement("OPTION");
+    optn.text = contact[count][2] + " | " + contact[count][3];
+    optn.value = snapshot.key();
+    contactdd.options.add(optn);
+count = count + 1; 
+});
 
 function validateForm() {
     if(document.tripdetails.leave.value == "") {

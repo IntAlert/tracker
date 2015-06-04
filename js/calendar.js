@@ -95,13 +95,15 @@ function deleteEvent(startDate, endDate, destination) {
 }
 
 function deleteOldEvent(oldStartDate, oldEndDate, oldDestination) {
+    var oldStartDate = new Date(oldStartDate);
+    var oldEndDate = new Date(oldEndDate);
     console.log("Im in");
     var title = "International Alert Trip: " + oldDestination;
     var success = function(message) { alert("Success: " + JSON.stringify(message)); };
     var error = function(message) { alert("Error: " + message); };
     console.log(title);
-    console.log(oldStartDate);
-    console.log(oldEndDate);
+    console.log(typeof oldStartDate);
+    console.log(typeof oldEndDate);
     console.log(oldDestination);
 //    // delete an event (you can pass nulls for irrelevant parameters, note that on Android `notes` is ignored). The dates are mandatory and represent a date range to delete events in.
 //    // note that on iOS there is a bug where the timespan must not be larger than 4 years, see issue 102 for details.. call this method multiple times if need be
