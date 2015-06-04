@@ -86,3 +86,7 @@ h3{
     overflow: hidden;
     max-width: 10%;
 }
+
+.loading {
+    text-align: center;
+}

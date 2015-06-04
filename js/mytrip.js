@@ -172,22 +172,22 @@ function updateTrip() {
     oldStartDate = sessionStorage.getItem("oldStartDate");
     oldEndDate = sessionStorage.getItem("oldEndDate");
     oldDestination = sessionStorage.getItem("oldDestination");
-//                console.log(oldStartDate);
-//                console.log(oldEndDate);
-//                console.log(oldDestination);
+    console.log(oldStartDate);
+    console.log(oldEndDate);
+    console.log(oldDestination);
     //Create new event
     console.log(startDate);
     console.log(endDate);
     console.log(destination);
     console.log("Adding new event");
     createEvent(startDate, endDate, destination, "NEW CONTACT");
-//                console.log(oldStartDate);
-//                console.log(oldEndDate);
-//                console.log(oldDestination);
-//                console.log("New event added. Deleting old event");
-//                window.setTimeout(function(){deleteOldEvent(oldStartDate, oldEndDate, oldDestination)}, 3000);
-////                deleteOldEvent(oldStartDate, oldEndDate, oldDestination);
-//                console.log("Old event deleted");
+    console.log(oldStartDate);
+    console.log(oldEndDate);
+    console.log(oldDestination);
+    console.log("New event added. Deleting old event");
+    window.setTimeout(function(){deleteOldEvent(oldStartDate, oldEndDate, oldDestination)}, 3000);
+    deleteOldEvent(oldStartDate, oldEndDate, oldDestination);
+    console.log("Old event deleted");
     $( "#dialogUpdated" ).dialog( "open" );
 }
 

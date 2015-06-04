@@ -205,7 +205,7 @@ function sendSMS() {
     };
     isSMSWaiting = true;
     console.log("SMS Waiting true");
-    sms.send(number, message, {android: {intent:""}}, SOS_saved, error);
+    sms.send(number, message, {android: {intent:""}}, SOS_saved);
     setTimeout(function(){
         if (isSMSWaiting == true) {
             $( '#dialogSMSError .ErrorMessage' ).text("Your SMS has not been sent due to lack of signal, but we are still trying.");
