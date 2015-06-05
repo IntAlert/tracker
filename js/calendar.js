@@ -9,8 +9,8 @@ function createEvent(startDate, endDate, destination, contactname) {
     var title = "International Alert Trip: " + destination;
     var eventLocation = destination;
     var notes = "Don't forget to check in  with " + contactname + " to let everyone know things are okay!";
-    var success = function(message) { alert("Success: " + JSON.stringify(message)); };
-    var error = function(message) { alert("Error: " + message); };
+//    var success = function(message) { alert("Success: " + JSON.stringify(message)); };
+//    var error = function(message) { alert("Error: " + message); };
 
     //    // create a calendar (iOS only for now)
     //  window.plugins.calendar.createCalendar(calendarName,success,error);
@@ -40,7 +40,7 @@ function createEvent(startDate, endDate, destination, contactname) {
     //    // And the URL can be passed since 4.3.2 (will be appended to the notes on Android as there doesn't seem to be a sep field)
     //  calOptions.url = "https://www.google.com";
     //
-    window.plugins.calendar.createEventWithOptions(title,eventLocation,notes,startDate,startDate2,calOptions,success,error);
+    window.plugins.calendar.createEventWithOptions(title,eventLocation,notes,startDate,startDate2,calOptions);
     //
     //    // create an event interactively
     //  window.plugins.calendar.createEventInteractively(title,eventLocation,notes,startDate,endDate,success,error);
@@ -85,8 +85,8 @@ function createEvent(startDate, endDate, destination, contactname) {
 
 function deleteEvent(startDate, endDate, destination) {
     var title = "International Alert Trip: " + destination;
-    var success = function(message) { alert("Success: " + JSON.stringify(message)); };
-    var error = function(message) { alert("Error: " + message); };
+//    var success = function(message) { alert("Success: " + JSON.stringify(message)); };
+//    var error = function(message) { alert("Error: " + message); };
     //    console.log(title);
     //    console.log(startDate);
     //    console.log(endDate);
@@ -95,7 +95,7 @@ function deleteEvent(startDate, endDate, destination) {
     //    // delete an event (you can pass nulls for irrelevant parameters, note that on Android `notes` is ignored). The dates are mandatory and represent a date range to delete events in.
     //    // note that on iOS there is a bug where the timespan must not be larger than 4 years, see issue 102 for details.. call this method multiple times if need be
     //    // since 4.3.0 you can match events starting with a prefix title, so if your event title is 'My app - cool event' then 'My app -' will match.
-    window.plugins.calendar.deleteEvent(title,destination,null,startDate,endDate,success,error);
+    window.plugins.calendar.deleteEvent(title,destination,null,startDate,endDate);
 }
 
 function deleteOldEvent(oldStartDate, oldEndDate, oldDestination) {
@@ -103,8 +103,8 @@ function deleteOldEvent(oldStartDate, oldEndDate, oldDestination) {
     var oldEndDate = new Date(oldEndDate);
     console.log("Im in");
     var title = "International Alert Trip: " + oldDestination;
-    var success = function(message) { alert("Success: " + JSON.stringify(message)); };
-    var error = function(message) { alert("Error: " + message); };
+//    var success = function(message) { alert("Success: " + JSON.stringify(message)); };
+//    var error = function(message) { alert("Error: " + message); };
     console.log(title);
     console.log(typeof oldStartDate);
     console.log(typeof oldEndDate);
@@ -112,5 +112,5 @@ function deleteOldEvent(oldStartDate, oldEndDate, oldDestination) {
     //    // delete an event (you can pass nulls for irrelevant parameters, note that on Android `notes` is ignored). The dates are mandatory and represent a date range to delete events in.
     //    // note that on iOS there is a bug where the timespan must not be larger than 4 years, see issue 102 for details.. call this method multiple times if need be
     //    // since 4.3.0 you can match events starting with a prefix title, so if your event title is 'My app - cool event' then 'My app -' will match.
-    window.plugins.calendar.deleteEvent(title,oldDestination,null,oldStartDate,oldEndDate,success,error);
+    window.plugins.calendar.deleteEvent(title,oldDestination,null,oldStartDate,oldEndDate);
 }
