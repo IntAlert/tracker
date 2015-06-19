@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>View Current Info</title>
+        <script src='js/firebase.js'></script>
+        <script src='js/jquery.min.js'></script>
+        <script src='js/jquery-ui.min.js'></script>
+        <script src='js/currentinfo.js'></script>
+        <link rel="stylesheet" href="css/jquery-ui.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/currentinfo.css" type="text/css">
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+        <style>
+		.dlg-no-close .ui-dialog-titlebar-close {
+			display: none;
+		}
+        #dialogError {
+            display: none;   
+        }
+        </style>
+    </head>
+    
+    <body>
+        <div id="dialogError" title="Error">Local Storage not supported.</div>
+        
+        <div class="page-header container text-center">
+            <h1>International Alert Security App</h1>
+        </div>
+        <div class="container text-center">
+            <h3>Current Trip Info</h3>
+        </div>
+        <div id="container" class="container text-center">
+            <div class="container text-center">
+                <p id="trip"></p>
+                <br>
+            </div>
+            <form name="back" action="main.html">
+                <input class="backbutton" type="submit" value="Back">
+            </form>
+        </div>
+    </body>
+</html>
