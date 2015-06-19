@@ -36,7 +36,11 @@ $(function() {
         modal: true,
         dialogClass: "dlg-no-close",
         buttons: {
-            "OK": function() {
+            "Yes": function() {
+                $( this ).dialog( "close" );
+                window.location.reload();
+            },
+            "No": function() {
                 $( this ).dialog( "close" );
                 window.location = "main.html";
             }

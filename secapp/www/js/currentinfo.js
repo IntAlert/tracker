@@ -29,27 +29,51 @@ ref.onAuth(authDataCallback);
 var count = 0;
 var triggered = false;
 var trip = [];
-var myText = "";
+//GRAB DATA FROM DATABASE
 var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
 ref.orderByChild("email").equalTo(email).on("child_added", function(snapshot) {
-newTrip = snapshot.val();
-trip[count] = new Array(4);
-trip[count][1] = newTrip.destination;
-trip[count][2] = newTrip.leave;
-trip[count][3] = newTrip.back;
-trip[count][4] = snapshot.key();
-myText += "<button onClick='displayTrip("+count+")' id='trips'><b>Destination: </b>" + trip[count][1] + "<br><b>Departing: </b>" + trip[count][2] + "<br><b>Returning: </b>" + trip[count][3] + "</button>";
-count = count + 1;
-if(count>5 && triggered == false) {
-    triggered = true;
-    myText = '<form name="back" action="main.html"><input class="backbutton" type="submit" value="Back"></form><br>' + myText;
-}
-document.getElementById("trip").innerHTML = myText;    
+    newTrip = snapshot.val();
+    newTrip.key = snapshot.key();
+    trip.push(newTrip);
+    updateList();
 });
 
-function displayTrip(count) {
+//SORT RESULTS BY DATE
+function updateList() {
+    //SORT
+    var tripsSorted = trip.sort(sortingFn);
+    //CLEAR
+    $("#trip").empty();
+    //GO THROUGH EACH TRIP
+    $(tripsSorted).each(function(){
+    //INJECT
+        var myText = "<button onClick='displayTrip(\""+this.key+"\")' id='trips'><b>Destination: </b>" + this.destination + "<br><b>Departing: </b>" + this.leave + "<br><b>Returning: </b>" + this.back + "</button>";
+// count = count + 1;
+//if(count>5 && triggered == false) {
+//    triggered = true;
+//    myText = '<form name="back" action="main.html"><input class="backbutton" type="submit" value="Back"></form><br>' + myText;
+//}
+        $("#trip").append(myText);
+    });
+}
+
+function sortingFn(tripA,tripB) {
+    var tripADate = parseDMY(tripA.leave);
+    var tripBDate = parseDMY(tripB.leave);
+    return ((tripADate < tripBDate) ? -1 : ((tripADate > tripBDate) ? 1 : 0));
+}
+
+function parseDMY(value) {
+    var date = value.split("/");
+    var d = parseInt(date[0], 10),
+        m = parseInt(date[1], 10),
+        y = parseInt(date[2], 10);
+    return new Date(y, m - 1, d);
+}
+
+function displayTrip(key) {
     if(typeof(Storage) !== "undefined") {
-        sessionStorage.setItem("thistripid", trip[count][4]);
+        sessionStorage.setItem("thistripid", key);
         window.location = "mytrip.html";
     } else {
         $( "#dialogError" ).dialog( "open" );
