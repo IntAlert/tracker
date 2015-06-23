@@ -165,3 +165,11 @@ a:active{
     text-decoration: bold;
     width: 60%;
 }
+
+.dlg-no-close .ui-dialog-titlebar-close {
+    display: none;
+}
+
+#dialogEmail #dialogPass {
+    diplay: none;   
+}

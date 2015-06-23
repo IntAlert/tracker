@@ -12,9 +12,8 @@ $(function() {
     });
 });
 
-
 ////////// MAIN SCRIPTS \\\\\\\\\\
-var myID = ""; // THIS IS GLOBAL!!!!!!!!!
+var myID = "";
 var uName = "";
 var email = sessionStorage.getItem("email");
 function authDataCallback(authData) {

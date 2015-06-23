@@ -95,7 +95,6 @@ function authDataCallback(authData) {
     myID = authData.uid.substring(12,16);
     } else {
         $( '#dialogLoggedOut' ).dialog('open');
-//                    alert("User is logged out");
     }
 }
 // Register the callback to be fired every time auth state changes
@@ -103,7 +102,6 @@ var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/");
 ref.onAuth(authDataCallback);
 // Get a reference to our posts
 var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts/");
-// Attach an asynchronous callback to read the data at our posts reference
 ref.orderByChild("email").equalTo(email).on("child_added", function(snapshot) {
     var userid = snapshot.val();
     uName = userid.name;
@@ -126,8 +124,6 @@ function getLocation() {
     else{ //If not Supported
         console.log("Geo NOT supported");
         $( '#dialogNoGeo' ).dialog('open');
-//                    alert("Geolocation not supported.");
-//        sendSMS();
     }
 }
 
@@ -150,7 +146,7 @@ function showError(error) {
     console.log(msg);
 }
 
-function getPosition(position) { //NO SIGNAL MEANS IT HANGS HERE UNTIL SIGNAL REGAINED?
+function getPosition(position) {
     console.log("GetPosition");
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
@@ -161,18 +157,11 @@ function getPosition(position) { //NO SIGNAL MEANS IT HANGS HERE UNTIL SIGNAL RE
 }
 
 function addSOS() {
-    //var leave = document.getElementById("leave").value;
-    //var back = document.getElementById("back").value;
-    //var destination = document.getElementById("destination").value;
-    //var mycontact = document.getElementById("contactdd").value;
-
     var email = sessionStorage.getItem("email");
     var name = sessionStorage.getItem("name");
     var lastname = sessionStorage.getItem("lastname");
     var lat = sessionStorage.getItem("lat");
     var lon = sessionStorage.getItem("lon");
-//    console.log("AboutToSendSMS");
-//    sendSMS();
 
     var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/");
     var sosRef = ref.child("sos");
@@ -197,11 +186,9 @@ function sendSMS() {
     console.log("StartingSMSSend");
     var message = "SOS raised by " + uName + " " + uLastname + ".";
     var number = "07947476240";
-//                var success = function () { alert('Message sent successfully'); };
     var error = function(e) {
         $( '#dialogSMSError .ErrorMessage' ).text("SMS SEND ERROR:" + e);
         $( '#dialogSMSError' ).dialog('open');
-//                    alert('Message Failed:' + e);
     };
     isSMSWaiting = true;
     console.log("SMS Waiting true");
@@ -209,7 +196,6 @@ function sendSMS() {
     setTimeout(function(){
         if (isSMSWaiting == true) {
             $( '#dialogSMSError .ErrorMessage' ).text("Your SMS has not been sent due to lack of signal, but we are still trying.");
-
             $( '#dialogSMSError' ).dialog('open');
         }
     },5000)

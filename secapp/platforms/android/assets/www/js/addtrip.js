@@ -28,7 +28,6 @@ $(function() {
     });
 });
 
-
 ////////// DIALOG \\\\\\\\\\
 $(function() {
     $( "#dialogTripAdded" ).dialog({
@@ -114,12 +113,11 @@ $(function() {
 });
 
 ////////// MAIN SCRIPTS \\\\\\\\\\
-var myID = ""; // THIS IS GLOBAL!!!!!!!!!
+var myID = "";
 var uName = "";
 function authDataCallback(authData) {
     if (authData) {
     myID = authData.uid.substring(12,16);
-    //myID = sessionStorage.setItem("userid");
     } 
 }             
 // Register the callback to be fired every time auth state changes
@@ -133,7 +131,6 @@ function addTrip() {
         $( '#dialogNoSignal' ).dialog('open');
         return;
     }
-
     var leave = document.getElementById("leave").value;
     var startDate = ($( "#leave" ).datepicker( "getDate" )); //get date for event
     var back = document.getElementById("back").value;
@@ -162,7 +159,6 @@ function addTrip() {
             $( '#dialogTripAdded' ).dialog('open');
         });
     var tripID = newTripsRef.key();
-
 }
 
 var count = 1;
