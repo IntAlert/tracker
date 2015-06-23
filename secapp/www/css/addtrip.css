@@ -107,7 +107,11 @@ div.tripdetails p {
     float: right;
     width: 42%;
 }
-/*Only modify position of input[type=text]*/
+
+select.input {
+    width: 50%
+}
+
 input.input {
     margin-right: 30px;
 }
@@ -115,16 +119,6 @@ input.input {
 select.input {
     width: 50%
 }
-
-/*Only modify position of input[type=text]*/
-input.input {
-    margin-right: 30px;
-}
-
-select.input {
-    width: 50%
-}
-
 
 a {
     color: #ffffff;
@@ -140,4 +134,12 @@ div.datepick {
     float: right;
     position:absolute;
     right:0;
+}
+
+.dlg-no-close .ui-dialog-titlebar-close {
+    display: none;
+}
+
+#dialogTripAdded, #dialogValLeave, #dialogValReturn, #dialogValDest, #dialogValContact, #dialogNoSignal {
+    diplay: none;   
 }

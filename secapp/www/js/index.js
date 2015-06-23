@@ -25,6 +25,18 @@ $(function() {
     });
 });
 
+$(function() {
+    $( "#dialogError" ).dialog({
+        autoOpen: false,
+        modal: true,
+        dialogClass: "dlg-no-close",
+        buttons: {
+            "OK": function() {
+                $( this ).dialog( "close" );
+            }
+        }
+    });
+});
 
 ////////// MAIN SCRIPTS \\\\\\\\\\          
 function firstRun() {
@@ -60,10 +72,12 @@ if (password === "") {
 // Create a callback to handle the result of the authentication
 function authHandler(error, authData) {
 if (error) {
-    alert("Login Failed! " + error);
-} else {
-    window.location="main.html";
-}
+    $( "#dialogErrorText" ).text(error);
+    $( "#dialogError" ).dialog( "open" );
+//    alert("Login Failed! " + error);
+    } else {
+        window.location="main.html";
+    }
 }
 
 function forgotPass() {

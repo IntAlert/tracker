@@ -90,3 +90,11 @@ h3{
 .loading {
     text-align: center;
 }
+
+.dlg-no-close .ui-dialog-titlebar-close {
+    display: none;
+}
+
+#dialogLogout #dialogSOS #dialogSOSConfirmed {
+    diplay: none;   
+}

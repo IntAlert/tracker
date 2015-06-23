@@ -205,7 +205,6 @@ h3{
     width: 42%;
 }
 
-/*Only modify position of input[type=text]*/
 input.input {
     margin-right: 30px;
 }
@@ -213,7 +212,6 @@ input.input {
 select.input {
     width: 50%
 }
-
 
 a {
     color: #ffffff;
@@ -229,4 +227,12 @@ div.datepick {
     float: right;
     position: absolute;
     right: 0;
+}
+
+.dlg-no-close .ui-dialog-titlebar-close {
+    display: none;
+}
+
+#dialogError {
+    display: none;   
 }
