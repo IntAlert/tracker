@@ -12,9 +12,8 @@ $(function() {
     });
 });
 
-
 ////////// MAIN SCRIPTS \\\\\\\\\\
-var myID = ""; // THIS IS GLOBAL!!!!!!!!!
+var myID = "";
 var uName = "";
 var email = sessionStorage.getItem("email");
 function authDataCallback(authData) {
@@ -45,14 +44,14 @@ function updateList() {
     //CLEAR
     $("#trip").empty();
     //GO THROUGH EACH TRIP
-    $(tripsSorted).each(function(){
+    $(tripsSorted).each(function(count){
     //INJECT
         var myText = "<button onClick='displayTrip(\""+this.key+"\")' id='trips'><b>Destination: </b>" + this.destination + "<br><b>Departing: </b>" + this.leave + "<br><b>Returning: </b>" + this.back + "</button>";
-// count = count + 1;
-//if(count>5 && triggered == false) {
-//    triggered = true;
-//    myText = '<form name="back" action="main.html"><input class="backbutton" type="submit" value="Back"></form><br>' + myText;
-//}
+        if(count>5 && triggered == false) {
+        triggered = true;
+        extraBackButton = '<form name="back" action="main.html"><input class="backbutton" type="submit" value="Back"></form><br>';
+        $("#trip").prepend(extraBackButton);
+        }
         $("#trip").append(myText);
     });
 }

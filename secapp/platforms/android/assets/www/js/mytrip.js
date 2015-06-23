@@ -71,15 +71,19 @@ $(function() {
         dialogClass: "dlg-no-close",
         buttons: {
             "Confirm": function() {
-                var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
-                var tripsRef = ref.child(mytripid);
+                var myfb = "https://crackling-fire-1447.firebaseio.com/trips/" + mytripid;
+                var ref = new Firebase(myfb);
+                console.log(myfb);
+//                console.log("mytripid: " + mytripid);
+//                var tripsRef = ref.child(mytripid);
                 var startDate = ($( "#leave" ).datepicker( "getDate" ));
                 var endDate = ($( "#back" ).datepicker( "getDate" ));
                 var destination = document.getElementById("destination").value;
                 console.log(startDate);
                 console.log(endDate);
                 deleteEvent(startDate, endDate, destination);
-                tripsRef.remove();
+                console.log("cal func called");
+                ref.remove();
                 $( this ).dialog( "close" );
                 $( "#dialogDeleted" ).dialog( "open" );
             },

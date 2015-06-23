@@ -71,15 +71,13 @@ $(function() {
         dialogClass: "dlg-no-close",
         buttons: {
             "Confirm": function() {
-                var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
-                var tripsRef = ref.child(mytripid);
+                var myfb = "https://crackling-fire-1447.firebaseio.com/trips/" + mytripid;
+                var ref = new Firebase(myfb);
                 var startDate = ($( "#leave" ).datepicker( "getDate" ));
                 var endDate = ($( "#back" ).datepicker( "getDate" ));
                 var destination = document.getElementById("destination").value;
-                console.log(startDate);
-                console.log(endDate);
                 deleteEvent(startDate, endDate, destination);
-                tripsRef.remove();
+                ref.remove();
                 $( this ).dialog( "close" );
                 $( "#dialogDeleted" ).dialog( "open" );
             },
@@ -112,10 +110,8 @@ count = count + 1;
 
 var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
     mytripid = sessionStorage.getItem("thistripid");
-//                console.log(mytripid);
     ref.child(mytripid).on("value", function(snapshot) {
     thisTrip = snapshot.val();
-//                console.log(thisTrip);
     document.getElementById("leave").value = thisTrip.leave;
     $("#leave").text(thisTrip.leave);
     document.getElementById("back").value = thisTrip.back;
@@ -127,10 +123,9 @@ var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
     });
 
 function storeOldEvent() {
-         //store values into session for updating event
         var oldStartDate = ($( "#leave" ).datepicker( "getDate" ));
-        sessionStorage.setItem("oldStartDate", oldStartDate); //date object rather than just date
-        sessionStorage.setItem("oldEndDate", ($( "#back" ).datepicker( "getDate" ))); //date object rather than just date
+        sessionStorage.setItem("oldStartDate", oldStartDate);
+        sessionStorage.setItem("oldEndDate", ($( "#back" ).datepicker( "getDate" )));
         sessionStorage.setItem("oldDestination", thisTrip.destination);
 }
 
@@ -151,9 +146,9 @@ function toggledisabled() {
 
 function updateTrip() {
     var leave = document.getElementById("leave").value;
-    var startDate = ($( "#leave" ).datepicker( "getDate" )); //get date for event
+    var startDate = ($( "#leave" ).datepicker( "getDate" ));
     var back = document.getElementById("back").value;
-    var endDate = ($( "#back" ).datepicker( "getDate" )); //get date for event
+    var endDate = ($( "#back" ).datepicker( "getDate" ));
     var destination = document.getElementById("destination").value;
     var mycontact = document.getElementById("contactdd").value;
     var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
@@ -172,22 +167,10 @@ function updateTrip() {
     oldStartDate = sessionStorage.getItem("oldStartDate");
     oldEndDate = sessionStorage.getItem("oldEndDate");
     oldDestination = sessionStorage.getItem("oldDestination");
-    console.log(oldStartDate);
-    console.log(oldEndDate);
-    console.log(oldDestination);
     //Create new event
-    console.log(startDate);
-    console.log(endDate);
-    console.log(destination);
-    console.log("Adding new event");
     createEvent(startDate, endDate, destination, "NEW CONTACT");
-    console.log(oldStartDate);
-    console.log(oldEndDate);
-    console.log(oldDestination);
-    console.log("New event added. Deleting old event");
     window.setTimeout(function(){deleteOldEvent(oldStartDate, oldEndDate, oldDestination)}, 3000);
     deleteOldEvent(oldStartDate, oldEndDate, oldDestination);
-    console.log("Old event deleted");
     $( "#dialogUpdated" ).dialog( "open" );
 }
 
