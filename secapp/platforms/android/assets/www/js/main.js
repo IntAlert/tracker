@@ -118,11 +118,9 @@ function logOut() {
 
 function getLocation() {
     if (navigator.geolocation){ //If Supported
-        console.log("Geo supported");
         navigator.geolocation.getCurrentPosition(getPosition,showError);
     }
     else{ //If not Supported
-        console.log("Geo NOT supported");
         $( '#dialogNoGeo' ).dialog('open');
     }
 }
@@ -143,16 +141,13 @@ function showError(error) {
         msg = "An unknown error occurred."
         break;
     }
-    console.log(msg);
 }
 
 function getPosition(position) {
-    console.log("GetPosition");
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
     sessionStorage.setItem("lat", latitude);
     sessionStorage.setItem("lon", longitude);
-    console.log("adding SOS");
     addSOS();
 }
 
@@ -176,14 +171,11 @@ function addSOS() {
 }
 
 function SOS_saved(error) {
-    console.log("setting smswaiting to false");
     isSMSWaiting = false;
-    console.log("set.");
     $( '#dialogSOSConfirmed' ).dialog('open');
 }
 
 function sendSMS() {
-    console.log("StartingSMSSend");
     var message = "SOS raised by " + uName + " " + uLastname + ".";
     var number = "07947476240";
     var error = function(e) {
@@ -191,7 +183,6 @@ function sendSMS() {
         $( '#dialogSMSError' ).dialog('open');
     };
     isSMSWaiting = true;
-    console.log("SMS Waiting true");
     sms.send(number, message, {android: {intent:""}}, SOS_saved);
     setTimeout(function(){
         if (isSMSWaiting == true) {

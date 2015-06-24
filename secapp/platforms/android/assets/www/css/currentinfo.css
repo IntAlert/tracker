@@ -236,3 +236,7 @@ div.datepick {
 #dialogError {
     display: none;   
 }
+
+#dialogUpdated #dialogDeleted #dialogConfirm{
+    display: none;   
+}
