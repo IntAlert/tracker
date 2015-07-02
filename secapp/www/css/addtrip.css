@@ -1,5 +1,5 @@
 body{
-    background-image: url("../img/currentinfo.jpg")
+    background-image: url("../img/bg.jpg")
 }
 
 h1{
@@ -142,4 +142,9 @@ div.datepick {
 
 #dialogTripAdded, #dialogValLeave, #dialogValReturn, #dialogValDest, #dialogValContact, #dialogNoSignal {
     diplay: none;   
+}
+
+input, textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
 }

@@ -1,5 +1,5 @@
 body{
-    background-image: url("../img/currentinfo.jpg")
+    background-image: url("../img/bg.jpg")
 }
 
 h1{
@@ -239,4 +239,9 @@ div.datepick {
 
 #dialogUpdated #dialogDeleted #dialogConfirm{
     display: none;   
+}
+
+input, textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
 }

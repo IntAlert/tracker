@@ -74,7 +74,6 @@ function authHandler(error, authData) {
 if (error) {
     $( "#dialogErrorText" ).text(error);
     $( "#dialogError" ).dialog( "open" );
-//    alert("Login Failed! " + error);
     } else {
         window.location="main.html";
     }

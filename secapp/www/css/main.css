@@ -1,5 +1,5 @@
 body{
-    background-image: url("../img/currentinfo.jpg")
+    background-image: url("../img/bg.jpg")
 }
 
 h1{
@@ -97,4 +97,9 @@ h3{
 
 #dialogLogout #dialogSOS #dialogSOSConfirmed {
     diplay: none;   
+}
+
+input, textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
 }
