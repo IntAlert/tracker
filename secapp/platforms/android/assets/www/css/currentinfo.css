@@ -240,3 +240,8 @@ div.datepick {
 #dialogUpdated #dialogDeleted #dialogConfirm{
     display: none;   
 }
+
+input, textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}

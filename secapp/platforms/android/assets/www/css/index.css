@@ -170,6 +170,11 @@ a:active{
     display: none;
 }
 
-#dialogEmail #dialogPass {
+#dialog #dialogEmail #dialogPass #dialogPassword1 #dialogPassword2 #dialogPassMatchErr #dialogAcc #dialogAccErr {
     diplay: none;   
+}
+
+input, textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
 }

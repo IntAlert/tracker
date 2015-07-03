@@ -90,6 +90,7 @@ var myID = "";
 var uName = "";
 var uLastname = "";
 var email = sessionStorage.getItem("email");
+console.log("Greetings");
 function authDataCallback(authData) {
     if (authData) {
     myID = authData.uid.substring(12,16);

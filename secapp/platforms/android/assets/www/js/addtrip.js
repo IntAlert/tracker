@@ -8,6 +8,12 @@ $(function() {
         buttonImageOnly: true,
         onSelect: function(dateText){
             $( "#back" ).text(dateText);
+        },
+        beforeShow: function(input, inst) {
+            console.log('called');
+            setTimeout(function(){
+                $('.ui-datepicker').center()
+            }, 100);
         }
     });
     $( "#leave" ).datepicker({
@@ -24,6 +30,12 @@ $(function() {
             var newDate = date.toDateString();
             newDate = new Date( Date.parse( newDate ) );                     
             $("#back").datepicker("option","minDate",newDate);
+        },
+        beforeShow: function(input, inst) {
+            console.log('called');
+            setTimeout(function(){
+                $('.ui-datepicker').center()
+            }, 100);
         }
     });
 });

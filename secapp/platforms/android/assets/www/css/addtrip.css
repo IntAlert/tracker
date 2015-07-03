@@ -144,10 +144,7 @@ div.datepick {
     diplay: none;   
 }
 
-#datepicker-container {
-    text-align:center;
-}
-
-#datepicker-container #datepicker {
-    display:inline-block;
+input, textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
 }

@@ -1,14 +1,22 @@
-function createEvent(startDate, endDate, destination, contactname) {
+function createEvent(startDate, endDate, destination, contactname, cb) {
+    console.log("Inside function");
     // prep some variables
     //  var startDate = new Date(2015,2,15,18,30,0,0,0); // beware: month 0 = january, 11 = december
     //  var endDate = new Date(2015,2,15,19,30,0,0,0);
     var startDate2 = new Date(startDate.getTime());
     startDate2.setHours(23);
     startDate2.setMinutes(59);
+    console.log("start1");
+    console.log(startDate);
+    console.log("start2");
+    console.log(startDate2);
     //start date 2 hours to 23
     var title = "International Alert Trip: " + destination;
+    console.log(title);
     var eventLocation = destination;
+    console.log(eventLocation);
     var notes = "Don't forget to check in  with " + contactname + " to let everyone know things are okay!";
+    console.log(notes);
 //    var success = function(message) { alert("Success: " + JSON.stringify(message)); };
 //    var error = function(message) { alert("Error: " + message); };
 
@@ -40,7 +48,10 @@ function createEvent(startDate, endDate, destination, contactname) {
     //    // And the URL can be passed since 4.3.2 (will be appended to the notes on Android as there doesn't seem to be a sep field)
     //  calOptions.url = "https://www.google.com";
     //
-    window.plugins.calendar.createEventWithOptions(title,eventLocation,notes,startDate,startDate2,calOptions);
+    console.log("createeventwithoptions");
+    window.plugins.calendar.createEventWithOptions(title,eventLocation,notes,startDate,startDate2,calOptions,cb,function(e){
+        console.log("ERROR: " + e)
+    });
     //
     //    // create an event interactively
     //  window.plugins.calendar.createEventInteractively(title,eventLocation,notes,startDate,endDate,success,error);

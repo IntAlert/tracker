@@ -37,6 +37,13 @@ module.exports = [
         "clobbers": [
             "device"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+        "id": "cordova-plugin-statusbar.statusbar",
+        "clobbers": [
+            "window.StatusBar"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -47,7 +54,8 @@ module.exports.metadata =
     "nl.x-services.plugins.calendar": "4.3.6",
     "org.apache.cordova.vibration": "0.3.13",
     "org.apache.cordova.geolocation": "0.3.12",
-    "cordova-plugin-device": "1.0.0"
+    "cordova-plugin-device": "1.0.0",
+    "cordova-plugin-statusbar": "1.0.1"
 }
 // BOTTOM OF METADATA
 });
