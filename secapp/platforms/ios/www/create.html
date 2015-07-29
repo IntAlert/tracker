@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>First Time User</title>
+        <script src='js/firebase.js'></script>
+        <script src='js/jquery.min.js'></script>
+        <script src='js/jquery-ui.min.js'></script>
+        <script src='js/create.js'></script>
+        <script src='js/global.js'></script>
+        <script src='js/fastclick.js'></script>
+        <link rel="stylesheet" href="css/jquery-ui.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/indexios.css" type="text/css">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.firebase.com https://*.firebaseio.com; object-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; media-src 'none'; font-src 'self'; connect-src 'self' https://*.firebase.com https://*.firebaseio.com wss://*.firebaseio.com; frame-src https://*.firebaseio.com">
+    </head>
+    
+    <body>
+        <div id="dialog" title="Welcome">Hello! It appears that this is the first time you have run the Alert Security App. <br>Please enter your email address and desired password to create an account.</div>
+        <div id="dialogEmail" title="Error">Please enter an email.</div>
+        <div id="dialogPassword1" title="Error">Please enter password.</div>
+        <div id="dialogPassword2" title="Error">Please re-enter password.</div>
+        <div id="dialogPassMatchErr" title="Error">Passwords do not match.</div>
+        <div id="dialogAcc" title="Account Created">Your account has been successfully created.</div>
+        <div id="dialogAccErr" title="Error">Error creating account.</div>
+        
+        <div class="page-header container text-center">
+            <h1>International Alert Security App</h1>
+        </div>
+        <div class="container text-center">
+            <h3>Create Account</h3>
+        </div>
+        <div id="container" class="info">
+            <p>Email Address
+            <input class="textbox" type="email" id="name" placeholder="Enter your email">
+            </p>
+            <p>Password
+            <input class="textbox" type="password" id="password1" placeholder="Enter your password">
+            </p>
+            <p>Confirm
+            <input class="textbox" type="password" id="password2" placeholder="Confirm your password">            
+            </p>
+            <button onclick="existingAcc()" class="forgotpass">Existing User</button>
+            <br>
+        </div>
+        <button class="submit" onclick="validateAcc()">Create Account</button>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2DDD64E3-9205-4CC3-BC7B-DC9E1AA2EB6A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Alert Security</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D3BDBB011EC9BA58B324ED05A45E4E6C6EA9C84D</key>
+		<string>https://github.com/IntAlert/tracker.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>secapp/platforms/ios/Alert Security.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D3BDBB011EC9BA58B324ED05A45E4E6C6EA9C84D</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/IntAlert/tracker.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D3BDBB011EC9BA58B324ED05A45E4E6C6EA9C84D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D3BDBB011EC9BA58B324ED05A45E4E6C6EA9C84D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>tracker</string>
+		</dict>
+	</array>
+</dict>
+</plist>
