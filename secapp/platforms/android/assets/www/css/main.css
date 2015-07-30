@@ -95,11 +95,15 @@ h3{
     display: none;
 }
 
-#dialogLogout, #dialogSOS, #dialogSOSConfirmed {
+#dialogLogout, #dialogSOS, #dialogSOSConfirmed, #dialogCheckIn, #dialogCheckInConfirmed {
     diplay: none;   
 }
 
 input, textarea {
   -webkit-appearance: none;
   -webkit-border-radius: 0;
+}
+
+#dialogCheckIn .ui-button-text-only .ui-button-text {
+    font-size: 0.8em;
 }

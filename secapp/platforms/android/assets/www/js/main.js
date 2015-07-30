@@ -39,7 +39,12 @@ $(function() {
         modal: true,
         dialogClass: "dlg-no-close",
         buttons: {
-            "Confirm": function() {
+            "SMS Only": function() {
+                //CHECK IN SMS ONLY CODE
+                CheckInSMS();
+                $( this ).dialog( "close" );
+            },
+            "SMS + Email": function() {
                 //CHECK IN CODE
                 $( this ).dialog( "close" );
             },
@@ -52,6 +57,19 @@ $(function() {
 
 $(function() {
     $( "#dialogSOSConfirmed" ).dialog({
+        autoOpen: false,
+        modal: true,
+        dialogClass: "dlg-no-close",
+        buttons: {
+            "OK": function() {
+                $( this ).dialog( "close" );
+            }
+        }
+    });
+});
+
+$(function() {
+    $( "#dialogCheckInConfirmed" ).dialog({
         autoOpen: false,
         modal: true,
         dialogClass: "dlg-no-close",
@@ -107,7 +125,6 @@ var myID = "";
 var uName = "";
 var uLastname = "";
 var email = sessionStorage.getItem("email");
-console.log("Greetings");
 function authDataCallback(authData) {
     if (authData) {
     myID = authData.uid.substring(12,16);
@@ -186,6 +203,28 @@ function addSOS() {
         lon: lon,
         timestamp: new Date().getTime().toString()
     });
+}
+
+function CheckInSMS() {
+    var message = "Hello, this is " + uName + " " + uLastname + ". I'm just checking in to let you know that everything is alright!";
+    var number = "07947476240";
+    var error = function(e) {
+        $( '#dialogSMSError .ErrorMessage' ).text("SMS SEND ERROR:" + e);
+        $( '#dialogSMSError' ).dialog('open');
+    };
+    isSMSWaiting = true;
+    sms.send(number, message, {android: {intent:""}}, CheckIn_confirm);
+    setTimeout(function(){
+        if (isSMSWaiting == true) {
+            $( '#dialogSMSError .ErrorMessage' ).text("Your SMS has not been sent due to lack of signal, but we are still trying.");
+            $( '#dialogSMSError' ).dialog('open');
+        }
+    },5000)
+}
+
+function CheckIn_confirm(error) {
+    isSMSWaiting = false;
+    $( '#dialogCheckInConfirmed' ).dialog('open');
 }
 
 function SOS_saved(error) {

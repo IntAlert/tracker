@@ -94,16 +94,6 @@ a:visited{
     color: white;
 }
 
-a:hover{
-    color: tomato;
-    text-decoration: underline;
-}
-
-a:active{
-    color: red;
-    text-decoration: none;
-}
-
 .textbox{
     float: right;
     width: 50%;
