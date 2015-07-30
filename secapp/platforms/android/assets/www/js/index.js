@@ -69,6 +69,13 @@ if (password === "") {
     }
 }
 
+$(function(){
+    $("form").submit(function(){
+        authMe();
+        return false;
+    })
+})
+
 // Create a callback to handle the result of the authentication
 function authHandler(error, authData) {
 if (error) {

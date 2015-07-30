@@ -167,7 +167,8 @@ function addTrip() {
         name: name,
         lastname: lastname
     }, function(){
-            createEvent(startDate, endDate, destination, contact[mycontact][2]);
+            console.log("Creating Event");
+            createEvent(startDate, endDate, destination, contact[mycontact][2],function(){});
             $( '#dialogTripAdded' ).dialog('open');
         });
     var tripID = newTripsRef.key();

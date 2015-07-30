@@ -86,12 +86,12 @@ div.signUp{
 }
 
 a:link{
-    color: red;
+    color: white;
     text-decoration: none;
 }
 
 a:visited{
-    color: maroon;
+    color: white;
 }
 
 a:hover{

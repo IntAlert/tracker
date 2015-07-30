@@ -19,6 +19,7 @@
         <div id="dialogSOS" title="Confirm SOS">If you continue, an SOS message will be sent and your location will be used. Are you sure you want to do this?</div>
         <div id="dialogSOSConfirmed" title="Confirm SOS">SOS confirmed.</div>
         <div id="dialogSMSError" title="Error"><div class="ErrorMessage"></div><div class="loading"><img width="20%" src="img/loading.gif"></div></div>
+        <div id="dialogCheckIn" title="Check In">Clicking confirm will check in with your designated contact. This may use some of your allowed data/texts. Please check your plan before continuing.</div>
         <div id="dialogLoggedOut" title="Logged Out">User is logged out.</div>
         <div id="dialogNoGeo" title="Error">Geolocation not supported.</div>
         
@@ -36,6 +37,7 @@
             <form action="currentinfo.html">
                 <button class="normalbutton">View Current Information</button>
             </form>
+            <button class="checkin" onclick="$( '#dialogCheckIn' ).dialog('open')">Check In</button>
             <button class="sos" onclick="$( '#dialogSOS' ).dialog('open')">SOS</button>
         </div>
     </body>

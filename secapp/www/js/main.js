@@ -31,7 +31,24 @@ $(function() {
             }
         }
     });
-}); 
+});
+
+$(function() {
+    $( "#dialogCheckIn" ).dialog({
+        autoOpen: false,
+        modal: true,
+        dialogClass: "dlg-no-close",
+        buttons: {
+            "Confirm": function() {
+                //CHECK IN CODE
+                $( this ).dialog( "close" );
+            },
+            "Cancel": function() {
+                $( this ).dialog( "close" );
+            }
+        }
+    });
+});
 
 $(function() {
     $( "#dialogSOSConfirmed" ).dialog({
