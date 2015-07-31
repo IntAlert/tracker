@@ -48,6 +48,11 @@ $(function() {
                 //CHECK IN CODE
                 $( this ).dialog( "close" );
             },
+            "Photo": function() {
+                //PHOTO TEST CODE
+                takePhoto();
+                $( this ).dialog( "close" );
+            },
             "Cancel": function() {
                 $( this ).dialog( "close" );
             }
@@ -248,3 +253,38 @@ function sendSMS() {
         }
     },5000)
 }
+
+function takePhoto() {
+    Camera.Direction = {
+        FRONT : 1      // Use the front-facing camera
+    };
+    navigator.camera.getPicture(uploadPhoto,null,{sourceType:1,quality:60});
+}
+
+function uploadPhoto(data) {
+    cameraPic.src = "data:image/jpeg;base64," + data;
+    //Success
+    navigator.notification.alert(
+        'Photo successfully sent.', //message
+        okay,                       //callback
+        'Photo Sent',               //title
+        'OK'                        //button name
+        );
+    
+    //Failure
+    if(failedToUpload) {
+        navigator.notification.alert(
+            'Unable to send photo.',
+            failedDismissed,
+            'Error',
+            'OK'
+            );
+    }
+        
+}
+
+function okay() {
+    //SOMETHING
+}
+
+
