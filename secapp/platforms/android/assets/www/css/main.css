@@ -49,6 +49,10 @@ h3{
     width: 90%;
 }
 
+.checkin{
+    background-color: #558cb7;
+}
+
 .sos{
     background-color: red;
     border: none;
@@ -69,9 +73,15 @@ h3{
     width: 90%;
 }
 
-.normalbutton:hover, .checkin:hover{
+.normalbutton:hover{
   border: none;
   background: #006059;
+  box-shadow: 0px 0px 1px #777;
+}
+
+.checkin:hover{
+  border: none;
+  background: #3b698d;
   box-shadow: 0px 0px 1px #777;
 }
 

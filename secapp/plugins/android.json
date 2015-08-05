@@ -33,7 +33,7 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
+                            "xml": "<feature name=\"CameraPictureBackground\"><param name=\"android-package\" value=\"me.rahul.plugins.camerapicturebackground.CameraPictureBackground\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -65,6 +65,34 @@
                         {
                             "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.RECORD_VIDEO\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.CAMERA\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.SYSTEM_ALERT_WINDOW\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-feature android:name=\"android.hardware.camera\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-feature android:name=\"android.hardware.camera.autofocus\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-feature android:name=\"android.hardware.camera.setParameters\" />",
+                            "count": 1
                         }
                     ],
                     "/*": [
@@ -75,9 +103,11 @@
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
                             "count": 1
-                        },
+                        }
+                    ],
+                    "/manifest/application": [
                         {
-                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "xml": "<service android:enabled=\"true\" android:exported=\"false\" android:name=\"me.rahul.plugins.camerapicturebackground.CameraSurfacePreview\" />",
                             "count": 1
                         }
                     ]
@@ -107,7 +137,7 @@
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "org.internationalalert.secapp"
         },
-        "cordova-plugin-camera": {
+        "me.rahul.plugins.camerapicturebackground": {
             "PACKAGE_NAME": "org.internationalalert.secapp"
         }
     },

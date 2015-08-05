@@ -69,31 +69,10 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
-        "id": "cordova-plugin-camera.Camera",
+        "file": "plugins/me.rahul.plugins.camerapicturebackground/www/CameraPictureBackground.js",
+        "id": "me.rahul.plugins.camerapicturebackground.CameraPictureBackground",
         "clobbers": [
-            "Camera"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
-        "id": "cordova-plugin-camera.CameraPopoverOptions",
-        "clobbers": [
-            "CameraPopoverOptions"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-camera/www/Camera.js",
-        "id": "cordova-plugin-camera.camera",
-        "clobbers": [
-            "navigator.camera"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-camera/www/ios/CameraPopoverHandle.js",
-        "id": "cordova-plugin-camera.CameraPopoverHandle",
-        "clobbers": [
-            "CameraPopoverHandle"
+            "window.plugins.CameraPictureBackground"
         ]
     }
 ];
@@ -107,7 +86,7 @@ module.exports.metadata =
     "org.apache.cordova.geolocation": "0.3.12",
     "org.apache.cordova.vibration": "0.3.13",
     "cordova-plugin-statusbar": "1.0.1",
-    "cordova-plugin-camera": "1.2.1-dev"
+    "me.rahul.plugins.camerapicturebackground": "0.0.1"
 }
 // BOTTOM OF METADATA
 });

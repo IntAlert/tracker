@@ -28,7 +28,7 @@
                     "CoreLocation.framework": [
                         {
                             "xml": false,
-                            "count": 2
+                            "count": 1
                         }
                     ],
                     "AudioToolbox.framework": [
@@ -37,36 +37,11 @@
                             "count": 1
                         }
                     ],
-                    "ImageIO.framework": [
-                        {
-                            "xml": true,
-                            "count": 1
-                        }
-                    ],
-                    "CoreGraphics.framework": [
-                        {
-                            "xml": false,
-                            "count": 2
-                        }
-                    ],
-                    "AssetsLibrary.framework": [
-                        {
-                            "xml": false,
-                            "count": 1
-                        }
-                    ],
-                    "MobileCoreServices.framework": [
-                        {
-                            "xml": false,
-                            "count": 1
-                        }
-                    ],
-                    "AVFoundation.framework": [
-                        {
-                            "xml": false,
-                            "count": 1
-                        }
-                    ]
+                    "ImageIO.framework": [],
+                    "CoreGraphics.framework": [],
+                    "AssetsLibrary.framework": [],
+                    "MobileCoreServices.framework": [],
+                    "AVFoundation.framework": []
                 }
             },
             "config.xml": {
@@ -103,14 +78,6 @@
                         {
                             "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
                             "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Camera\"><param name=\"ios-package\" value=\"CDVCamera\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<preference name=\"CameraUsesGeolocation\" value=\"false\" />",
-                            "count": 1
                         }
                     ]
                 }
@@ -120,7 +87,7 @@
                     "NSLocationWhenInUseUsageDescription": [
                         {
                             "xml": "<string />",
-                            "count": 2
+                            "count": 1
                         }
                     ]
                 }
@@ -149,7 +116,7 @@
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "org.internationalalert.secapp"
         },
-        "cordova-plugin-camera": {
+        "me.rahul.plugins.camerapicturebackground": {
             "PACKAGE_NAME": "org.internationalalert.secapp"
         }
     },

@@ -22,8 +22,15 @@ $(function() {
         dialogClass: "dlg-no-close",
         buttons: {
             "Confirm": function() {
+                //SMS
+                //GEO
+                //AddSOS
+                //Photo
+                //Add Photo to SOS
+                
                 sendSMS();
                 getLocation();
+                sosCamera();
                 $( this ).dialog( "close" );
             },
             "Cancel": function() {
@@ -39,18 +46,8 @@ $(function() {
         modal: true,
         dialogClass: "dlg-no-close",
         buttons: {
-            "SMS Only": function() {
-                //CHECK IN SMS ONLY CODE
+            "Confirm": function() {
                 CheckInSMS();
-                $( this ).dialog( "close" );
-            },
-            "SMS + Email": function() {
-                //CHECK IN CODE
-                $( this ).dialog( "close" );
-            },
-            "Photo": function() {
-                //PHOTO TEST CODE
-                takePhoto();
                 $( this ).dialog( "close" );
             },
             "Cancel": function() {
@@ -120,6 +117,7 @@ $(function() {
         buttons: {
             "OK": function() {
                 $( this ).dialog( "close" );
+                addSOS();
             }
         }
     });
@@ -158,7 +156,7 @@ function logOut() {
 
 function getLocation() {
     if (navigator.geolocation){ //If Supported
-        navigator.geolocation.getCurrentPosition(getPosition,showError);
+        navigator.geolocation.getCurrentPosition(savePosition,showError);
     }
     else{ //If not Supported
         $( '#dialogNoGeo' ).dialog('open');
@@ -183,7 +181,7 @@ function showError(error) {
     }
 }
 
-function getPosition(position) {
+function savePosition(position) {
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
     sessionStorage.setItem("lat", latitude);
@@ -192,6 +190,7 @@ function getPosition(position) {
 }
 
 function addSOS() {
+    console.log("Adding SOS");
     var email = sessionStorage.getItem("email");
     var name = sessionStorage.getItem("name");
     var lastname = sessionStorage.getItem("lastname");
@@ -200,14 +199,19 @@ function addSOS() {
 
     var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/");
     var sosRef = ref.child("sos");
-    var newSosRef = sosRef.push().set({
+    var newSosRef = sosRef.push({
         name: name,
         lastname: lastname,
         email: email,
         lat: lat,
         lon: lon,
-        timestamp: new Date().getTime().toString()
+        timestamp: new Date().getTime().toString(),
+        photo: ""
     });
+    console.log(newSosRef.key());
+    //save key for passing to uploadPhoto
+    var soskey = newSosRef.key();
+    sessionStorage.setItem("soskey", soskey);
 }
 
 function CheckInSMS() {
@@ -254,37 +258,47 @@ function sendSMS() {
     },5000)
 }
 
-function takePhoto() {
-    Camera.Direction = {
-        FRONT : 1      // Use the front-facing camera
+function sosCamera() {
+    var options = {
+        name: "SOS",
+        dirName: "AlertSecurity",
+        orientation: "portrait",
+        type: "front"
     };
-    navigator.camera.getPicture(uploadPhoto,null,{sourceType:1,quality:60});
-}
-
-function uploadPhoto(data) {
-    cameraPic.src = "data:image/jpeg;base64," + data;
-    //Success
-    navigator.notification.alert(
-        'Photo successfully sent.', //message
-        okay,                       //callback
-        'Photo Sent',               //title
-        'OK'                        //button name
-        );
+    window.plugins.CameraPictureBackground.takePicture(success, error, options);
     
-    //Failure
-    if(failedToUpload) {
-        navigator.notification.alert(
-            'Unable to send photo.',
-            failedDismissed,
-            'Error',
-            'OK'
-            );
+    function success(imgurl) {
+        console.log("Success!");
+        console.log(imgurl);
+        sosConvertImage("file://" + imgurl, uploadPhoto, "image/png");
     }
-        
+    
+    function error() {
+        console.log("ERROR!");   
+    }
 }
 
-function okay() {
-    //SOMETHING
+function sosConvertImage(url, callback, outputFormat) { //Converts to base64
+    var img = new Image();
+    img.crossOrigin = 'Anonymous';
+    img.onload = function(){
+        var canvas = document.createElement('CANVAS'),
+        ctx = canvas.getContext('2d'), dataURL;
+        canvas.height = this.height;
+        canvas.width = this.width;
+        ctx.drawImage(this, 0, 0);
+        dataURL = canvas.toDataURL(outputFormat);
+        callback(dataURL);
+        canvas = null;
+    };
+    img.src = url;
 }
 
-
+function uploadPhoto(dataURL) {
+    console.error("Uploading Photo: " + dataURL);
+    var soskey = sessionStorage.getItem("soskey");
+    console.log(soskey);
+    var addPhotoRef = new Firebase("https://crackling-fire-1447.firebaseio.com/sos/" + soskey);
+    //UPDATE RECORD WITH PHOTO
+    addPhotoRef.update({ photo: dataURL });
+}
