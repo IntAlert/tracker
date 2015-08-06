@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.firebase.com https://*.firebaseio.com; object-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; media-src 'none'; font-src 'self'; connect-src 'self' https://*.firebase.com https://*.firebaseio.com wss://*.firebaseio.com; frame-src https://*.firebaseio.com">
     </head>
     
-    <body onload="firstRun()">
+    <body>
         <div id="dialogEmail" title="Error">Please enter an email address.</div>
         <div id="dialogPass" title="Error">Please enter a password.</div>
         <div id="dialogError" title="Login Failed"><div id="dialogErrorText"></div></div>
@@ -27,10 +27,13 @@
         <form>
             <div id="container" class="info">
                 <p>Email Address
-                <input class="textbox" type="email" id="name" placeholder="Enter your email" value="dlucas@international-alert.org">
+                <input class="textbox" type="email" id="name" placeholder="Enter your email" value="">
                 </p>
                 <p>Password
                 <input class="textbox" type="password" id="password" placeholder="Enter your password">
+                </p>
+                <p class="rememberme">
+                <input type="checkbox" id="rememberme" class="checkbox">Remember Me
                 </p>
                 <a href="#" onClick="forgotPass()" class="forgotpass">Forgot Password</a>
                 <br>

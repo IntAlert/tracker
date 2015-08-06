@@ -160,6 +160,11 @@ a:visited{
     display: none;
 }
 
+.rememberme {
+    font-size: 75%;
+    text-align: right;
+}
+
 #dialog #dialogEmail #dialogPass #dialogPassword1 #dialogPassword2 #dialogPassMatchErr #dialogAcc #dialogAccErr {
     diplay: none;   
 }
@@ -167,4 +172,9 @@ a:visited{
 input, textarea {
   -webkit-appearance: none;
   -webkit-border-radius: 0;
+}
+
+input[type=checkbox]
+{
+  -webkit-appearance:checkbox;
 }

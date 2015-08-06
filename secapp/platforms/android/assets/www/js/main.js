@@ -270,9 +270,7 @@ function sosCamera() {
     function success(imgurl) {
         console.log("Success!");
         console.log(imgurl);
-        //convert
         sosConvertImage("file://" + imgurl, uploadPhoto, "image/png");
-        //upload to fb
     }
     
     function error() {

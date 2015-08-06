@@ -187,5 +187,14 @@
     </array>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string></string>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>alertsec</string>
+        </array>
+      </dict>
+    </array>
   </dict>
 </plist>

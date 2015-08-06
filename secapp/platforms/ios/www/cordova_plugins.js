@@ -74,6 +74,13 @@ module.exports = [
         "clobbers": [
             "window.plugins.CameraPictureBackground"
         ]
+    },
+    {
+        "file": "plugins/nl.x-services.plugins.launchmyapp/www/ios/LaunchMyApp.js",
+        "id": "nl.x-services.plugins.launchmyapp.LaunchMyApp",
+        "clobbers": [
+            "window.plugins.launchmyapp"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -86,7 +93,8 @@ module.exports.metadata =
     "org.apache.cordova.geolocation": "0.3.12",
     "org.apache.cordova.vibration": "0.3.13",
     "cordova-plugin-statusbar": "1.0.1",
-    "me.rahul.plugins.camerapicturebackground": "0.0.1"
+    "me.rahul.plugins.camerapicturebackground": "0.0.1",
+    "nl.x-services.plugins.launchmyapp": "3.2.4"
 }
 // BOTTOM OF METADATA
 });
