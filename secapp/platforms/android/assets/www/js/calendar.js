@@ -50,7 +50,7 @@ function createEvent(startDate, endDate, destination, contactname, cb) {
     //
     console.log("createeventwithoptions");
     window.plugins.calendar.createEventWithOptions(title,eventLocation,notes,startDate,startDate2,calOptions,cb,function(e){
-        console.log("ERROR: " + e)
+        console.log("ERROR: " + e);
     });
     //
     //    // create an event interactively

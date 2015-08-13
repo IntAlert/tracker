@@ -1,3 +1,4 @@
+/*jshint maxerr: 100*/
 ////////// DIALOG \\\\\\\\\\
 $(function() {
     $( "#dialogLogout" ).dialog({
@@ -167,16 +168,16 @@ function showError(error) {
     var msg = "";
     switch(error.code) {
     case error.PERMISSION_DENIED:
-        msg = "User denied the request for Geolocation."
+        msg = "User denied the request for Geolocation.";
         break;
     case error.POSITION_UNAVAILABLE:
-        msg = "Location information is unavailable."
+        msg = "Location information is unavailable.";
         break;
     case error.TIMEOUT:
-        msg = "The request to get user location timed out."
+        msg = "The request to get user location timed out.";
         break;
     case error.UNKNOWN_ERROR:
-        msg = "An unknown error occurred."
+        msg = "An unknown error occurred.";
         break;
     }
 }
@@ -224,11 +225,11 @@ function CheckInSMS() {
     isSMSWaiting = true;
     sms.send(number, message, {android: {intent:""}}, CheckIn_confirm);
     setTimeout(function(){
-        if (isSMSWaiting == true) {
+        if (isSMSWaiting === true) {
             $( '#dialogSMSError .ErrorMessage' ).text("Your SMS has not been sent due to lack of signal, but we are still trying.");
             $( '#dialogSMSError' ).dialog('open');
         }
-    },5000)
+    },5000);
 }
 
 function CheckIn_confirm(error) {
@@ -251,11 +252,11 @@ function sendSMS() {
     isSMSWaiting = true;
     sms.send(number, message, {android: {intent:""}}, SOS_saved);
     setTimeout(function(){
-        if (isSMSWaiting == true) {
+        if (isSMSWaiting === true) {
             $( '#dialogSMSError .ErrorMessage' ).text("Your SMS has not been sent due to lack of signal, but we are still trying.");
             $( '#dialogSMSError' ).dialog('open');
         }
-    },5000)
+    },5000);
 }
 
 function sosCamera() {

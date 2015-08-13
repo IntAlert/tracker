@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>Log In</title>
@@ -14,9 +15,9 @@
     </head>
     
     <body>
-        <div id="dialogEmail" title="Error">Please enter an email address.</div>
-        <div id="dialogPass" title="Error">Please enter a password.</div>
-        <div id="dialogError" title="Login Failed"><div id="dialogErrorText"></div></div>
+        <div id="dialogEmail" class="dialogEmail" title="Error">Please enter an email address.</div>
+        <div id="dialogPass" class="dialogPass" title="Error">Please enter a password.</div>
+        <div id="dialogError" class="dialogError" title="Login Failed"><div id="dialogErrorText"></div></div>
         
         <div class="page-header container text-center">
             <h1>International Alert Security App</h1>
@@ -33,7 +34,7 @@
                 <input class="textbox" type="password" id="password" placeholder="Enter your password">
                 </p>
                 <p class="rememberme">
-                <input type="checkbox" id="rememberme" class="checkbox">Remember Me
+                <input type="checkbox" id="rememberme" class="checkbox">Remember Email
                 </p>
                 <a href="#" onClick="forgotPass()" class="forgotpass">Forgot Password</a>
                 <br>

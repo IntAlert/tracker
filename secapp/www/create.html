@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>First Time User</title>
@@ -14,13 +15,13 @@
     </head>
     
     <body>
-        <div id="dialog" title="Welcome">Hello! It appears that this is the first time you have run the Alert Security App. <br>Please enter your email address and desired password to create an account.</div>
-        <div id="dialogEmail" title="Error">Please enter an email.</div>
-        <div id="dialogPassword1" title="Error">Please enter password.</div>
-        <div id="dialogPassword2" title="Error">Please re-enter password.</div>
-        <div id="dialogPassMatchErr" title="Error">Passwords do not match.</div>
-        <div id="dialogAcc" title="Account Created">Your account has been successfully created.</div>
-        <div id="dialogAccErr" title="Error">Error creating account.</div>
+        <div id="dialog" class="dialog" title="Welcome">Hello! It appears that this is the first time you have run the Alert Security App. <br>Please enter your email address and desired password to create an account.</div>
+        <div id="dialogEmail" class="dialogEmail" title="Error">Please enter an email.</div>
+        <div id="dialogPassword1" class="dialogPassword1" title="Error">Please enter password.</div>
+        <div id="dialogPassword2" class="dialogPassword2" title="Error">Please re-enter password.</div>
+        <div id="dialogPassMatchErr" class="dialogPassMatchErr" title="Error">Passwords do not match.</div>
+        <div id="dialogAcc" class="dialogAcc" title="Account Created">Your account has been successfully created.</div>
+        <div id="dialogAccErr" class="dialogAccErr" title="Error">Error creating account.</div>
         
         <div class="page-header container text-center">
             <h1>International Alert Security App</h1>
@@ -30,15 +31,15 @@
         </div>
         <div id="container" class="info">
             <p>Email Address
-            <input class="textbox" type="email" id="name" placeholder="Enter your email">
+                <input class="textbox" type="email" id="name" placeholder="Enter your email">
             </p>
             <p>Password
-            <input class="textbox" type="password" id="password1" placeholder="Enter your password">
+                <input class="textbox" type="password" id="password1" placeholder="Enter your password">
             </p>
             <p>Confirm
-            <input class="textbox" type="password" id="password2" placeholder="Confirm your password">            
+                <input class="textbox" type="password" id="password2" placeholder="Confirm your password">            
             </p>
-            <button onclick="existingAcc()" class="forgotpass">Existing User</button>
+                <button onclick="existingAcc()" class="forgotpass">Existing User</button>
             <br>
         </div>
         <button class="submit" onclick="validateAcc()">Create Account</button>

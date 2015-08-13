@@ -1,3 +1,4 @@
+/*jshint maxerr: 100*/
 ////////// DIALOG \\\\\\\\\\
 $(function() {
     $( "#dialogError" ).dialog({
@@ -46,8 +47,8 @@ function updateList() {
     //GO THROUGH EACH TRIP
     $(tripsSorted).each(function(count){
     //INJECT
-        var myText = "<button onClick='displayTrip(\""+this.key+"\")' id='trips'><b>Destination: </b>" + this.destination + "<br><b>Departing: </b>" + this.leave + "<br><b>Returning: </b>" + this.back + "</button>";
-        if(count>5 && triggered == false) {
+        var myText = "<button onClick='displayTrip(\""+this.key+"\")' id='trips' class='trips'><b>Destination: </b>" + this.destination + "<br><b>Departing: </b>" + this.leave + "<br><b>Returning: </b>" + this.back + "</button>";
+        if(count>5 && triggered === false) {
         triggered = true;
         extraBackButton = '<form name="back" action="main.html"><input class="backbutton" type="submit" value="Back"></form><br>';
         $("#trip").prepend(extraBackButton);

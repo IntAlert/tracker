@@ -43,30 +43,27 @@ function firstRun() {
     var status = localStorage.getItem("status");
     //Check if remember me was checked
     var remember = localStorage.getItem("remember");
-    console.log(remember);
     if (status === null || status.length === 0){
         window.location="create.html";
     }
     if (remember === "true") {
-        console.log("inside true");
         var email = localStorage.getItem("remail");
         document.getElementById("rememberme").checked = true;
         console.log(email);
         document.getElementById("name").value = email;
     }
     else if (remember === "false") {
-        console.log("inside false");
         document.getElementById("rememberme").checked = false;
         document.getElementById("rememberme").value = "";
     }
 }
 
 function authMe() {
-    username = document.getElementById("name").value;
+    var username = document.getElementById("name").value;
     if(typeof(Storage) !== "undefined") {
         sessionStorage.setItem("email", username);
     }
-    password = document.getElementById("password").value;
+    var password = document.getElementById("password").value;
     if (username === "") {
         $( "#dialogEmail" ).dialog( "open" );
         return;
@@ -90,8 +87,8 @@ $(function(){
         authMe();
         rememberMe();
         return false;
-    })
-})
+    });
+});
 
 // Create a callback to handle the result of the authentication
 function authHandler(error, authData) {
@@ -109,13 +106,11 @@ function forgotPass() {
 
 function rememberMe() {
     if (document.getElementById("rememberme").checked === true) {
-        console.log("remember me");
         localStorage.setItem("remember","true");
         var rememberemail = document.getElementById("name").value;
         localStorage.setItem("remail",rememberemail);
     }
     else if (document.getElementById("rememberme").checked === false) {
-        console.log("dont remember me");
         localStorage.setItem("remember","false");
         localStorage.setItem("remail","");
     }

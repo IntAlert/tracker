@@ -1,3 +1,4 @@
+/*jshint maxerr: 100*/
 $(function() {
     //Init datepickers
     $( "#back" ).datepicker({
@@ -10,9 +11,8 @@ $(function() {
             $( "#back" ).text(dateText);
         },
         beforeShow: function(input, inst) {
-            console.log('called');
             setTimeout(function(){
-                $('.ui-datepicker').center()
+                $('.ui-datepicker').center();
             }, 100);
         }
     });
@@ -32,9 +32,8 @@ $(function() {
             $("#back").datepicker("option","minDate",newDate);
         },
         beforeShow: function(input, inst) {
-            console.log('called');
             setTimeout(function(){
-                $('.ui-datepicker').center()
+                $('.ui-datepicker').center();
             }, 100);
         }
     });
@@ -127,6 +126,7 @@ $(function() {
 ////////// MAIN SCRIPTS \\\\\\\\\\
 var myID = "";
 var uName = "";
+var contact = [];
 function authDataCallback(authData) {
     if (authData) {
     myID = authData.uid.substring(12,16);
@@ -139,7 +139,7 @@ ref.onAuth(authDataCallback);
 var uemail = sessionStorage.getItem("email");
 
 function addTrip() {            
-    if(isConnected == false) {
+    if(isConnected === false) {
         $( '#dialogNoSignal' ).dialog('open');
         return;
     }
@@ -147,7 +147,7 @@ function addTrip() {
     var startDate = ($( "#leave" ).datepicker( "getDate" )); //get date for event
     var back = document.getElementById("back").value;
     var endDate = ($( "#back" ).datepicker( "getDate" )); //get date for event
-    var destination = document.getElementById("destination").value;
+    var destination = document.getElementById("countrydd").value;
     var mycontact = document.getElementById("contactdd").value;
     var name = sessionStorage.getItem("name");
     var lastname = sessionStorage.getItem("lastname");
@@ -174,39 +174,57 @@ function addTrip() {
     var tripID = newTripsRef.key();
 }
 
-var count = 1;
-var contact = [];
-var myText = "";
-var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts");
-ref.on("child_added", function(snapshot) {
-newContact = snapshot.val();
-contact[count] = new Array(4);
-contact[count][1] = newContact.name;
-contact[count][2] = newContact.fullname;
-contact[count][3] = newContact.email;
-contact[count][4] = newContact.phone;
-document.getElementById("contactdd");
-var optn = document.createElement("OPTION");
-    optn.text = contact[count][2] + " | " + contact[count][3];
-    optn.value = snapshot.key();
-    contactdd.options.add(optn);
-count = count + 1; 
-});
+function contactdd() {
+    var count = 1;
+    var myText = "";
+    var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts");
+    ref.on("child_added", function(snapshot) {
+        newContact = snapshot.val();
+        contact[count] = new Array(4);
+        contact[count][1] = newContact.name;
+        contact[count][2] = newContact.fullname;
+        contact[count][3] = newContact.email;
+        contact[count][4] = newContact.phone;
+        select = document.getElementById("contactdd");
+        var optn = document.createElement("OPTION");
+        optn.text = contact[count][2] + " | " + contact[count][3];
+        optn.value = snapshot.key();
+        select.options.add(optn);
+        count = count + 1; 
+    });
+}
 
+function countrydd() {
+    var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/Countries");
+    ref.on("child_added", function(snapshot) {
+        var countries = snapshot.val();
+        select = document.getElementById("countrydd");
+        var optn = document.createElement("OPTION");
+        optn.text = countries;
+        optn.value = snapshot.val();
+        select.options.add(optn);
+    });
+}
+                                     
+$(function() {
+    contactdd();
+    countrydd();
+});
+           
 function validateForm() {
-    if(document.tripdetails.leave.value == "") {
+    if(document.tripdetails.leave.value === "") {
         $( '#dialogValLeave' ).dialog('open');
         document.tripdetails.leave.focus();
         return false;
     }
-    if(document.tripdetails.back.value == "") {
+    if(document.tripdetails.back.value === "") {
         $( '#dialogValReturn' ).dialog('open');
         document.tripdetails.back.focus();
         return false;
     }
-    if (document.tripdetails.destination.value == "Select a country") {
+    if (document.tripdetails.countrydd.value == "Select a country") {
         $( '#dialogValDest' ).dialog('open');
-        document.tripdetails.destination.focus();
+        document.tripdetails.countrydd.focus();
         return false;
     }
     if (document.tripdetails.contactdd.value == "Select a contact") {

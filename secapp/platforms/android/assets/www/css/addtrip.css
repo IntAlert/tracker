@@ -50,9 +50,9 @@ div.tripdetails p {
 .submit{
     background-color: #32CD32;
     border: none;
-    border-radius: 20px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    border-radius: 20px;
     color: white;
     display: block;
     font-family: 'Arial';
@@ -69,9 +69,9 @@ div.tripdetails p {
 .cancel{
     background-color: red;
     border: none;
-    border-radius: 20px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    border-radius: 20px;
     color: white;
     display: block;
     font-family: 'Arial';
@@ -86,21 +86,21 @@ div.tripdetails p {
 }
 
 .submit:hover{
-  border: none;
-  background: #008000;
-  box-shadow: 0px 0px 1px #777;
+    background: #008000;
+    border: none;
+    box-shadow: 0 0 1px #777;
 }
 
 .reset:hover{
-  border: none;
-  background: #2F4F4F;
-  box-shadow: 0px 0px 1px #777;
+    background: #2F4F4F;
+    border: none;
+    box-shadow: 0 0 1px #777;
 }
 
 .cancel:hover{
-  border: none;
-  background: #B22222;
-  box-shadow: 0px 0px 1px #777;
+    background: #B22222;
+    border: none;
+    box-shadow: 0 0 1px #777;
 }
 
 .input{
@@ -125,26 +125,26 @@ a {
     text-align: center;
 }
 
-div.datepick {
+.datepick {
     float: right;
 }
 
 .ui-datepicker-trigger {
-    width:20px;
     float: right;
     position:absolute;
     right:0;
+    width:20px;
 }
 
 .dlg-no-close .ui-dialog-titlebar-close {
     display: none;
 }
 
-#dialogTripAdded, #dialogValLeave, #dialogValReturn, #dialogValDest, #dialogValContact, #dialogNoSignal {
-    diplay: none;   
+.dialogTripAdded, .dialogValLeave, .dialogValReturn, .dialogValDest, .dialogValContact, .dialogNoSignal {
+    display: none;   
 }
 
 input, textarea {
-  -webkit-appearance: none;
-  -webkit-border-radius: 0;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
 }

@@ -29,7 +29,7 @@ h3{
     text-align: center;
 }
 
-div.info{
+.info{
     background-color: #008177;
     border-radius: 20px;
     color: white;
@@ -46,9 +46,9 @@ div.info{
 .submit{
     background-color: #32CD32;
     border: none;
-    border-radius: 20px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    border-radius: 20px;
     color: white;
     display: block;
     font-family: 'Arial';
@@ -65,15 +65,15 @@ div.info{
 .submit:hover{
     background: #008000;
     border: none;
-    box-shadow: 0px 0px 1px #777;
+    box-shadow: 0 0 1px #777;
 }
 
-div.signUp{
+.signUp{
     background-color: #008177;
     border: none;
-    border-radius: 20px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    border-radius: 20px;
     color: white;
     display: block;
     font-family: 'Arial';
@@ -118,7 +118,6 @@ a:visited{
 }
 
 .forgotpass{
-    float:right;
     background-color: #A9A9A9;
     border: none;
     border-radius: 20px;
@@ -126,11 +125,12 @@ a:visited{
     -webkit-border-radius: 5px;
     color: white;
     display: block;
+    float:right;
     font-family: 'Arial';
     font-size: 12px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 0px;
+    margin-top: 0;
     padding: 6px;
     text-align: center;
     text-decoration: bold;
@@ -165,7 +165,7 @@ a:visited{
     text-align: right;
 }
 
-#dialog #dialogEmail #dialogPass #dialogPassword1 #dialogPassword2 #dialogPassMatchErr #dialogAcc #dialogAccErr {
+.dialog .dialogEmail .dialogPass .dialogPassword1 .dialogPassword2 .dialogPassMatchErr .dialogAcc .dialogAccErr {
     diplay: none;   
 }
 

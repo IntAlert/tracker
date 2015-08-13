@@ -47,12 +47,12 @@ h3{
     position:relative;
 }
 
-#trips{
+.trips{
     background-color: #A9A9A9;
     border: none;
-    border-radius: 20px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    border-radius: 20px;
     color: white;
     display: block;
     font-family: 'Arial';
@@ -66,18 +66,18 @@ h3{
     width: 80%;
 }
 
-#trips:hover{
-  border: none;
-  background: #7e7e7e;
-  box-shadow: 0px 0px 1px #777;
+.trips:hover{
+    background: #7e7e7e;
+    border: none;
+    box-shadow: 0 0 1px #777;
 }
 
 .backbutton{
     background-color: #A9A9A9;
     border: none;
-    border-radius: 20px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    border-radius: 20px;
     color: white;
     display: block;
     font-family: 'Arial';
@@ -92,25 +92,25 @@ h3{
 }
 
 .backbutton:hover{
-  border: none;
-  background: #7e7e7e;
-  box-shadow: 0px 0px 1px #777;
+    background: #7e7e7e;
+    border: none;
+    box-shadow: 0 0 1px #777;
 }
 
 .editbutton{
-    float:right;
     background-color: #A9A9A9;
     border: none;
-    border-radius: 20px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    border-radius: 20px;
     color: white;
     display: block;
+    float:right;
     font-family: 'Arial';
     font-size: 12px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 0px;
+    margin-top: 0;
     padding: 6px;
     text-align: center;
     text-decoration: bold;
@@ -118,17 +118,17 @@ h3{
 }
 
 .editbutton:hover{
-  border: none;
-  background: #7e7e7e;
-  box-shadow: 0px 0px 1px #777;
+    background: #7e7e7e;
+    border: none;
+    box-shadow: 0 0 1px #777;
 }
 
 .updatebutton{
     background-color: #32CD32;
     border: none;
-    border-radius: 20px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    border-radius: 20px;
     color: white;
     display: block;
     float: left;
@@ -136,7 +136,7 @@ h3{
     font-size: 12px;
     margin-left: auto;
     margin-right: 6px;
-    margin-top: 0px;
+    margin-top: 0;
     padding: 6px;
     text-align: center;
     text-decoration: bold;
@@ -146,15 +146,15 @@ h3{
 .updatebutton:hover{
     background: #008000;
     border: none;
-    box-shadow: 0px 0px 1px #777;
+    box-shadow: 0 0 1px #777;
 }
 
 .deletebutton{
     background-color: red;
     border: none;
-    border-radius: 20px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    border-radius: 20px;
     color: white;
     display: block;
     float: left;
@@ -162,7 +162,7 @@ h3{
     font-size: 12px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 0px;
+    margin-top: 0;
     padding: 6px;
     text-align: center;
     text-decoration: bold;
@@ -170,17 +170,17 @@ h3{
 }
 
 .deletebutton:hover{
-  border: none;
-  background: #B22222;
-  box-shadow: 0px 0px 1px #777;
+    background: #B22222;
+    border: none;
+    box-shadow: 0 0 1px #777;
 }
     
 .cancelbutton{
     background-color: red;
     border: none;
-    border-radius: 20px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    border-radius: 20px;
     color: white;
     display: block;
     font-family: 'Arial';
@@ -195,9 +195,9 @@ h3{
 }
 
 .cancelbutton:hover{
-  border: none;
   background: #B22222;
-  box-shadow: 0px 0px 1px #777;
+  border: none;
+  box-shadow: 0 0 1px #777;
 }
 
 .input{
@@ -218,30 +218,30 @@ a {
     text-align: center;
 }
 
-div.datepick {
+.datepick {
     float: right;
 }
 
 .ui-datepicker-trigger {
-    width:20px;
     float: right;
     position: absolute;
     right: 0;
+    width:20px;
 }
 
 .dlg-no-close .ui-dialog-titlebar-close {
     display: none;
 }
 
-#dialogError {
+.dialogError {
     display: none;   
 }
 
-#dialogUpdated #dialogDeleted #dialogConfirm{
+.dialogUpdated .dialogDeleted .dialogConfirm{
     display: none;   
 }
 
 input, textarea {
-  -webkit-appearance: none;
-  -webkit-border-radius: 0;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
 }
