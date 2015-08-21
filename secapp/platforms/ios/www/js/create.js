@@ -92,10 +92,11 @@ $(function() {
 
 ////////// MAIN SCRIPTS \\\\\\\\\\
 var password1 = "";
+var email = "";
 function validateAcc() {
     email = document.getElementById("name").value;
     password1 = document.getElementById("password1").value;
-    password2 = document.getElementById("password2").value;
+    var password2 = document.getElementById("password2").value;
     if (email === "") {
         $( "#dialogEmail" ).dialog( "open" );
         return;
@@ -111,7 +112,7 @@ function validateAcc() {
     if (password1 === password2) {
         createAcc();
     } else {
-        $( "#dialogPassMatchErr" ).dialog( "open" );;
+        $( "#dialogPassMatchErr" ).dialog( "open" );
         return;
     }
 } 

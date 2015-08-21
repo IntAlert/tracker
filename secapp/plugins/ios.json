@@ -1,7 +1,13 @@
 {
     "prepare_queue": {
         "installed": [],
-        "uninstalled": []
+        "uninstalled": [
+            {
+                "plugin": "nl.x-services.plugins.launchmyapp",
+                "id": "nl.x-services.plugins.launchmyapp",
+                "topLevel": true
+            }
+        ]
     },
     "config_munge": {
         "files": {

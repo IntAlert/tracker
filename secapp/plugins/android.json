@@ -35,10 +35,6 @@
                         {
                             "xml": "<feature name=\"CameraPictureBackground\"><param name=\"android-package\" value=\"me.rahul.plugins.camerapicturebackground.CameraPictureBackground\" /></feature>",
                             "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"LaunchMyApp\"><param name=\"android-package\" value=\"nl.xservices.plugins.LaunchMyApp\" /></feature>",
-                            "count": 1
                         }
                     ]
                 }
@@ -115,12 +111,7 @@
                             "count": 1
                         }
                     ],
-                    "/*/application/activity": [
-                        {
-                            "xml": "<intent-filter><data android:scheme=\"alertsec\" /><action android:name=\"android.intent.action.VIEW\" /><category android:name=\"android.intent.category.DEFAULT\" /><category android:name=\"android.intent.category.BROWSABLE\" /></intent-filter>",
-                            "count": 1
-                        }
-                    ]
+                    "/*/application/activity": []
                 }
             }
         }
@@ -148,10 +139,6 @@
             "PACKAGE_NAME": "org.internationalalert.secapp"
         },
         "me.rahul.plugins.camerapicturebackground": {
-            "PACKAGE_NAME": "org.internationalalert.secapp"
-        },
-        "nl.x-services.plugins.launchmyapp": {
-            "URL_SCHEME": "alertsec",
             "PACKAGE_NAME": "org.internationalalert.secapp"
         }
     },

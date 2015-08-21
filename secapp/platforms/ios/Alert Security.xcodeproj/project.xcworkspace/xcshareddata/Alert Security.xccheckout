@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>2DDD64E3-9205-4CC3-BC7B-DC9E1AA2EB6A</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Alert Security</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>D3BDBB011EC9BA58B324ED05A45E4E6C6EA9C84D</key>
 		<string>https://github.com/IntAlert/tracker.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>secapp/platforms/ios/Alert Security.xcodeproj</string>
+	<string>secapp/platforms/ios/Alert Security.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>D3BDBB011EC9BA58B324ED05A45E4E6C6EA9C84D</key>

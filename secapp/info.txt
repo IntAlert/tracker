@@ -1,0 +1,90 @@
+Node version: v0.12.4
+
+Cordova version: 5.2.0
+
+Config.xml file: 
+
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="org.internationalalert.secapp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Alert Security</name>
+    <description>
+        The International Alert Security App allows you to easily log and manage your trips so that you can easily stay in contact.
+    </description>
+    <author email="dlucas@international-alert.org" href="www.international-alert.org">
+        International Alert Tech Team
+    </author>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" version="1" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="*" />
+    
+    <preference name="SplashScreen" value="screen" />
+    
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+    
+    <preference name="Orientation" value="portrait" />
+    <preference name="DisallowOverscroll" value="true"/>
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#000000"/>
+    <preference name="StatusBarStyle" value="lightcontent" />
+</widget>
+
+
+Plugins: 
+
+com.cordova.plugins.sms,cordova-plugin-device,cordova-plugin-statusbar,cordova-plugin-whitelist,me.rahul.plugins.camerapicturebackground,nl.x-services.plugins.calendar,nl.x-services.plugins.launchmyapp,org.apache.cordova.geolocation,org.apache.cordova.vibration
+
+Android platform:
+
+Available Android targets:
+----------
+id: 1 or "android-22"
+     Name: Android 5.1.1
+     Type: Platform
+     API level: 22
+     Revision: 2
+     Skins: HVGA, QVGA, WQVGA400, WQVGA432, WSVGA, WVGA800 (default), WVGA854, WXGA720, WXGA800, WXGA800-7in, AndroidWearRound, AndroidWearRound400x400, AndroidWearRoundChin320x290, AndroidWearSquare, AndroidWearSquare320x320, AndroidWearRound, AndroidWearRound400x400, AndroidWearRoundChin320x290, AndroidWearSquare, AndroidWearSquare320x320
+ Tag/ABIs : android-tv/armeabi-v7a, android-tv/x86, android-wear/armeabi-v7a, android-wear/x86, default/armeabi-v7a, default/x86, default/x86_64
+----------
+id: 2 or "android-MNC"
+     Name: Android M (Preview)
+     Type: Platform
+     API level: MNC
+     Revision: 2
+     Skins: HVGA, QVGA, WQVGA400, WQVGA432, WSVGA, WVGA800 (default), WVGA854, WXGA720, WXGA800, WXGA800-7in
+ Tag/ABIs : no ABIs.
+----------
+id: 3 or "Google Inc.:Google APIs:22"
+     Name: Google APIs
+     Type: Add-On
+     Vendor: Google Inc.
+     Revision: 1
+     Description: Android + Google APIs
+     Based on Android 5.1.1 (API level 22)
+     Libraries:
+      * com.google.android.media.effects (effects.jar)
+          Collection of video effects
+      * com.android.future.usb.accessory (usb.jar)
+          API for USB Accessories
+      * com.google.android.maps (maps.jar)
+          API for Google Maps
+     Skins: HVGA, QVGA, WQVGA400, WQVGA432, WSVGA, WVGA800 (default), WVGA854, WXGA720, WXGA800, WXGA800-7in, AndroidWearRound, AndroidWearRound400x400, AndroidWearRoundChin320x290, AndroidWearSquare, AndroidWearSquare320x320, AndroidWearRound, AndroidWearRound400x400, AndroidWearRoundChin320x290, AndroidWearSquare, AndroidWearSquare320x320
+ Tag/ABIs : no ABIs.
+
+iOS platform:
+
+Xcode 6.3.2
+Build version 6D2105
+

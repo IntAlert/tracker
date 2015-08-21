@@ -1,8 +1,8 @@
-body{
-    background-image: url("../img/bg.jpg")
+body {
+    background-image: url("../img/bg.jpg");
 }
 
-h1{
+h1 {
     background-color: #008177;
     border-radius: 20px;
     color: white;
@@ -12,11 +12,10 @@ h1{
     margin-top: 10px;
     max-width:90%;
     padding: 10px;
-    position: center;
     text-align: center;
 }
 
-h3{
+h3 {
     border-radius: 20px;
     color: black;
     font-family: 'Arial';
@@ -25,11 +24,10 @@ h3{
     margin-top: 10px;
     max-width:90%;
     padding: 10px;
-    position: center;
     text-align: center;
 }
 
-.detail{
+.detail {
     background-color: #008177;
     border-radius: 20px;
     color: white;
@@ -40,14 +38,13 @@ h3{
     margin-top: 10px;
     max-width: 90%;
     padding: 10px;
-    position: center;
 }
 
 .detail p {
     position:relative;
 }
 
-.trips{
+.trips {
     background-color: #A9A9A9;
     border: none;
     -moz-border-radius: 5px;
@@ -63,16 +60,16 @@ h3{
     padding: 10px;
     text-align: center;
     text-decoration: bold;
-    width: 80%;
+    width: 85%;
 }
 
-.trips:hover{
+.trips:hover {
     background: #7e7e7e;
     border: none;
     box-shadow: 0 0 1px #777;
 }
 
-.backbutton{
+.backbutton {
     background-color: #A9A9A9;
     border: none;
     -moz-border-radius: 5px;
@@ -91,13 +88,13 @@ h3{
     width: 60%;
 }
 
-.backbutton:hover{
+.backbutton:hover {
   background: #7e7e7e;
   border: none;
   box-shadow: 0 0 1px #777;
 }
 
-.editbutton{
+.editbutton {
     background-color: #A9A9A9;
     border: none;
     -moz-border-radius: 5px;
@@ -117,13 +114,13 @@ h3{
     width: 20%;
 }
 
-.editbutton:hover{
+.editbutton:hover {
     background: #7e7e7e;
     border: none;
     box-shadow: 0 0 1px #777;
 }
 
-.updatebutton{
+.updatebutton {
     background-color: #32CD32;
     border: none;
     -moz-border-radius: 5px;
@@ -143,13 +140,13 @@ h3{
     width: 20%;
 }
 
-.updatebutton:hover{
+.updatebutton:hover {
     background: #008000;
     border: none;
     box-shadow: 0 0 1px #777;
 }
 
-.deletebutton{
+.deletebutton {
     background-color: red;
     border: none;
     -moz-border-radius: 5px;
@@ -169,13 +166,13 @@ h3{
     width: 20%;
 }
 
-.deletebutton:hover{
+.deletebutton:hover {
     background: #B22222;
     border: none;
     box-shadow: 0 0 1px #777;
 }
     
-.cancelbutton{
+.cancelbutton {
     background-color: red;
     border: none;
     -moz-border-radius: 5px;
@@ -194,13 +191,13 @@ h3{
     width: 60%;
 }
 
-.cancelbutton:hover{
+.cancelbutton:hover {
     background: #B22222;
     border: none;
     box-shadow: 0 0 1px #777;
 }
 
-.input{
+.input {
     float: right;
     width: 42%;
 }
@@ -237,11 +234,13 @@ a {
     display: none;   
 }
 
-.dialogUpdated .dialogDeleted .dialogConfirm{
+.dialogUpdated .dialogDeleted .dialogConfirm {
     display: none;   
 }
 
 input, textarea {
+    -moz-appearance: none;
     -webkit-appearance: none;
     -webkit-border-radius: 0;
+    border-radius: 0;
 }

@@ -28,7 +28,7 @@ $(function() {
 
 ////////// MAIN SCRIPTS \\\\\\\\\\
 function passReset() {
-    username = document.getElementById("name").value;
+    var username = document.getElementById("name").value;
     var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts");
     ref.resetPassword({
         email : username
