@@ -148,8 +148,10 @@ function countrydd() {
 function populateForm() {
     var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
     mytripid = sessionStorage.getItem("thistripid");
+    console.log(mytripid);
     ref.child(mytripid).on("value", function (snapshot) {
         thisTrip = snapshot.val();
+        console.log("thisTrip: " , thisTrip);
         document.getElementById("leave").value = thisTrip.leave;
         $("#leave").text(thisTrip.leave);
         document.getElementById("back").value = thisTrip.back;

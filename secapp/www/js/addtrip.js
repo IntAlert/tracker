@@ -145,6 +145,7 @@ function addTrip() {
     }
     var leave = document.getElementById("leave").value;
     var startDate = ($( "#leave" ).datepicker( "getDate" )); //get date for event
+    console.log(startDate);
     var back = document.getElementById("back").value;
     var endDate = ($( "#back" ).datepicker( "getDate" )); //get date for event
     var destination = document.getElementById("countrydd").value;
@@ -172,6 +173,7 @@ function addTrip() {
             $( '#dialogTripAdded' ).dialog('open');
         });
     var tripID = newTripsRef.key();
+    sessionStorage.setItem("thistripid", tripID); //store tripid into session storage
 }
 
 function contactdd() {

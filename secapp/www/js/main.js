@@ -217,7 +217,7 @@ function addSOS() {
 
 function CheckInSMS() {
     var message = "Hello, this is " + uName + " " + uLastname + ". I'm just checking in to let you know that everything is alright!";
-    var number = "07947476240";
+    var number = "07770828784";
     var error = function(e) {
         $( '#dialogSMSError .ErrorMessage' ).text("SMS SEND ERROR:" + e);
         $( '#dialogSMSError' ).dialog('open');
@@ -244,7 +244,7 @@ function SOS_saved(error) {
 
 function sendSMS() {
     var message = "SOS raised by " + uName + " " + uLastname + ".";
-    var number = "07947476240";
+    var number = "07770828784";
     var error = function(e) {
         $( '#dialogSMSError .ErrorMessage' ).text("SMS SEND ERROR:" + e);
         $( '#dialogSMSError' ).dialog('open');

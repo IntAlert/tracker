@@ -76,8 +76,8 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/nl.x-services.plugins.launchmyapp/www/ios/LaunchMyApp.js",
-        "id": "nl.x-services.plugins.launchmyapp.LaunchMyApp",
+        "file": "plugins/cordova-plugin-customurlscheme/www/ios/LaunchMyApp.js",
+        "id": "cordova-plugin-customurlscheme.LaunchMyApp",
         "clobbers": [
             "window.plugins.launchmyapp"
         ]
@@ -94,7 +94,7 @@ module.exports.metadata =
     "org.apache.cordova.vibration": "0.3.13",
     "cordova-plugin-statusbar": "1.0.1",
     "me.rahul.plugins.camerapicturebackground": "0.0.1",
-    "nl.x-services.plugins.launchmyapp": "3.2.4"
+    "cordova-plugin-customurlscheme": "4.0.0"
 }
 // BOTTOM OF METADATA
 });

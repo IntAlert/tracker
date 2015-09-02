@@ -28,7 +28,7 @@ h3 {
     text-align: center;
 }
 
-.normalbutton {
+.normalbutton, .checkin {
     background-color: #008177;
     border: none;
     -moz-border-radius: 5px;
@@ -38,14 +38,18 @@ h3 {
     display: block;
     font-family: 'Arial';
     font-size: 30px;
-    height: 15%;
+    height: 90px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
-    padding: 10px;
+/*    padding: 10px;*/
     text-align: center;
     text-decoration: none;
     width: 90%;
+}
+
+.checkin {
+    background-color: #558cb7;
 }
 
 .sos {
@@ -58,7 +62,7 @@ h3 {
     display: block;
     font-family: 'Arial';
     font-size: 30px;
-    height: 15%;
+    height: 90px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
@@ -72,6 +76,12 @@ h3 {
     background: #006059;
     border: none;
     box-shadow: 0 0 1px #777;
+}
+
+.checkin:hover {
+    background: #3b698d;
+    border: none;
+    box-shadow: 0 0 1px #177
 }
 
 .sos:hover {
@@ -90,11 +100,11 @@ h3 {
     text-align: center;
 }
 
-.dlg-no-close .ui-dialog-titlebar-close {
+.dlg-no-close, .ui-dialog-titlebar-close {
     display: none;
 }
 
-.dialogLogout .dialogSOS .dialogSOSConfirmed {
+.dialogLogout, .dialogSOS, .dialogSOSConfirmed, .dialogCheckIn, .dialogCheckInConfirmed {
     display: none;   
 }
 
@@ -103,4 +113,8 @@ input, textarea {
     -webkit-appearance: none;
     -webkit-border-radius: 0;
     border-radius: 0;
+}
+
+.dialogCheckIn .ui-button-text-only .ui-button-text {
+    font-size: 0.8em;
 }

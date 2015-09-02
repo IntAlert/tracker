@@ -1,13 +1,7 @@
 {
     "prepare_queue": {
         "installed": [],
-        "uninstalled": [
-            {
-                "plugin": "nl.x-services.plugins.launchmyapp",
-                "id": "nl.x-services.plugins.launchmyapp",
-                "topLevel": true
-            }
-        ]
+        "uninstalled": []
     },
     "config_munge": {
         "files": {
@@ -98,8 +92,8 @@
                     ],
                     "CFBundleURLTypes": [
                         {
-                            "xml": "<array><dict><key>CFBundleURLSchemes</key><array><string>alertsec</string></array></dict></array>",
-                            "count": 1
+                            "xml": "<array><dict><key>CFBundleURLSchemes</key><array><string>secapp</string></array></dict></array>",
+                            "count": 2
                         }
                     ]
                 }
@@ -131,8 +125,8 @@
         "me.rahul.plugins.camerapicturebackground": {
             "PACKAGE_NAME": "org.internationalalert.secapp"
         },
-        "nl.x-services.plugins.launchmyapp": {
-            "URL_SCHEME": "alertsec",
+        "cordova-plugin-customurlscheme": {
+            "URL_SCHEME": "secapp",
             "PACKAGE_NAME": "org.internationalalert.secapp"
         }
     },

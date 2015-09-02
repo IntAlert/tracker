@@ -1,4 +1,4 @@
-cordova.define("nl.x-services.plugins.launchmyapp.LaunchMyApp", function(require, exports, module) { "use strict";
+cordova.define("cordova-plugin-customurlscheme.LaunchMyApp", function(require, exports, module) { "use strict";
 
 /*
  Q: Why an empty file?

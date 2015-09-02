@@ -96,7 +96,19 @@ if (error) {
     $( "#dialogErrorText" ).text(error);
     $( "#dialogError" ).dialog( "open" );
     } else {
-        window.location="main.html";
+        //picks up from handleOpenURL()
+        if (postLoginURL == true) { //if intent called true
+            console.log(postLoginURL);
+            window.location="mytrip.html"; //redirect to mytrip.html
+            //GO TO URL
+        } else {
+            //IF NOT, Normal login
+            console.log(postLoginURL);
+            postLoginURL = false; //set intent called to false, just in case
+            console.log(postLoginURL);
+            sessionStorage.setItem("thistripid", null); //set session storage back to null
+            window.location="main.html"; //redirect to main.html
+        }
     }
 }
 

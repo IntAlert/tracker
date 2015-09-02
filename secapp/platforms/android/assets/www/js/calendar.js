@@ -1,5 +1,6 @@
 function createEvent(startDate, endDate, destination, contactname, cb) {
     console.log("Inside function");
+    console.log(startDate);
     // prep some variables
     //  var startDate = new Date(2015,2,15,18,30,0,0,0); // beware: month 0 = january, 11 = december
     //  var endDate = new Date(2015,2,15,19,30,0,0,0);
@@ -15,7 +16,9 @@ function createEvent(startDate, endDate, destination, contactname, cb) {
     console.log(title);
     var eventLocation = destination;
     console.log(eventLocation);
-    var notes = "Don't forget to check in  with " + contactname + " to let everyone know things are okay!";
+    var mytripid = sessionStorage.getItem("thistripid");
+    var deeplink = ""; //INSERT DEEPLINK INTO CALENDAR
+    var notes = "Don't forget to check in  with " + contactname + " to let everyone know things are okay! " + deeplink;
     console.log(notes);
 //    var success = function(message) { alert("Success: " + JSON.stringify(message)); };
 //    var error = function(message) { alert("Error: " + message); };
@@ -52,6 +55,7 @@ function createEvent(startDate, endDate, destination, contactname, cb) {
     window.plugins.calendar.createEventWithOptions(title,eventLocation,notes,startDate,startDate2,calOptions,cb,function(e){
         console.log("ERROR: " + e);
     });
+    console.log("done");
     //
     //    // create an event interactively
     //  window.plugins.calendar.createEventInteractively(title,eventLocation,notes,startDate,endDate,success,error);

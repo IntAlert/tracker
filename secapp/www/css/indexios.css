@@ -3,9 +3,9 @@ body {
 }
 
 h1 {
-    background-color: yellow;
+    background-color: #008177;
     border-radius: 20px;
-    color: blue;
+    color: white;
     font-family: 'Arial';
     font-size: 190%;
     margin-left: auto;
@@ -84,22 +84,12 @@ h3 {
 }
 
 a:link {
-    color: red;
+    color: white;
     text-decoration: none;
 }
 
 a:visited {
-    color: maroon;
-}
-
-a:hover {
-    color: tomato;
-    text-decoration: underline;
-}
-
-a:active {
-    color: red;
-    text-decoration: none;
+    color: white;
 }
 
 .textbox {
@@ -166,6 +156,11 @@ a:active {
 
 .dlg-no-close .ui-dialog-titlebar-close {
     display: none;
+}
+
+.rememberme {
+    font-size: 75%;
+    text-align: right;
 }
 
 .dialog .dialogEmail .dialogPass .dialogPassword1 .dialogPassword2 .dialogPassMatchErr .dialogAcc .dialogAccErr {

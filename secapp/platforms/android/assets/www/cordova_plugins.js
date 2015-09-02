@@ -51,6 +51,13 @@ module.exports = [
         "clobbers": [
             "window.plugins.CameraPictureBackground"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-customurlscheme/www/android/LaunchMyApp.js",
+        "id": "cordova-plugin-customurlscheme.LaunchMyApp",
+        "clobbers": [
+            "window.plugins.launchmyapp"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -63,7 +70,8 @@ module.exports.metadata =
     "org.apache.cordova.geolocation": "0.3.12",
     "cordova-plugin-device": "1.0.0",
     "cordova-plugin-statusbar": "1.0.1",
-    "me.rahul.plugins.camerapicturebackground": "0.0.1"
+    "me.rahul.plugins.camerapicturebackground": "0.0.1",
+    "cordova-plugin-customurlscheme": "4.0.0"
 }
 // BOTTOM OF METADATA
 });
