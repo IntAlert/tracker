@@ -116,6 +116,10 @@ function forgotPass() {
     window.location="forgot.html";
 }
 
+function create() {
+    window.location="create.html";
+}
+
 function rememberMe() {
     if (document.getElementById("rememberme").checked === true) {
         localStorage.setItem("remember","true");

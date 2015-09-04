@@ -16,8 +16,8 @@
     </head>
     
     <body>
-        <div id="dialogEmail" class="dialogEmail" title="Error">Please enter an email address.</div>
-        <div id="dialogPass" class="dialogPass" title="Error">Please enter a password.</div>
+        <div id="dialogEmail" class="dialogEmail" title="Error">Please enter your Alert email.</div>
+        <div id="dialogPass" class="dialogPass" title="Error">Please enter your password.</div>
         <div id="dialogError" class="dialogError" title="Login Failed"><div id="dialogErrorText"></div></div>
         
         <div class="page-header container text-center">
@@ -29,7 +29,7 @@
         <form>
             <div id="container" class="info">
                 <p>Email Address
-                    <input class="textbox" type="email" id="name" placeholder="Enter your email" value="">
+                    <input class="textbox" type="email" id="name" placeholder="Enter your Alert email" value="">
                 </p>
                 <p>Password
                     <input class="textbox" type="password" id="password" placeholder="Enter your password">
@@ -37,6 +37,7 @@
                 <p class="rememberme">
                     <input type="checkbox" id="rememberme" class="checkbox">Remember Email
                 </p>
+                <a href="#" onClick="create()" class="forgotpass create">Create Account</a>
                 <a href="#" onClick="forgotPass()" class="forgotpass">Forgot Password</a>
                 <br>
             </div>

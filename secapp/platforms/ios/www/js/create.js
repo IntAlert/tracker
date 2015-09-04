@@ -1,7 +1,7 @@
 ////////// DIALOG \\\\\\\\\\
 $(function() {
     $( "#dialog" ).dialog({
-        autoOpen: true,
+        autoOpen: false,
         modal: true,
         dialogClass: "dlg-no-close",
         buttons: {
@@ -137,3 +137,10 @@ function existingAcc() {
     localStorage.setItem("status", "true");
     window.location='index.html';
 }
+
+$(function() {
+    var newuser = localStorage.getItem("status");
+    if (newuser === true) {
+        $( "#dialog" ).dialog( "open" );
+    }
+});
