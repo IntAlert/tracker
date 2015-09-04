@@ -1,3 +1,14 @@
+function createEventIOS(startDate, endDate, destination, contactname) {
+    console.log("ios create event");
+    var endDate = new Date(endDate.getTime());
+    endDate.setHours(23);
+    endDate.setMinutes(59);
+    var title = "International Alert Trip: " + destination;
+    var eventLocation = destination;
+    var notes = "Don't forget to check in with " + contactname + " to let everyone know things are okay!";
+    window.plugins.calendar.createEvent(title,eventLocation,notes,startDate,endDate);
+}
+
 function createEvent(startDate, endDate, destination, contactname, cb) {
     console.log("Inside function");
     console.log(startDate);
@@ -52,6 +63,8 @@ function createEvent(startDate, endDate, destination, contactname, cb) {
     //  calOptions.url = "https://www.google.com";
     //
     console.log("createeventwithoptions");
+    console.log(calOptions);
+    console.log(startDate);
     window.plugins.calendar.createEventWithOptions(title,eventLocation,notes,startDate,startDate2,calOptions,cb,function(e){
         console.log("ERROR: " + e);
     });
