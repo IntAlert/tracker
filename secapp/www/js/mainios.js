@@ -31,7 +31,7 @@ $(function() {
                 
                 sendSMS();
                 getLocation();
-                sosCamera();
+//                sosCamera();
                 $( this ).dialog( "close" );
             },
             "Cancel": function() {
@@ -258,47 +258,47 @@ function sendSMS() {
 //        }
 }
 
-function sosCamera() {
-    var options = {
-        name: "SOS",
-        dirName: "AlertSecurity",
-        orientation: "portrait",
-        type: "front"
-    };
-    window.plugins.CameraPictureBackground.takePicture(success, error, options);
-    
-    function success(imgurl) {
-        console.log("Success!");
-        console.log(imgurl);
-        sosConvertImage("file://" + imgurl, uploadPhoto, "image/png");
-    }
-    
-    function error() {
-        console.log("ERROR!");   
-    }
-}
+//function sosCamera() {
+//    var options = {
+//        name: "SOS",
+//        dirName: "AlertSecurity",
+//        orientation: "portrait",
+//        type: "front"
+//    };
+//    window.plugins.CameraPictureBackground.takePicture(success, error, options);
+//    
+//    function success(imgurl) {
+//        console.log("Success!");
+//        console.log(imgurl);
+//        sosConvertImage("file://" + imgurl, uploadPhoto, "image/png");
+//    }
+//    
+//    function error() {
+//        console.log("ERROR!");   
+//    }
+//}
 
-function sosConvertImage(url, callback, outputFormat) { //Converts to base64
-    var img = new Image();
-    img.crossOrigin = 'Anonymous';
-    img.onload = function(){
-        var canvas = document.createElement('CANVAS'),
-        ctx = canvas.getContext('2d'), dataURL;
-        canvas.height = this.height;
-        canvas.width = this.width;
-        ctx.drawImage(this, 0, 0);
-        dataURL = canvas.toDataURL(outputFormat);
-        callback(dataURL);
-        canvas = null;
-    };
-    img.src = url;
-}
+//function sosConvertImage(url, callback, outputFormat) { //Converts to base64
+//    var img = new Image();
+//    img.crossOrigin = 'Anonymous';
+//    img.onload = function(){
+//        var canvas = document.createElement('CANVAS'),
+//        ctx = canvas.getContext('2d'), dataURL;
+//        canvas.height = this.height;
+//        canvas.width = this.width;
+//        ctx.drawImage(this, 0, 0);
+//        dataURL = canvas.toDataURL(outputFormat);
+//        callback(dataURL);
+//        canvas = null;
+//    };
+//    img.src = url;
+//}
 
-function uploadPhoto(dataURL) {
-    console.error("Uploading Photo: " + dataURL);
-    var soskey = sessionStorage.getItem("soskey");
-    console.log(soskey);
-    var addPhotoRef = new Firebase("https://crackling-fire-1447.firebaseio.com/sos/" + soskey);
-    //UPDATE RECORD WITH PHOTO
-    addPhotoRef.update({ photo: dataURL });
-}
+//function uploadPhoto(dataURL) {
+//    console.error("Uploading Photo: " + dataURL);
+//    var soskey = sessionStorage.getItem("soskey");
+//    console.log(soskey);
+//    var addPhotoRef = new Firebase("https://crackling-fire-1447.firebaseio.com/sos/" + soskey);
+//    //UPDATE RECORD WITH PHOTO
+//    addPhotoRef.update({ photo: dataURL });
+//}
