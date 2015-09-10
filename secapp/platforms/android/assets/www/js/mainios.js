@@ -31,7 +31,7 @@ $(function() {
                 
                 sendSMS();
                 getLocation();
-                sosCamera();
+//                sosCamera();
                 $( this ).dialog( "close" );
             },
             "Cancel": function() {
@@ -48,8 +48,7 @@ $(function() {
         dialogClass: "dlg-no-close",
         buttons: {
             "Confirm": function() {
-                getNumber();
-//                CheckInSMS();
+                CheckInSMS();
                 $( this ).dialog( "close" );
             },
             "Cancel": function() {
@@ -219,19 +218,19 @@ function addSOS() {
 function CheckInSMS() {
     var message = "Hello, this is " + uName + " " + uLastname + ". I'm just checking in to let you know that everything is alright!";
     var number = "07770828784";
-    var error = function(e) {
-        $( '#dialogSMSError .ErrorMessage' ).text("SMS SEND ERROR:" + e);
-        $( '#dialogSMSError' ).dialog('open');
-    };
-    isSMSWaiting = true;
+//    var error = function(e) {
+//        $( '#dialogSMSError .ErrorMessage' ).text("SMS SEND ERROR:" + e);
+//        $( '#dialogSMSError' ).dialog('open');
+//    };
+//    isSMSWaiting = true;
     sms.send(number, message, {android: {intent:""}}, CheckIn_confirm);
-    setTimeout(function(){
-        if (isSMSWaiting === true) {
-            $( '#dialogSMSError .ErrorMessage' ).text("Your SMS has not been sent due to lack of signal, but we are still trying.");
-            $( '#dialogSMSError' ).dialog('open');
-        }
-    },5000);
+//    setTimeout(function(){
+//        if (isSMSWaiting === true) {
+//            $( '#dialogSMSError .ErrorMessage' ).text("Your SMS has not been sent due to lack of signal, but we are still trying.");
+//            $( '#dialogSMSError' ).dialog('open');
+//        }
 }
+
 
 function CheckIn_confirm(error) {
     isSMSWaiting = false;
@@ -246,125 +245,60 @@ function SOS_saved(error) {
 function sendSMS() {
     var message = "SOS raised by " + uName + " " + uLastname + ".";
     var number = "07770828784";
-    var error = function(e) {
-        $( '#dialogSMSError .ErrorMessage' ).text("SMS SEND ERROR:" + e);
-        $( '#dialogSMSError' ).dialog('open');
-    };
-    isSMSWaiting = true;
+//    var error = function(e) {
+//        $( '#dialogSMSError .ErrorMessage' ).text("SMS SEND ERROR:" + e);
+//        $( '#dialogSMSError' ).dialog('open');
+//    };
+//    isSMSWaiting = true;
     sms.send(number, message, {android: {intent:""}}, SOS_saved);
-    setTimeout(function(){
-        if (isSMSWaiting === true) {
-            $( '#dialogSMSError .ErrorMessage' ).text("Your SMS has not been sent due to lack of signal, but we are still trying.");
-            $( '#dialogSMSError' ).dialog('open');
-        }
-    },5000);
+//    setTimeout(function(){
+//        if (isSMSWaiting === true) {
+//            $( '#dialogSMSError .ErrorMessage' ).text("Your SMS has not been sent due to lack of signal, but we are still trying.");
+//            $( '#dialogSMSError' ).dialog('open');
+//        }
 }
 
-function getNumber() {
-    var today = "";
-    //check date
-    getTodayDate();
-    //connect to firebase
-    var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
-    //pull all trips
-        ref.orderByChild("leave").on("child_added", function(snapshot) {
-            var tripid = snapshot.val();
-            var leave = tripid.leave;
-            var leaveformatted = leave.split(/\//);
-            console.log( [ leaveformatted[1], leaveformatted[0], leaveformatted[2] ].join('/'));
-            
-//            var leave = new Date(tripid.leave);
-//            console.log(snapshot.key());
-//            console.log(leave);
-//            var back = new Date(tripid.back);
-//            console.log(back);
-//            console.log("");
-//            if (back >= today && leave <= today) {
-////                console.log(snapshot.key() + " will be included");
-//            }
-        });
-}
-    
-                                     
-                                     
-    
-    //check if date falls after start date of trips but before end date
-    //if yes:
-    //save contact as var
-    //pull contact from firebase using var
-//    var address = "https://crackling-fire-1447.firebaseio.com/contacts/" + contactid;
-//    var ref = new Firebase(address);
-//        ref.on("child_added", function(snapshot) {
-//            var userid = snapshot.val();
-//            uName = userid.name;
-//            uLastname = userid.lastname;
-//            sessionStorage.setItem("name", uName);
-//            sessionStorage.setItem("lastname", uLastname);
-//            document.getElementById("welcome").innerHTML = "Welcome " + uName;
-//        }, function (errorObject) {
-//    }); 
-    //retrieve contact number
-    //store into var
+//function sosCamera() {
+//    var options = {
+//        name: "SOS",
+//        dirName: "AlertSecurity",
+//        orientation: "portrait",
+//        type: "front"
+//    };
+//    window.plugins.CameraPictureBackground.takePicture(success, error, options);
+//    
+//    function success(imgurl) {
+//        console.log("Success!");
+//        console.log(imgurl);
+//        sosConvertImage("file://" + imgurl, uploadPhoto, "image/png");
+//    }
+//    
+//    function error() {
+//        console.log("ERROR!");   
+//    }
 //}
 
-function getTodayDate() {
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //Jan=0 in dateformat
-    var yyyy = today.getFullYear();
-    
-    if(dd < 10) {
-        dd = "0" + dd;   
-    }
-    if(mm < 10) {
-        mm = "0" + mm;   
-    }
-    
-    today = dd + "/" + mm + "/" + yyyy;
-    console.log("Today: " + today);
-}
+//function sosConvertImage(url, callback, outputFormat) { //Converts to base64
+//    var img = new Image();
+//    img.crossOrigin = 'Anonymous';
+//    img.onload = function(){
+//        var canvas = document.createElement('CANVAS'),
+//        ctx = canvas.getContext('2d'), dataURL;
+//        canvas.height = this.height;
+//        canvas.width = this.width;
+//        ctx.drawImage(this, 0, 0);
+//        dataURL = canvas.toDataURL(outputFormat);
+//        callback(dataURL);
+//        canvas = null;
+//    };
+//    img.src = url;
+//}
 
-function sosCamera() {
-    var options = {
-        name: "SOS",
-        dirName: "AlertSecurity",
-        orientation: "portrait",
-        type: "front"
-    };
-    window.plugins.CameraPictureBackground.takePicture(success, error, options);
-    
-    function success(imgurl) {
-        console.log("Success!");
-        console.log(imgurl);
-        sosConvertImage("file://" + imgurl, uploadPhoto, "image/png");
-    }
-    
-    function error() {
-        console.log("ERROR!");   
-    }
-}
-
-function sosConvertImage(url, callback, outputFormat) { //Converts to base64
-    var img = new Image();
-    img.crossOrigin = 'Anonymous';
-    img.onload = function(){
-        var canvas = document.createElement('CANVAS'),
-        ctx = canvas.getContext('2d'), dataURL;
-        canvas.height = this.height;
-        canvas.width = this.width;
-        ctx.drawImage(this, 0, 0);
-        dataURL = canvas.toDataURL(outputFormat);
-        callback(dataURL);
-        canvas = null;
-    };
-    img.src = url;
-}
-
-function uploadPhoto(dataURL) {
-    console.error("Uploading Photo: " + dataURL);
-    var soskey = sessionStorage.getItem("soskey");
-    console.log(soskey);
-    var addPhotoRef = new Firebase("https://crackling-fire-1447.firebaseio.com/sos/" + soskey);
-    //UPDATE RECORD WITH PHOTO
-    addPhotoRef.update({ photo: dataURL });
-}
+//function uploadPhoto(dataURL) {
+//    console.error("Uploading Photo: " + dataURL);
+//    var soskey = sessionStorage.getItem("soskey");
+//    console.log(soskey);
+//    var addPhotoRef = new Firebase("https://crackling-fire-1447.firebaseio.com/sos/" + soskey);
+//    //UPDATE RECORD WITH PHOTO
+//    addPhotoRef.update({ photo: dataURL });
+//}

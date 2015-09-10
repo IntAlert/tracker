@@ -48,7 +48,7 @@ $(function() {
         dialogClass: "dlg-no-close",
         buttons: {
             "Confirm": function() {
-                getTodayDate();
+                getNumber();
 //                CheckInSMS();
                 $( this ).dialog( "close" );
             },
@@ -270,9 +270,18 @@ function getNumber() {
         ref.orderByChild("leave").on("child_added", function(snapshot) {
             var tripid = snapshot.val();
             var leave = tripid.leave;
-            if (leave >= today) {
-                console.log(snapshot.key() + " will be included");
-            }
+            var leaveformatted = leave.split(/\//);
+            console.log( [ leaveformatted[1], leaveformatted[0], leaveformatted[2] ].join('/'));
+            
+//            var leave = new Date(tripid.leave);
+//            console.log(snapshot.key());
+//            console.log(leave);
+//            var back = new Date(tripid.back);
+//            console.log(back);
+//            console.log("");
+//            if (back >= today && leave <= today) {
+////                console.log(snapshot.key() + " will be included");
+//            }
         });
 }
     
