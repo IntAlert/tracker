@@ -48,7 +48,8 @@ $(function() {
         dialogClass: "dlg-no-close",
         buttons: {
             "Confirm": function() {
-                CheckInSMS();
+                getTodayDate();
+//                CheckInSMS();
                 $( this ).dialog( "close" );
             },
             "Cancel": function() {
@@ -257,6 +258,61 @@ function sendSMS() {
             $( '#dialogSMSError' ).dialog('open');
         }
     },5000);
+}
+
+function getNumber() {
+    var today = "";
+    //check date
+    getTodayDate();
+    //connect to firebase
+    var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
+    //pull all trips
+        ref.orderByChild("leave").on("child_added", function(snapshot) {
+            var tripid = snapshot.val();
+            var leave = tripid.leave;
+            if (leave >= today) {
+                console.log(snapshot.key() + " will be included");
+            }
+        });
+}
+    
+                                     
+                                     
+    
+    //check if date falls after start date of trips but before end date
+    //if yes:
+    //save contact as var
+    //pull contact from firebase using var
+//    var address = "https://crackling-fire-1447.firebaseio.com/contacts/" + contactid;
+//    var ref = new Firebase(address);
+//        ref.on("child_added", function(snapshot) {
+//            var userid = snapshot.val();
+//            uName = userid.name;
+//            uLastname = userid.lastname;
+//            sessionStorage.setItem("name", uName);
+//            sessionStorage.setItem("lastname", uLastname);
+//            document.getElementById("welcome").innerHTML = "Welcome " + uName;
+//        }, function (errorObject) {
+//    }); 
+    //retrieve contact number
+    //store into var
+//}
+
+function getTodayDate() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //Jan=0 in dateformat
+    var yyyy = today.getFullYear();
+    
+    if(dd < 10) {
+        dd = "0" + dd;   
+    }
+    if(mm < 10) {
+        mm = "0" + mm;   
+    }
+    
+    today = dd + "/" + mm + "/" + yyyy;
+    console.log("Today: " + today);
 }
 
 function sosCamera() {
