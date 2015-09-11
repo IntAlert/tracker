@@ -270,8 +270,14 @@ function getNumber() {
         ref.orderByChild("leave").on("child_added", function(snapshot) {
             var tripid = snapshot.val();
             var leave = tripid.leave;
+            var back = tripid.back;
             var leaveformatted = leave.split(/\//);
-            console.log( [ leaveformatted[1], leaveformatted[0], leaveformatted[2] ].join('/'));
+            var backformatted = back.split(/\//);
+            leaveformatted = [ leaveformatted[1], leaveformatted[0], leaveformatted[2] ].join('/');
+            backformatted = [ backformatted[1], backformatted[0], backformatted[2] ].join('/');
+            console.log("leave: " + leaveformatted);
+            console.log("back: " + backformatted);
+            
             
 //            var leave = new Date(tripid.leave);
 //            console.log(snapshot.key());
