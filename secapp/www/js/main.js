@@ -261,9 +261,9 @@ function sendSMS() {
 }
 
 function getNumber() {
-    var today = "";
-    //check date
-    getTodayDate();
+    var today = new Date();
+    var contactid = "";
+    var contactno = "";
     //connect to firebase
     var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
     //pull all trips
@@ -275,25 +275,28 @@ function getNumber() {
             var backformatted = back.split(/\//);
             leaveformatted = [ leaveformatted[1], leaveformatted[0], leaveformatted[2] ].join('/');
             backformatted = [ backformatted[1], backformatted[0], backformatted[2] ].join('/');
-            console.log("leave: " + leaveformatted);
-            console.log("back: " + backformatted);
-            
-            
-//            var leave = new Date(tripid.leave);
-//            console.log(snapshot.key());
-//            console.log(leave);
-//            var back = new Date(tripid.back);
-//            console.log(back);
-//            console.log("");
-//            if (back >= today && leave <= today) {
-////                console.log(snapshot.key() + " will be included");
-//            }
+            var leaveobject = new Date(leaveformatted);
+            var backobject = new Date(backformatted);
+//            console.log("leave: " + leaveobject);
+//            console.log("back: " + backobject);
+//            console.log("today: " + today);
+            if (backobject >= today && leaveobject <= today) {
+//                console.log(snapshot.key() + " will be included");
+                //get contact id from trip record
+                contactid = tripid.contact;
+                console.log("contact id: " + contactid);
+                //use contactid to find correct contact
+                var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts/");
+                    ref.orderByKey().equalTo(contactid).on("child_added", function(snapshot) {
+                        //pull contactno
+                        var contact = snapshot.val();
+                        contactno = contact.phone;
+                        console.log("phone number: " + contactno);
+                    });
+            }
         });
 }
-    
-                                     
-                                     
-    
+     
     //check if date falls after start date of trips but before end date
     //if yes:
     //save contact as var
@@ -313,22 +316,24 @@ function getNumber() {
     //store into var
 //}
 
-function getTodayDate() {
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //Jan=0 in dateformat
-    var yyyy = today.getFullYear();
-    
-    if(dd < 10) {
-        dd = "0" + dd;   
-    }
-    if(mm < 10) {
-        mm = "0" + mm;   
-    }
-    
-    today = dd + "/" + mm + "/" + yyyy;
-    console.log("Today: " + today);
-}
+//CONVERT TO UK DATE FORMAT FROM US
+//function getTodayDate() {
+//    var today = new Date();
+//    var dd = today.getDate();
+//    var mm = today.getMonth()+1; //Jan=0 in dateformat
+//    var yyyy = today.getFullYear();
+//    
+//    if(dd < 10) {
+//        dd = "0" + dd;   
+//    }
+//    if(mm < 10) {
+//        mm = "0" + mm;   
+//    }
+//    
+////    today = dd + "/" + mm + "/" + yyyy; //UK FORMAT
+//    today = mm + "/" + dd + "/" + yyyy; //US FORMAT
+//    console.log("Today: " + today);
+//}
 
 function sosCamera() {
     var options = {
