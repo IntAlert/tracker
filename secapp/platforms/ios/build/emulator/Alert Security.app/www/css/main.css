@@ -1,0 +1,117 @@
+body {
+    background-image: url("../img/bg.jpg");
+}
+
+h1 {
+    background-color: #008177;
+    border-radius: 20px;
+    color: white;
+    font-family: 'Arial';
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    max-width:90%;
+    padding: 10px;
+    text-align: center;
+}
+
+h3 {
+    border-radius: 20px;
+    color: black;
+    font-family: 'Arial';
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    max-width:90%;
+    padding: 10px;
+    text-align: center;
+}
+
+.normalbutton, .checkin {
+    background-color: #008177;
+    border: none;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 20px;
+    color: white;
+    display: block;
+    font-family: 'Arial';
+    font-size: 30px;
+    height: 72px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 90%;
+}
+
+.checkin {
+    background-color: #558cb7;
+}
+
+.sos {
+    background-color: red;
+    border: none;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 20px;
+    color: white;
+    display: block;
+    font-family: 'Arial';
+    font-size: 30px;
+    height: 72px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 90%;
+}
+
+.normalbutton:hover {
+    background: #006059;
+    border: none;
+    box-shadow: 0 0 1px #777;
+}
+
+.checkin:hover {
+    background: #3b698d;
+    border: none;
+    box-shadow: 0 0 1px #777;
+}
+
+.sos:hover {
+    background: #B22222;
+    border: none;
+    box-shadow: 0 0 1px #777;
+}
+
+.logout {
+    float: right;
+    max-width: 10%;
+    overflow: hidden;
+}
+
+.loading {
+    text-align: center;
+}
+
+.dlg-no-close, .ui-dialog-titlebar-close {
+    display: none;
+}
+
+.dialogLogout, .dialogSOS, .dialogSOSConfirmed, .dialogCheckIn, .dialogCheckInConfirmed {
+    display: none;   
+}
+
+input, textarea {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+
+.dialogCheckIn .ui-button-text-only .ui-button-text {
+    font-size: 0.8em;
+}

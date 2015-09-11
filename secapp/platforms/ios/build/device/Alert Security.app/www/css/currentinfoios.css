@@ -1,0 +1,246 @@
+body {
+    background-image: url("../img/bg.jpg");
+}
+
+h1 {
+    background-color: #008177;
+    border-radius: 20px;
+    color: white;
+    font-family: 'Arial';
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    max-width:90%;
+    padding: 10px;
+    text-align: center;
+}
+
+h3 {
+    border-radius: 20px;
+    color: black;
+    font-family: 'Arial';
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    max-width:90%;
+    padding: 10px;
+    text-align: center;
+}
+
+.detail {
+    background-color: #008177;
+    border-radius: 20px;
+    color: white;
+    font-family: 'Arial';
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    max-width: 90%;
+    padding: 10px;
+}
+
+.detail p {
+    position:relative;
+}
+
+.trips {
+    background-color: #A9A9A9;
+    border: none;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 20px;
+    color: white;
+    display: block;
+    font-family: 'Arial';
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: bold;
+    width: 80%;
+}
+
+.trips:hover {
+    background: #7e7e7e;
+    border: none;
+    box-shadow: 0 0 1px #777;
+}
+
+.backbutton {
+    background-color: #A9A9A9;
+    border: none;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 20px;
+    color: white;
+    display: block;
+    font-family: 'Arial';
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: bold;
+    width: 60%;
+}
+
+.backbutton:hover {
+    background: #7e7e7e;
+    border: none;
+    box-shadow: 0 0 1px #777;
+}
+
+.editbutton {
+    background-color: #A9A9A9;
+    border: none;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 20px;
+    color: white;
+    display: block;
+    float:right;
+    font-family: 'Arial';
+    font-size: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    padding: 6px;
+    text-align: center;
+    text-decoration: bold;
+    width: 20%;
+}
+
+.editbutton:hover {
+    background: #7e7e7e;
+    border: none;
+    box-shadow: 0 0 1px #777;
+}
+
+.updatebutton {
+    background-color: #32CD32;
+    border: none;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 20px;
+    color: white;
+    display: block;
+    float: left;
+    font-family: 'Arial';
+    font-size: 12px;
+    margin-left: auto;
+    margin-right: 6px;
+    margin-top: 0;
+    padding: 6px;
+    text-align: center;
+    text-decoration: bold;
+    width: 20%;
+}
+
+.updatebutton:hover {
+    background: #008000;
+    border: none;
+    box-shadow: 0 0 1px #777;
+}
+
+.deletebutton {
+    background-color: red;
+    border: none;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 20px;
+    color: white;
+    display: block;
+    float: left;
+    font-family: 'Arial';
+    font-size: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    padding: 6px;
+    text-align: center;
+    text-decoration: bold;
+    width: 20%;
+}
+
+.deletebutton:hover {
+    background: #B22222;
+    border: none;
+    box-shadow: 0 0 1px #777;
+}
+    
+.cancelbutton {
+    background-color: red;
+    border: none;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 20px;
+    color: white;
+    display: block;
+    font-family: 'Arial';
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: bold;
+    width: 60%;
+}
+
+.cancelbutton:hover {
+  background: #B22222;
+  border: none;
+  box-shadow: 0 0 1px #777;
+}
+
+.input {
+    float: right;
+    width: 42%;
+}
+
+input.input {
+    margin-right: 30px;
+}
+
+select.input {
+    width: 50%
+}
+
+a {
+    color: #ffffff;
+    text-align: center;
+}
+
+.datepick {
+    float: right;
+}
+
+.ui-datepicker-trigger {
+    float: right;
+    position: absolute;
+    right: 0;
+    width:20px;
+}
+
+.dlg-no-close .ui-dialog-titlebar-close {
+    display: none;
+}
+
+.dialogError {
+    display: none;   
+}
+
+.dialogUpdated .dialogDeleted .dialogConfirm {
+    display: none;   
+}
+
+input, textarea {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}

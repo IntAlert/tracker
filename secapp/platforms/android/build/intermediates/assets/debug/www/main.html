@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <script src='js/firebase.js'></script>
+        <script src='js/jquery.min.js'></script>
+        <script src='js/jquery-ui.min.js'></script>
+        <script src='cordova.js'></script>
+        <script src='js/global.js'></script>
+        <script src='js/main.js'></script>
+        <script src='js/fastclick.js'></script>
+        <link rel="stylesheet" href="css/jquery-ui.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/main.css" type="text/css">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.firebase.com https://*.firebaseio.com; object-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; media-src 'none'; font-src 'self'; connect-src 'self' https://*.firebase.com https://*.firebaseio.com wss://*.firebaseio.com; frame-src gap://ready">
+    </head>
+    
+    <body>
+        <div id="dialogLogout" class="dialogLogout" title="Log Out">If you continue, you will be logged out. Are you sure you want to do this?</div>
+        <div id="dialogSOS" class="dialogSOS" title="Confirm SOS">If you continue, an SOS message will be sent and your location will be used. Are you sure you want to do this?</div>
+        <div id="dialogSOSConfirmed" class="dialogSOSConfirmed" title="Confirm SOS">SOS confirmed.</div>
+        <div id="dialogSMSError" class="dialogSMSError" title="Error"><div class="ErrorMessage"></div><div class="loading"><img width="52" src="img/loading.gif" alt="Loading"></div></div>
+        <div id="dialogCheckIn" class="dialogCheckIn" title="Check In">If you continue, you will check in with your contact via SMS message. Please check your plan before continuing.</div>
+        <div id="dialogCheckInConfirmed"  class="dialogCheckInConfirmed" title="Check In">Successfully checked in.</div>
+        <div id="dialogLoggedOut" class="dialogLoggedOut" title="Logged Out">User is logged out.</div>
+        <div id="dialogNoGeo" class="dialogNoGeo" title="Error">Geolocation not supported.</div>
+        
+        <img src="img/logout.png" class="logout" onclick="$( '#dialogLogout' ).dialog('open')" alt="Logout">
+        <div class="page-header container text-center">
+            <h1>International Alert Security App</h1>
+        </div>
+        <div class="container text-center">
+            <h3 id="welcome">Welcome</h3>
+        </div>
+        <div id="container" class="container">
+            <form action="addtrip.html">
+                <button class="normalbutton">Add Trip Information</button>
+            </form>
+            <form action="currentinfo.html">
+                <button class="normalbutton">View Current Information</button>
+            </form>
+            <button class="checkin" onclick="$( '#dialogCheckIn' ).dialog('open')">Check In</button>
+            <button class="sos" onclick="$( '#dialogSOS' ).dialog('open')">SOS</button>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Log In</title>
+        <script src='cordova.js'></script>
+        <script src='js/firebase.js'></script>
+        <script src='js/jquery.min.js'></script>
+        <script src='js/jquery-ui.min.js'></script>
+        <script src='js/forgot.js'></script>
+        <script src='js/global.js'></script>
+        <script src='js/fastclick.js'></script>
+        <link rel="stylesheet" href="css/jquery-ui.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/indexios.css" type="text/css">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.firebase.com https://*.firebaseio.com; object-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; media-src 'none'; font-src 'self'; connect-src 'self' https://*.firebase.com https://*.firebaseio.com wss://*.firebaseio.com; frame-src gap://ready">
+    </head>
+    
+    <body>
+        <div id="dialogEmail" class="dialogEmail" title="Reset Successful">Password reset email sent.</div>
+        <div id="dialogEmailErr" class=dialogEmailErr title="Error">Error sending password reset email.</div>
+        
+        <div class="page-header container text-center">
+            <h1>International Alert Security App</h1>
+        </div>
+        <div class="container text-center">
+            <h3>Forgot Password</h3>
+        </div>
+        <div id="container" class="info">
+            <p>Email Address
+                <input class="email" type="email" id="name" placeholder="Enter your email">
+            </p>
+            <button onClick="passReset()" class="forgotpass">Send Password Reset</button>
+            <br>
+        </div>
+        <form name="back" action="index.html">
+            <input class="backbutton" type="submit" value="Back">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,2 @@
+/Users/Dan/Documents/tracker/secapp/platforms/android/build/intermediates/classes/debug
+/Users/Dan/Documents/tracker/secapp/platforms/android/build/intermediates/pre-dexed/debug/classes-0dce33edde646cc05cd42a499c919c35cf447158.jar
