@@ -29,7 +29,7 @@ $(function() {
                 //Photo
                 //Add Photo to SOS
                 
-                sendSMS();
+                getNumberSOS();
                 getLocation();
                 sosCamera();
                 $( this ).dialog( "close" );
@@ -48,8 +48,7 @@ $(function() {
         dialogClass: "dlg-no-close",
         buttons: {
             "Confirm": function() {
-                getNumber();
-//                CheckInSMS();
+                getNumberCheckIn();
                 $( this ).dialog( "close" );
             },
             "Cancel": function() {
@@ -127,6 +126,7 @@ $(function() {
 
 ////////// MAIN SCRIPTS \\\\\\\\\\ 
 var myID = "";
+var contactno = "";
 var uName = "";
 var uLastname = "";
 var email = sessionStorage.getItem("email");
@@ -218,7 +218,9 @@ function addSOS() {
 
 function CheckInSMS() {
     var message = "Hello, this is " + uName + " " + uLastname + ". I'm just checking in to let you know that everything is alright!";
-    var number = "07770828784";
+    console.log("Contactno: " + contactno);
+    var number = contactno;
+    console.log("number:" + number);
     var error = function(e) {
         $( '#dialogSMSError .ErrorMessage' ).text("SMS SEND ERROR:" + e);
         $( '#dialogSMSError' ).dialog('open');
@@ -243,7 +245,7 @@ function SOS_saved(error) {
     $( '#dialogSOSConfirmed' ).dialog('open');
 }
 
-function sendSMS() {
+function sendSMSSOS() {
     var message = "SOS raised by " + uName + " " + uLastname + ".";
     var number = "07770828784";
     var error = function(e) {
@@ -260,10 +262,10 @@ function sendSMS() {
     },5000);
 }
 
-function getNumber() {
+function getNumberCheckIn() {
     var today = new Date();
     var contactid = "";
-    var contactno = "";
+//    var contactno = "";
     //connect to firebase
     var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
     //pull all trips
@@ -291,30 +293,52 @@ function getNumber() {
                         //pull contactno
                         var contact = snapshot.val();
                         contactno = contact.phone;
+                        contactno = "+" + contactno;
                         console.log("phone number: " + contactno);
+                        CheckInSMS();
                     });
             }
         });
 }
-     
-    //check if date falls after start date of trips but before end date
-    //if yes:
-    //save contact as var
-    //pull contact from firebase using var
-//    var address = "https://crackling-fire-1447.firebaseio.com/contacts/" + contactid;
-//    var ref = new Firebase(address);
-//        ref.on("child_added", function(snapshot) {
-//            var userid = snapshot.val();
-//            uName = userid.name;
-//            uLastname = userid.lastname;
-//            sessionStorage.setItem("name", uName);
-//            sessionStorage.setItem("lastname", uLastname);
-//            document.getElementById("welcome").innerHTML = "Welcome " + uName;
-//        }, function (errorObject) {
-//    }); 
-    //retrieve contact number
-    //store into var
-//}
+
+function getNumberSOS() {
+    var today = new Date();
+    var contactid = "";
+//    var contactno = "";
+    //connect to firebase
+    var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
+    //pull all trips
+        ref.orderByChild("leave").on("child_added", function(snapshot) {
+            var tripid = snapshot.val();
+            var leave = tripid.leave;
+            var back = tripid.back;
+            var leaveformatted = leave.split(/\//);
+            var backformatted = back.split(/\//);
+            leaveformatted = [ leaveformatted[1], leaveformatted[0], leaveformatted[2] ].join('/');
+            backformatted = [ backformatted[1], backformatted[0], backformatted[2] ].join('/');
+            var leaveobject = new Date(leaveformatted);
+            var backobject = new Date(backformatted);
+//            console.log("leave: " + leaveobject);
+//            console.log("back: " + backobject);
+//            console.log("today: " + today);
+            if (backobject >= today && leaveobject <= today) {
+//                console.log(snapshot.key() + " will be included");
+                //get contact id from trip record
+                contactid = tripid.contact;
+                console.log("contact id: " + contactid);
+                //use contactid to find correct contact
+                var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts/");
+                    ref.orderByKey().equalTo(contactid).on("child_added", function(snapshot) {
+                        //pull contactno
+                        var contact = snapshot.val();
+                        contactno = contact.phone;
+                        contactno = "+" + contactno;
+                        console.log("phone number: " + contactno);
+                        sendSMSSOS();
+                    });
+            }
+        });
+}
 
 //CONVERT TO UK DATE FORMAT FROM US
 //function getTodayDate() {
