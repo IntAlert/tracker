@@ -106,16 +106,12 @@ h3 {
     width: 42%;
 }
 
-select.input {
-    width: 50%
-}
-
 input.input {
     margin-right: 30px;
 }
 
 select.input {
-    width: 50%
+    width: 55%
 }
 
 a {

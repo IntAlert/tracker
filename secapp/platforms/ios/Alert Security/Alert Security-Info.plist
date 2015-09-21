@@ -783,6 +783,24 @@
           <string>secapp</string>
         </array>
       </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>secapp</string>
+        </array>
+      </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>secapp</string>
+        </array>
+      </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>secapp</string>
+        </array>
+      </dict>
     </array>
     <key>NSAppTransportSecurity</key>
     <dict>
