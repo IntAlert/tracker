@@ -95,6 +95,12 @@
                             "xml": "<array><dict><key>CFBundleURLSchemes</key><array><string>secapp</string></array></dict></array>",
                             "count": 2
                         }
+                    ],
+                    "NSAppTransportSecurity": [
+                        {
+                            "xml": "<dict><key>NSAllowsArbitraryLoads</key><true /></dict>",
+                            "count": 1
+                        }
                     ]
                 }
             }
@@ -127,6 +133,9 @@
         },
         "cordova-plugin-customurlscheme": {
             "URL_SCHEME": "secapp",
+            "PACKAGE_NAME": "org.internationalalert.secapp"
+        },
+        "sk.kcorp.cordova.ios-security": {
             "PACKAGE_NAME": "org.internationalalert.secapp"
         }
     },

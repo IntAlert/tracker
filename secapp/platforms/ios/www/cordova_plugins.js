@@ -94,7 +94,8 @@ module.exports.metadata =
     "org.apache.cordova.vibration": "0.3.13",
     "cordova-plugin-statusbar": "1.0.1",
     "me.rahul.plugins.camerapicturebackground": "0.0.1",
-    "cordova-plugin-customurlscheme": "4.0.0"
+    "cordova-plugin-customurlscheme": "4.0.0",
+    "sk.kcorp.cordova.ios-security": "0.3.0"
 }
 // BOTTOM OF METADATA
 });

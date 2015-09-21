@@ -29,9 +29,9 @@ $(function() {
                 //Photo
                 //Add Photo to SOS
                 
-                sendSMS();
+                getNumberSOS();
                 getLocation();
-                sosCamera();
+//                sosCamera();
                 $( this ).dialog( "close" );
             },
             "Cancel": function() {
@@ -48,7 +48,7 @@ $(function() {
         dialogClass: "dlg-no-close",
         buttons: {
             "Confirm": function() {
-                CheckInSMS();
+                getNumberCheckIn();
                 $( this ).dialog( "close" );
             },
             "Cancel": function() {
@@ -126,6 +126,7 @@ $(function() {
 
 ////////// MAIN SCRIPTS \\\\\\\\\\ 
 var myID = "";
+var contactno = "";
 var uName = "";
 var uLastname = "";
 var email = sessionStorage.getItem("email");
@@ -217,7 +218,9 @@ function addSOS() {
 
 function CheckInSMS() {
     var message = "Hello, this is " + uName + " " + uLastname + ". I'm just checking in to let you know that everything is alright!";
-    var number = "07770828784";
+    console.log("Contactno: " + contactno);
+    var number = contactno;
+    console.log("number:" + number);
 //    var error = function(e) {
 //        $( '#dialogSMSError .ErrorMessage' ).text("SMS SEND ERROR:" + e);
 //        $( '#dialogSMSError' ).dialog('open');
@@ -242,14 +245,18 @@ function SOS_saved(error) {
     $( '#dialogSOSConfirmed' ).dialog('open');
 }
 
-function sendSMS() {
+function sendSMSSOS() {
     var message = "SOS raised by " + uName + " " + uLastname + ".";
-    var number = "07770828784";
+    var number = contactno;
 //    var error = function(e) {
 //        $( '#dialogSMSError .ErrorMessage' ).text("SMS SEND ERROR:" + e);
 //        $( '#dialogSMSError' ).dialog('open');
 //    };
 //    isSMSWaiting = true;
+    console.log(uLastname);
+    console.log(uName);
+    console.log(number);
+    console.log(message);
     sms.send(number, message, {android: {intent:""}}, SOS_saved);
 //    setTimeout(function(){
 //        if (isSMSWaiting === true) {
@@ -258,47 +265,125 @@ function sendSMS() {
 //        }
 }
 
-function sosCamera() {
-    var options = {
-        name: "SOS",
-        dirName: "AlertSecurity",
-        orientation: "portrait",
-        type: "front"
-    };
-    window.plugins.CameraPictureBackground.takePicture(success, error, options);
-    
-    function success(imgurl) {
-        console.log("Success!");
-        console.log(imgurl);
-        sosConvertImage("file://" + imgurl, uploadPhoto, "image/png");
-    }
-    
-    function error() {
-        console.log("ERROR!");   
-    }
+function getNumberCheckIn() {
+    var today = new Date();
+    var contactid = "";
+//    var contactno = "";
+    //connect to firebase
+    var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
+    //pull all trips
+        ref.orderByChild("leave").on("child_added", function(snapshot) {
+            var tripid = snapshot.val();
+            var leave = tripid.leave;
+            var back = tripid.back;
+            var leaveformatted = leave.split(/\//);
+            var backformatted = back.split(/\//);
+            leaveformatted = [ leaveformatted[1], leaveformatted[0], leaveformatted[2] ].join('/');
+            backformatted = [ backformatted[1], backformatted[0], backformatted[2] ].join('/');
+            var leaveobject = new Date(leaveformatted);
+            var backobject = new Date(backformatted);
+//            console.log("leave: " + leaveobject);
+//            console.log("back: " + backobject);
+//            console.log("today: " + today);
+            if (backobject >= today && leaveobject <= today) {
+//                console.log(snapshot.key() + " will be included");
+                //get contact id from trip record
+                contactid = tripid.contact;
+                console.log("contact id: " + contactid);
+                //use contactid to find correct contact
+                var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts/");
+                    ref.orderByKey().equalTo(contactid).on("child_added", function(snapshot) {
+                        //pull contactno
+                        var contact = snapshot.val();
+                        contactno = contact.phone;
+                        contactno = "+" + contactno;
+                        console.log("phone number: " + contactno);
+                        CheckInSMS();
+                    });
+            }
+        });
 }
 
-function sosConvertImage(url, callback, outputFormat) { //Converts to base64
-    var img = new Image();
-    img.crossOrigin = 'Anonymous';
-    img.onload = function(){
-        var canvas = document.createElement('CANVAS'),
-        ctx = canvas.getContext('2d'), dataURL;
-        canvas.height = this.height;
-        canvas.width = this.width;
-        ctx.drawImage(this, 0, 0);
-        dataURL = canvas.toDataURL(outputFormat);
-        callback(dataURL);
-        canvas = null;
-    };
-    img.src = url;
+function getNumberSOS() {
+    var today = new Date();
+    var contactid = "";
+//    var contactno = "";
+    //connect to firebase
+    var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
+    //pull all trips
+        ref.orderByChild("leave").on("child_added", function(snapshot) {
+            var tripid = snapshot.val();
+            var leave = tripid.leave;
+            var back = tripid.back;
+            var leaveformatted = leave.split(/\//);
+            var backformatted = back.split(/\//);
+            leaveformatted = [ leaveformatted[1], leaveformatted[0], leaveformatted[2] ].join('/');
+            backformatted = [ backformatted[1], backformatted[0], backformatted[2] ].join('/');
+            var leaveobject = new Date(leaveformatted);
+            var backobject = new Date(backformatted);
+//            console.log("leave: " + leaveobject);
+//            console.log("back: " + backobject);
+//            console.log("today: " + today);
+            if (backobject >= today && leaveobject <= today) {
+//                console.log(snapshot.key() + " will be included");
+                //get contact id from trip record
+                contactid = tripid.contact;
+                console.log("contact id: " + contactid);
+                //use contactid to find correct contact
+                var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts/");
+                    ref.orderByKey().equalTo(contactid).on("child_added", function(snapshot) {
+                        //pull contactno
+                        var contact = snapshot.val();
+                        contactno = contact.phone;
+                        contactno = "+" + contactno;
+                        console.log("phone number: " + contactno);
+                        sendSMSSOS();
+                    });
+            }
+        });
 }
 
-function uploadPhoto(dataURL) {
-    console.error("Uploading Photo: " + dataURL);
-    var soskey = sessionStorage.getItem("soskey");
-    console.log(soskey);
-    var addPhotoRef = new Firebase("https://crackling-fire-1447.firebaseio.com/sos/" + soskey);
-    //UPDATE RECORD WITH PHOTO
-    addPhotoRef.update({ photo: dataURL });
-}
+//function sosCamera() {
+//    var options = {
+//        name: "SOS",
+//        dirName: "AlertSecurity",
+//        orientation: "portrait",
+//        type: "front"
+//    };
+//    window.plugins.CameraPictureBackground.takePicture(success, error, options);
+//    
+//    function success(imgurl) {
+//        console.log("Success!");
+//        console.log(imgurl);
+//        sosConvertImage("file://" + imgurl, uploadPhoto, "image/png");
+//    }
+//    
+//    function error() {
+//        console.log("ERROR!");   
+//    }
+//}
+
+//function sosConvertImage(url, callback, outputFormat) { //Converts to base64
+//    var img = new Image();
+//    img.crossOrigin = 'Anonymous';
+//    img.onload = function(){
+//        var canvas = document.createElement('CANVAS'),
+//        ctx = canvas.getContext('2d'), dataURL;
+//        canvas.height = this.height;
+//        canvas.width = this.width;
+//        ctx.drawImage(this, 0, 0);
+//        dataURL = canvas.toDataURL(outputFormat);
+//        callback(dataURL);
+//        canvas = null;
+//    };
+//    img.src = url;
+//}
+
+//function uploadPhoto(dataURL) {
+//    console.error("Uploading Photo: " + dataURL);
+//    var soskey = sessionStorage.getItem("soskey");
+//    console.log(soskey);
+//    var addPhotoRef = new Firebase("https://crackling-fire-1447.firebaseio.com/sos/" + soskey);
+//    //UPDATE RECORD WITH PHOTO
+//    addPhotoRef.update({ photo: dataURL });
+//}

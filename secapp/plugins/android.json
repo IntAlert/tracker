@@ -153,6 +153,9 @@
         "cordova-plugin-customurlscheme": {
             "URL_SCHEME": "secapp",
             "PACKAGE_NAME": "org.internationalalert.secapp"
+        },
+        "sk.kcorp.cordova.ios-security": {
+            "PACKAGE_NAME": "org.internationalalert.secapp"
         }
     },
     "dependent_plugins": {}

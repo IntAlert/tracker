@@ -247,7 +247,7 @@ function SOS_saved(error) {
 
 function sendSMSSOS() {
     var message = "SOS raised by " + uName + " " + uLastname + ".";
-    var number = "07770828784";
+    var number = contactno;
     var error = function(e) {
         $( '#dialogSMSError .ErrorMessage' ).text("SMS SEND ERROR:" + e);
         $( '#dialogSMSError' ).dialog('open');

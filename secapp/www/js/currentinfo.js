@@ -42,19 +42,26 @@ ref.orderByChild("email").equalTo(email).on("child_added", function(snapshot) {
 function updateList() {
     //SORT
     var tripsSorted = trip.sort(sortingFn);
+    
     //CLEAR
     $("#trip").empty();
+    
     //GO THROUGH EACH TRIP
-    $(tripsSorted).each(function(count){
-    //INJECT
-        var myText = "<button onClick='displayTrip(\""+this.key+"\")' id='trips' class='trips'><b>Destination: </b>" + this.destination + "<br><b>Departing: </b>" + this.leave + "<br><b>Returning: </b>" + this.back + "</button>";
-        if(count>5 && triggered === false) {
-        triggered = true;
-        extraBackButton = '<form name="back" action="main.html"><input class="backbutton" type="submit" value="Back"></form><br>';
-        $("#trip").prepend(extraBackButton);
-        }
-        $("#trip").append(myText);
+    $(tripsSorted).each(function(){
+        //INJECT trip Button
+        var tripButton = "<button onClick='displayTrip(\""+this.key+"\")' id='trips' class='trips'><b>Destination: </b>" + this.destination + "<br><b>Departing: </b>" + this.leave + "<br><b>Returning: </b>" + this.back + "</button>";
+       
+        $("#trip").append(tripButton);
     });
+    
+    // if there are more than five trips, add an extra back button at the top
+     if($(tripsSorted).length > 5) {
+        
+        // define extra back button
+        var extraBackButton = '<form name="back" action="main.html"><input class="backbutton" type="submit" value="Back"></form><br>';
+        
+         $("#trip").prepend(extraBackButton); // "prepend" adds to the top of #trip
+    }
 }
 
 function sortingFn(tripA,tripB) {
