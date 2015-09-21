@@ -29,7 +29,8 @@ $(function() {
                 //Photo
                 //Add Photo to SOS
                 
-                getNumberSOS();
+//                getNumberSOS();
+                sendSMSSOS();
                 getLocation();
 //                sosCamera();
                 $( this ).dialog( "close" );
@@ -247,7 +248,7 @@ function SOS_saved(error) {
 
 function sendSMSSOS() {
     var message = "SOS raised by " + uName + " " + uLastname + ".";
-    var number = contactno;
+    var number = "07791959699";
 //    var error = function(e) {
 //        $( '#dialogSMSError .ErrorMessage' ).text("SMS SEND ERROR:" + e);
 //        $( '#dialogSMSError' ).dialog('open');
@@ -304,44 +305,44 @@ function getNumberCheckIn() {
         });
 }
 
-function getNumberSOS() {
-    var today = new Date();
-    var contactid = "";
-//    var contactno = "";
-    //connect to firebase
-    var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
-    //pull all trips
-        ref.orderByChild("leave").on("child_added", function(snapshot) {
-            var tripid = snapshot.val();
-            var leave = tripid.leave;
-            var back = tripid.back;
-            var leaveformatted = leave.split(/\//);
-            var backformatted = back.split(/\//);
-            leaveformatted = [ leaveformatted[1], leaveformatted[0], leaveformatted[2] ].join('/');
-            backformatted = [ backformatted[1], backformatted[0], backformatted[2] ].join('/');
-            var leaveobject = new Date(leaveformatted);
-            var backobject = new Date(backformatted);
-//            console.log("leave: " + leaveobject);
-//            console.log("back: " + backobject);
-//            console.log("today: " + today);
-            if (backobject >= today && leaveobject <= today) {
-//                console.log(snapshot.key() + " will be included");
-                //get contact id from trip record
-                contactid = tripid.contact;
-                console.log("contact id: " + contactid);
-                //use contactid to find correct contact
-                var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts/");
-                    ref.orderByKey().equalTo(contactid).on("child_added", function(snapshot) {
-                        //pull contactno
-                        var contact = snapshot.val();
-                        contactno = contact.phone;
-                        contactno = "+" + contactno;
-                        console.log("phone number: " + contactno);
-                        sendSMSSOS();
-                    });
-            }
-        });
-}
+//function getNumberSOS() {
+//    var today = new Date();
+//    var contactid = "";
+////    var contactno = "";
+//    //connect to firebase
+//    var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/trips");
+//    //pull all trips
+//        ref.orderByChild("leave").on("child_added", function(snapshot) {
+//            var tripid = snapshot.val();
+//            var leave = tripid.leave;
+//            var back = tripid.back;
+//            var leaveformatted = leave.split(/\//);
+//            var backformatted = back.split(/\//);
+//            leaveformatted = [ leaveformatted[1], leaveformatted[0], leaveformatted[2] ].join('/');
+//            backformatted = [ backformatted[1], backformatted[0], backformatted[2] ].join('/');
+//            var leaveobject = new Date(leaveformatted);
+//            var backobject = new Date(backformatted);
+////            console.log("leave: " + leaveobject);
+////            console.log("back: " + backobject);
+////            console.log("today: " + today);
+//            if (backobject >= today && leaveobject <= today) {
+////                console.log(snapshot.key() + " will be included");
+//                //get contact id from trip record
+//                contactid = tripid.contact;
+//                console.log("contact id: " + contactid);
+//                //use contactid to find correct contact
+//                var ref = new Firebase("https://crackling-fire-1447.firebaseio.com/contacts/");
+//                    ref.orderByKey().equalTo(contactid).on("child_added", function(snapshot) {
+//                        //pull contactno
+//                        var contact = snapshot.val();
+//                        contactno = contact.phone;
+//                        contactno = "+" + contactno;
+//                        console.log("phone number: " + contactno);
+//                        sendSMSSOS();
+//                    });
+//            }
+//        });
+//}
 
 //function sosCamera() {
 //    var options = {
