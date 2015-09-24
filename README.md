@@ -1,4 +1,21 @@
 # International Alert Security App
 
-This is the International Alert Security App. Files are compiled using Cordova CLI into Android/iOS.
-Only stable builds are pushed to master branch.
+The International Alert Security App allows you to log your trips and helps to ensure that you keep in touch with your preferred point of contact as an alternative to filling in the tracker. This makes it quicker and simpler to add, modify and remove trips with a clear and easy-to-use interface right from your mobile device.
+
+## Getting Started
+
+### Create an Account
+When you first launch the Alert Security app, you will be prompted to create an account. Use your Alert email and then choose a password and click the "*Create Account*" button.
+
+**Note:** If you have already done this and are seeing this page after reinstalling or updating the app then you can skip this step by clicking the "*Existing User*" button.
+
+### Forgotten Password
+If you have created an account but do not remember the password, then click the "*Forgot Password*" button on the *Login* page. From here, enter your Alert email and you will be sent a password reset email.
+
+### Logging In
+To log into the Alert Security app, just enter your registered Alert email and password and click the "*Login*" button. If you would like the app to remember your email so you don't have to type it next time you login, check the "*Remember Email*" box.
+
+**Note:** It is not recommended to use this feature on shared devices.
+
+### Adding a Trip
+To add a trip, first navigate to the "*Add Trip*" page from your *Home* screen. You will then be presented with the *Add Trip* form. Enter your *leave* and *return* dates by clicking the calendar icons on the right-hand side of the screen and then select the correct date from the pop-up calendar. Then, choose your destination and preferred contact from the dropdown menus and click "*Confirm*". The app will then email you with a confirmation, as well as email your preferred contact informing them of your trip. The app will also place an event into your phone character for the duration of the trip, which will remind you to check in with your contact.
