@@ -125,6 +125,7 @@ $(function() {
 });
 
 ////////// MAIN SCRIPTS \\\\\\\\\\ 
+var version = "PRE-RELEASE BUILD";
 var myID = "";
 var contactno = "";
 var uName = "";
@@ -151,6 +152,7 @@ ref.orderByChild("email").equalTo(email).on("child_added", function(snapshot) {
     document.getElementById("welcome").innerHTML = "Welcome " + uName;
 }, function (errorObject) {
 });    
+$("versioninfo").html("<p>" + version + "</p>");
 
 function logOut() {
     $( "#dialogLogout" ).dialog( "open" );

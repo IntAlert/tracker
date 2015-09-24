@@ -208,11 +208,8 @@ function updateTrip() {
         var oldStartDate = sessionStorage.getItem("oldStartDate");
         var oldEndDate = sessionStorage.getItem("oldEndDate");
         var oldDestination = sessionStorage.getItem("oldDestination");
-        console.log(startDate);
-        console.log(endDate);
-        console.log(destination);
         //Create new event
-        createEventIOS(startDate, endDate, destination, "NEW CONTACT"); //CHANGE THIS
+        createEventIOS(startDate, endDate, destination, contact[mycontact][2]);
     deleteOldEvent(oldStartDate, oldEndDate, oldDestination);
 //    deleteOldEvent(oldStartDate, oldEndDate, oldDestination);
     });

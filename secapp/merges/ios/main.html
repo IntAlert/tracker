@@ -23,6 +23,7 @@
         <div id="dialogCheckInConfirmed"  class="dialogCheckInConfirmed" title="Check In">Successfully checked in.</div>
         <div id="dialogLoggedOut" class="dialogLoggedOut" title="Logged Out">User is logged out.</div>
         <div id="dialogNoGeo" class="dialogNoGeo" title="Error">Geolocation not supported.</div>
+        <div id="dialogVersionInfo" class="dialogVersionInfo" title="Version Info">This is a Pre-Release Build of the International Alert Security App.<br>Please report any issues to the Tech Team.</div>
         
         <img src="img/logout.png" class="logout" onclick="$( '#dialogLogout' ).dialog('open')" alt="Logout">
         <div class="page-header container text-center">
@@ -41,5 +42,7 @@
             <button class="checkin" onclick="$( '#dialogCheckIn' ).dialog('open')">Check In</button>
             <button class="sos" onclick="$( '#dialogSOS' ).dialog('open')">SOS</button>
         </div>
+        <br>
+        <div class="versioninfo" id="versioninfo" onclick="$( '#dialogVersionInfo' ).dialog('open')"></div><!--version info click-->
     </body>
 </html>

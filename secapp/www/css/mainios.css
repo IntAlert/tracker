@@ -118,3 +118,9 @@ input, textarea {
 .dialogCheckIn .ui-button-text-only .ui-button-text {
     font-size: 0.8em;
 }
+
+.versioninfo {
+    color: #C0C0C0;
+    font-family: "Verdana", Geneva, sans-serif;
+    text-align: center;
+}

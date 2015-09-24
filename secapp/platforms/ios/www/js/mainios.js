@@ -125,7 +125,21 @@ $(function() {
     });
 });
 
+$(function() {
+    $( "#dialogVersionInfo" ).dialog({
+        autoOpen: false,
+        modal: true,
+        dialogClass: "dlg-no-close",
+        buttons: {
+            "OK": function() {
+                $( this ).dialog( "close" );
+            }
+        }
+    });
+});
+
 ////////// MAIN SCRIPTS \\\\\\\\\\ 
+var appversion = "PRE-RELEASE BUILD";
 var myID = "";
 var contactno = "";
 var uName = "";
@@ -150,6 +164,7 @@ ref.orderByChild("email").equalTo(email).on("child_added", function(snapshot) {
     sessionStorage.setItem("name", uName);
     sessionStorage.setItem("lastname", uLastname);
     document.getElementById("welcome").innerHTML = "Welcome " + uName;
+    document.getElementById("versioninfo").innerHTML = appversion;
 }, function (errorObject) {
 });    
 
