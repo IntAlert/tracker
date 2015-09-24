@@ -60,7 +60,7 @@ function updateList() {
         // define extra back button
         var extraBackButton = '<form name="back" action="main.html"><input class="backbutton" type="submit" value="Back"></form><br>';
         
-         $("#trip").prepend(extraBackButton); // "prepend" adds to the top of #trip
+         $("#trip").append(extraBackButton); // "prepend" adds to the top of #trip
     }
 }
 
