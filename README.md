@@ -26,3 +26,9 @@ To view your current trips, navigate to the "*View Current Information*" page fr
 To edit a trip, click the "*Edit*" button. This will unlock the fields so that you can make any alterations to your trip, such as *Leaving* and *Return* dates, *Destination* and you can also update your chosen *Contact*. Once you have made your changes, click the "*Update*" button and your trip will be updated (The calendar event will also be updated automatically). You will then be redirected back to the *Home* screen.
 #### Deleting a Trip
 To delete a trip, click the "*Edit*" button. This will allow you to then click the "*Delete*" button. Upon confirmation, the trip will be removed, along with the calendar event.
+
+### Checking In
+To check in, click the "*Check In*" on the *Home* screen. You will be asked to confirm and upon doing so, the Alert Security app will automatically send an SMS message to your chosen contact.
+
+### Triggering an SOS
+To trigger an SOS, click the red "*SOS*" button on your *Home* screen. Once you have confirmed, the Alert Security app will send an emergency SMS message to your chosen contact. It will also take your GPS location and a photograph from your front-facing camera (if supported) and attach them to an email which will be sent to your chosen contact.
