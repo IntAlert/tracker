@@ -17,6 +17,9 @@ To log into the Alert Security app, just enter your registered Alert email and p
 
 **Note:** It is not recommended to use this feature on shared devices.
 
+### Logging Out
+To log out of the Alert Security app, navigate to the *Home* screen and click the *Logout icon* in the top right. You will be asked to confirm this action and upon doing so, will be logged out and returned to the *Login* page.
+
 ### Adding a Trip
 To add a trip, first navigate to the "*Add Trip*" page from your *Home* screen. You will then be presented with the *Add Trip* form. Enter your *leave* and *return* dates by clicking the calendar icons on the right-hand side of the screen and then select the correct date from the pop-up calendar. Then, choose your destination and preferred contact from the dropdown menus and click "*Confirm*". The app will then email you with a confirmation, as well as email your preferred contact informing them of your trip. The app will also place an event into your phone character for the duration of the trip, which will remind you to check in with your contact.
 
