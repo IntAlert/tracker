@@ -22,5 +22,7 @@ To add a trip, first navigate to the "*Add Trip*" page from your *Home* screen. 
 
 ### Viewing Current Trips
 To view your current trips, navigate to the "*View Current Information*" page from your *Home* screen. You will then be presented with a summary of all of your trips, organised by date order. To select a specific trip, just click on it and you will be taken to a detailed breakdown of the trip.
-##### Editing a Trip
+#### Editing a Trip
 To edit a trip, click the "*Edit*" button. This will unlock the fields so that you can make any alterations to your trip, such as *Leaving* and *Return* dates, *Destination* and you can also update your chosen *Contact*. Once you have made your changes, click the "*Update*" button and your trip will be updated (The calendar event will also be updated automatically). You will then be redirected back to the *Home* screen.
+#### Deleting a Trip
+To delete a trip, click the "*Edit*" button. This will allow you to then click the "*Delete*" button. Upon confirmation, the trip will be removed, along with the calendar event.
