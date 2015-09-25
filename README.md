@@ -19,3 +19,8 @@ To log into the Alert Security app, just enter your registered Alert email and p
 
 ### Adding a Trip
 To add a trip, first navigate to the "*Add Trip*" page from your *Home* screen. You will then be presented with the *Add Trip* form. Enter your *leave* and *return* dates by clicking the calendar icons on the right-hand side of the screen and then select the correct date from the pop-up calendar. Then, choose your destination and preferred contact from the dropdown menus and click "*Confirm*". The app will then email you with a confirmation, as well as email your preferred contact informing them of your trip. The app will also place an event into your phone character for the duration of the trip, which will remind you to check in with your contact.
+
+### Viewing Current Trips
+To view your current trips, navigate to the "*View Current Information*" page from your *Home* screen. You will then be presented with a summary of all of your trips, organised by date order. To select a specific trip, just click on it and you will be taken to a detailed breakdown of the trip.
+##### Editing a Trip
+To edit a trip, click the "*Edit*" button. This will unlock the fields so that you can make any alterations to your trip, such as *Leaving* and *Return* dates, *Destination* and you can also update your chosen *Contact*. Once you have made your changes, click the "*Update*" button and your trip will be updated (The calendar event will also be updated automatically). You will then be redirected back to the *Home* screen.
