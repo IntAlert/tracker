@@ -2,6 +2,8 @@
 
 The International Alert Security App allows you to log your trips and helps to ensure that you keep in touch with your preferred point of contact as an alternative to filling in the tracker. This makes it quicker and simpler to add, modify and remove trips with a clear and easy-to-use interface right from your mobile device.
 
+**Note:** This app is still under development so if you encounter any bugs, please let the Tech Team know!
+
 ## Getting Started
 
 ### Create an Account
